@@ -1,0 +1,9 @@
+Human animations:
+
+static:
+frame 3 - sleeping (on bed)
+
+animated:
+280 - 340 : walking
+350 - 380 : digging
+390 - 450 : standing
