@@ -17,6 +17,7 @@ stepheight = 0.6,
 	hp_max = 0,
 	armor = 0,
  collisionbox = {-0.9, -0.9, -0.9, 0.9, 0.9, 0.9},
+ inventory_image = "mobs_pig.png",
 	visual = "mesh",
  visual_size = {x=2, y=2, z=2},
 	mesh = "mobs_adult.b3d",
@@ -79,4 +80,4 @@ stepheight = 0.6,
 		day_toggle = true,
 	})
 
-mobs:register_egg("mobs_animal:adultpig", S("AdultPig"), "color_pink.png", 1)
+mobs:register_egg("mobs_animal:adultpig", S("AdultPig"), "mobs_pig.png", 1)

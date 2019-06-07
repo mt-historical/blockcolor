@@ -200,9 +200,9 @@ if page == "furnitures" then
 .. "image_button_exit[1,4.5;1,1;gui_hotbar_selected.png^cgdoor.png;cgdoor;]"
 -- .. "image_button_exit[2,4.5;1,1;gui_hotbar_selected.png^slabs.png;tslabs;]"
 .. "image_button_exit[2,4.5;1,1;gui_hotbar_selected.png^torch.png;torch;]"
-.. "image_button_exit[3,4.5;1,1;gui_hotbar_selected.png^shieldcross.png;shieldcross;]"
-.. "image_button_exit[4,4.5;1,1;gui_hotbar_selected.png^shieldslash.png;shieldslash;]"
-.. "image_button_exit[5,4.5;1,1;gui_hotbar_selected.png^shieldchevron.png;shieldchevron;]"
+.. "image_button_exit[3,4.5;1,1;gui_hotbar_selected.png^invcross.png;shieldcross;]"
+.. "image_button_exit[4,4.5;1,1;gui_hotbar_selected.png^invslash.png;shieldslash;]"
+.. "image_button_exit[5,4.5;1,1;gui_hotbar_selected.png^invchevron.png;shieldchevron;]"
 .."image_button_exit[6,4.5;1,1;gui_hotbar_selected.png^trampo.png;trampoline;]"
 
 .. "image_button[7,4.5;1,1;gui_hotbar_selected.png^droite.png;furnitures2;]"
