@@ -688,22 +688,22 @@ if enable_colored_metal_signs then
 	-- array : color, translated color, default text color
 
 	local sign_colors = {
-		{"green",        S("green"),       "f", color3},
-		{"yellow",       S("yellow"),      "0", color7},
-		{"red",          S("red"),         "f", color6},
-		{"white",    S("white"),   "4", color4},
-		{"black",  S("black"), "0", color1},
-		{"orange",       S("orange"),      "0", color5},
-		{"blue",         S("blue"),        "f", color2},
-		{"pink",        S("pink"),       "f", color8},
+		{"green",       S("green"),     "f", color3},
+		{"yellow",      S("yellow"),    "0", color7},
+		{"red",         S("red"),       "f", color6},
+		{"white",    	S("white"),   	"4", color4},
+		{"black",  		S("black"), 	"0", color1},
+		{"orange",      S("orange"),    "0", color5},
+		{"blue",        S("blue"),      "f", color2},
+		{"pink",        S("pink"),      "f", color8},
 	}
 
 	for i, color in ipairs(sign_colors) do
 		minetest.register_node(":signs:sign_wall_"..color[1], {
 			description = S("Sign (@1, metal)", color[2]),
- inventory_image = "signs.png^[colorize:#"..color[4]..":70",
-			 wield_image = "color_hand" .. color[1] .. ".png",
-		 wield_scale = {x=1,y=1,z=0.5},
+			inventory_image = "signs.png^[colorize:#"..color[4]..":70",
+			wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..color[4]..":70)",
+			wield_scale = {x=1,y=1,z=0.5},
 			node_placement_prediction = "",
 			paramtype = "light",
 			sunlight_propagates = true,
@@ -853,146 +853,6 @@ minetest.register_lbm({
 })
 
 -- locked sign
-
-minetest.register_craft({
-    	output = "locked_sign:sign_wall_locked",
-    	recipe = {
-        	{default_sign},
-        	{"default:steel_ingot"},
-    },
-})
-
--- craft recipes for the metal signs
-if enable_colored_metal_signs then
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_green",
-		recipe = {
-				{ "dye:dark_green", "dye:white", "dye:dark_green" },
-				{ "", default_sign_metal, "" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_green 2",
-		recipe = {
-				{ "dye:dark_green", "dye:white", "dye:dark_green" },
-				{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_yellow",
-		recipe = {
-				{ "dye:yellow", "dye:black", "dye:yellow" },
-				{ "", default_sign_metal, "" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_yellow 2",
-		recipe = {
-				{ "dye:yellow", "dye:black", "dye:yellow" },
-				{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_red",
-		recipe = {
-				{ "dye:red", "dye:white", "dye:red" },
-				{ "", default_sign_metal, "" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_red 2",
-		recipe = {
-				{ "dye:red", "dye:white", "dye:red" },
-				{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_white_red",
-		recipe = {
-				{ "dye:white", "dye:red", "dye:white" },
-				{ "", default_sign_metal, "" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_white_red 2",
-		recipe = {
-				{ "dye:white", "dye:red", "dye:white" },
-				{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_white_black",
-		recipe = {
-				{ "dye:white", "dye:black", "dye:white" },
-				{ "", default_sign_metal, "" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_white_black 2",
-		recipe = {
-				{ "dye:white", "dye:black", "dye:white" },
-				{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_orange",
-		recipe = {
-				{ "dye:orange", "dye:black", "dye:orange" },
-				{ "", default_sign_metal, "" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_orange 2",
-		recipe = {
-				{ "dye:orange", "dye:black", "dye:orange" },
-				{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_blue",
-		recipe = {
-				{ "dye:blue", "dye:white", "dye:blue" },
-				{ "", default_sign_metal, "" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_blue 2",
-		recipe = {
-				{ "dye:blue", "dye:white", "dye:blue" },
-				{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_brown",
-		recipe = {
-				{ "dye:brown", "dye:white", "dye:brown" },
-				{ "", default_sign_metal, "" }
-		},
-	})
-
-	minetest.register_craft( {
-		output = "signs:sign_wall_brown 2",
-		recipe = {
-				{ "dye:brown", "dye:white", "dye:brown" },
-				{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
-		},
-	})
-end
 
 if minetest.settings:get("log_mods") then
 	minetest.log("action", S("[MOD] signs loaded"))

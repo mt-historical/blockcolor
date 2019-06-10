@@ -17,19 +17,19 @@ for i = 1, #dyes do
 	local name, desc, colour = unpack(dyes[i])
 
 	minetest.register_node("carpet:" .. name, {
-
-description = desc .. " Carpet color",
+	
+	  description = desc .. " Carpet color",
 	  drawtype = "raillike",
 	  tiles = {"color_white.png^[colorize:#"..colour..":70"},
-   wield_image = "color_hand" .. name .. ".png",
-   inventory_image = "carpets.png^[colorize:#"..colour..":70",
-   wield_scale = {x=1,y=1,z=0.5},
-	paramtype = "light",
-	is_ground_content = true,
-	walkable = false,
-	buildable_to = true,
-	selection_box = {
-		type = "fixed",
+	  wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
+	  inventory_image = "carpets.png^[colorize:#"..colour..":70",
+	  wield_scale = {x=1,y=1,z=0.5},
+	  paramtype = "light",
+	  is_ground_content = true,
+	  walkable = false,
+	  buildable_to = true,
+	  selection_box = {
+	  type = "fixed",
                 
                 fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
 	},

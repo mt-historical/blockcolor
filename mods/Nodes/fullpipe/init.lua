@@ -5,20 +5,20 @@
 
 fullpipe = {}
 
-function fullpipe.register_pipe_border(subname, recipeitem, groups, images, description, inventorys, sounds)
+function fullpipe.register_pipe_border(subname, recipeitem, groups, images, description, inventorys, wieldcolors, sounds)
 	minetest.register_node("fullpipe:border_" .. subname, {
-	   wield_image = "color_hand" .. subname .. ".png",
-		 wield_scale = {x=1,y=1,z=0.5},
-      inventory_image = inventorys,
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		sounds = sounds,
-		node_box = {
+	wield_image = wieldcolors,
+	wield_scale = {x=1,y=1,z=0.5},
+	inventory_image = inventorys,
+	description = description,
+	drawtype = "nodebox",
+	tiles = images,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	is_ground_content = true,
+	groups = groups,
+	sounds = sounds,
+	node_box = {
 			type = "fixed",
 			fixed = {
 			   {-0.25, -0.5, -0.25, 0.25, 0.5, 0.25},
@@ -31,9 +31,9 @@ function fullpipe.register_pipe_border(subname, recipeitem, groups, images, desc
 
 end
 
-function fullpipe.register_pipe_block(subname, recipeitem, groups, images, description, inventorys, sounds)
+function fullpipe.register_pipe_block(subname, recipeitem, groups, images, description, inventorys, wieldcolors, sounds)
 	minetest.register_node("fullpipe:block_" .. subname, {
-      wield_image = "color_hand" .. subname .. ".png",
+      wield_image = wieldcolors,
 		 wield_scale = {x=1,y=1,z=0.5},
       inventory_image = inventorys,
 		description = description,
@@ -85,6 +85,7 @@ fullpipe.register_pipe("" .. name .. "", "color:" .. name,
 		desc .. "FullPipe Block",
       "fullpipeborder.png^[colorize:#"..colour..":70",
       "fullpipe.png^[colorize:#"..colour..":70",
+      "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		default.node_sound_stone_defaults()
         )
 

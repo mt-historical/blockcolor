@@ -28,14 +28,13 @@ for i in ipairs(source_list) do
 
 minetest.register_node("trees:big_cactus_" .. name, {
 		description = desc .. " color",
- 
-  paramtype = "light",
-  drawtype = "mesh",
-  	mesh = "cactus.obj",
-visual_scale = 4,
-wield_image = "color_hand" .. name .. ".png",
-wield_scale = {x=1,y=1,z=0.5},
-inventory_image = "color_white.png^[colorize:#"..colour..":70",
+		paramtype = "light",
+		drawtype = "mesh",
+		mesh = "cactus.obj",
+		visual_scale = 4,
+		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
+		wield_scale = {x=1,y=1,z=0.5},
+		inventory_image = "color_white.png^[colorize:#"..colour..":70",
 
 tiles = {
 "color_white.png^[colorize:#"..colour..":70",
@@ -66,7 +65,7 @@ minetest.register_node("trees:big_" .. name, {
   drawtype = "mesh",
   	mesh = "tree.obj",
 visual_scale = 4,
-wield_image = "color_hand" .. name .. ".png",
+wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 wield_scale = {x=1,y=1,z=0.5},
 inventory_image = "bigtrees.png^[colorize:#"..colour..":70",
 
@@ -103,7 +102,7 @@ minetest.register_node("trees:normal_" .. name, {
   drawtype = "mesh",
   	mesh = "tree.obj",
 visual_scale = 2,
-wield_image = "color_hand" .. name .. ".png",
+wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 wield_scale = {x=1,y=1,z=0.5},
 inventory_image = "normaltrees.png^[colorize:#"..colour..":70",
 
@@ -140,7 +139,7 @@ minetest.register_node("trees:small_" .. name, {
   drawtype = "mesh",
   	mesh = "tree.obj",
 visual_scale = 1,
-wield_image = "color_hand" .. name .. ".png",
+wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 wield_scale = {x=1,y=1,z=0.5},
  inventory_image = "smalltrees.png^[colorize:#"..colour..":70",
 

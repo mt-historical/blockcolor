@@ -23,7 +23,7 @@ for i in ipairs(source_list) do
 
 	minetest.register_node("fence:" .. name, {
 		description = desc .. " Fence ",
-		wield_image = "color_hand" .. name .. ".png",
+		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
       inventory_image = "fence.png^[colorize:#"..colour..":70",
 		 wield_scale = {x=1,y=1,z=0.5},
 		 tiles = {"color_white.png^[colorize:#"..colour..":70"},

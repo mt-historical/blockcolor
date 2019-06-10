@@ -18,15 +18,15 @@ for i in ipairs (chair_table) do
 	local name = chair_table[i][1]
 	local material = chair_table[i][2]
 	local invimg = chair_table[i][3]
-   local colour = chair_table[i][4]
+    local colour = chair_table[i][4]
 
 minetest.register_node('ma_pops_furniture:chair_'..material, {
 	description = name,
 	drawtype = 'nodebox',
-wield_image = "color_hand" .. material .. ".png",
-		 wield_scale = {x=1,y=1,z=0.5},
-   inventory_image = "chair.png^[colorize:#"..colour..":70",
-	 tiles = {"color_white.png^[colorize:#"..colour..":70"},
+	wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
+	wield_scale = {x=1,y=1,z=0.5},
+    inventory_image = "chair.png^[colorize:#"..colour..":70",
+	tiles = {"color_white.png^[colorize:#"..colour..":70"},
 	groups = {choppy=2, oddly_breakably_by_hand=2, furniture=1, flammable=1},
 	paramtype = 'light',
 	paramtype2 = 'facedir',
@@ -65,15 +65,15 @@ for i in ipairs (table_table) do
 	local name = table_table[i][1]
 	local material = table_table[i][2]
 	local invimg = table_table[i][3]
- local colour = table_table[i][4]
+    local colour = table_table[i][4]
 	
 minetest.register_node('ma_pops_furniture:table_'..material, {
 	description = name,
-wield_image = "color_hand" .. material .. ".png",
-wield_scale = {x=1,y=1,z=0.5},
-inventory_image = "table.png^[colorize:#"..colour..":70",
+	wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
+	wield_scale = {x=1,y=1,z=0.5},
+	inventory_image = "table.png^[colorize:#"..colour..":70",
 	drawtype = 'nodebox',
-	 tiles = {"color_white.png^[colorize:#"..colour..":70"},
+	tiles = {"color_white.png^[colorize:#"..colour..":70"},
 	groups = {snappy = 2, oddly_breakable_by_hand = 2, furniture = 1, flammable = 1},
 	paramtype = 'light',
 	paramtype2 = 'facedir',
@@ -107,15 +107,15 @@ for i in ipairs (chair2_table) do
 	local name = chair2_table[i][1]
 	local material = chair2_table[i][2]
 	local invimg = chair2_table[i][3]
-   local colour = chair2_table[i][4]
+    local colour = chair2_table[i][4]
 
 minetest.register_node('ma_pops_furniture:chair2_'..material, {
 	description = name,
 	drawtype = 'nodebox',
-wield_image = "color_hand" .. material .. ".png",
-wield_scale = {x=1,y=1,z=0.5},
-inventory_image = "sofas.png^[colorize:#"..colour..":70",
-tiles = {"color_white.png^[colorize:#"..colour..":70"},
+	wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
+	wield_scale = {x=1,y=1,z=0.5},
+	inventory_image = "sofas.png^[colorize:#"..colour..":70",
+	tiles = {"color_white.png^[colorize:#"..colour..":70"},
 	groups = {choppy=2, oddly_breakably_by_hand=2, furniture=1, flammable=1},
 	paramtype = 'light',
 	paramtype2 = 'facedir',
