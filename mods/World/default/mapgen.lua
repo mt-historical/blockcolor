@@ -2,7 +2,7 @@
 -- Aliases for map generators
 --
 
-minetest.register_alias("mapgen_stone","comboblock:slab_black_onc_slab_black")
+minetest.register_alias("mapgen_stone","color:black")
 
 minetest.register_alias("mapgen_dirt","comboblock:slab_orange_onc_slab_orange")
 

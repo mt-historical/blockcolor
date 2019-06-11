@@ -53,33 +53,33 @@ local formspec = "size[8,7.5]"
 
       -- Skin 
 
-.. "image_button[3.5,1;1,1;gui_hotbar_selected.png^".. skins_array.skin[indexes.skin]..";skin;]" 
-.. "image_button[1.5,1;1,1;gui_hotbar_selected.png^gauche.png;skin_back;]"
-.. "image_button[5.5,1;1,1;gui_hotbar_selected.png^droite.png;skin_next;]"
+-- .. "image_button[3.5,1;1,1;gui_hotbar_selected.png^".. skins_array.skin[indexes.skin]..";skin;]" 
+-- .. "image_button[1.5,1;1,1;gui_hotbar_selected.png^gauche.png;skin_back;]"
+-- .. "image_button[5.5,1;1,1;gui_hotbar_selected.png^droite.png;skin_next;]"
 
 		-- Eyes
 
-.. "image_button[3.5,2;1,1;gui_hotbar_selected.png^".. skins_array.face[indexes.face]..";face;]" 
-.. "image_button[1.5,2;1,1;gui_hotbar_selected.png^gauche.png;face_back;]"
-.. "image_button[5.5,2;1,1;gui_hotbar_selected.png^droite.png;face_next;]"
+.. "image_button[3.5,1.5;1,1;gui_hotbar_selected.png^".. skins_array.face[indexes.face]..";face;]" 
+.. "image_button[1.5,1.5;1,1;gui_hotbar_selected.png^gauche.png;face_back;]"
+.. "image_button[5.5,1.5;1,1;gui_hotbar_selected.png^droite.png;face_next;]"
 
 		-- T-Shirt
 
-.. "image_button[3.5,3;1,1;gui_hotbar_selected.png^".. skins_array.tshirt[indexes.tshirt]..";tshirt;]" 
-.. "image_button[1.5,3;1,1;gui_hotbar_selected.png^gauche.png;tshirt_back;]"
-.. "image_button[5.5,3;1,1;gui_hotbar_selected.png^droite.png;tshirt_next;]"
+.. "image_button[3.5,2.5;1,1;gui_hotbar_selected.png^".. skins_array.tshirt[indexes.tshirt]..";tshirt;]" 
+.. "image_button[1.5,2.5;1,1;gui_hotbar_selected.png^gauche.png;tshirt_back;]"
+.. "image_button[5.5,2.5;1,1;gui_hotbar_selected.png^droite.png;tshirt_next;]"
 
     	-- Pants
 
-.. "image_button[3.5,4;1,1;gui_hotbar_selected.png^".. skins_array.pants[indexes.pants]..";pants;]" 
-.. "image_button[1.5,4;1,1;gui_hotbar_selected.png^gauche.png;pants_back;]"
-.. "image_button[5.5,4;1,1;gui_hotbar_selected.png^droite.png;pants_next;]"
+.. "image_button[3.5,3.5;1,1;gui_hotbar_selected.png^".. skins_array.pants[indexes.pants]..";pants;]" 
+.. "image_button[1.5,3.5;1,1;gui_hotbar_selected.png^gauche.png;pants_back;]"
+.. "image_button[5.5,3.5;1,1;gui_hotbar_selected.png^droite.png;pants_next;]"
 
 		-- Shoes
 
-.. "image_button[3.5,5;1,1;gui_hotbar_selected.png^".. skins_array.shoes[indexes.shoes]..";shoes;]" 
-.. "image_button[1.5,5;1,1;gui_hotbar_selected.png^gauche.png;shoes_back;]"
-.. "image_button[5.5,5;1,1;gui_hotbar_selected.png^droite.png;shoes_next;]"
+.. "image_button[3.5,4.5;1,1;gui_hotbar_selected.png^".. skins_array.shoes[indexes.shoes]..";shoes;]" 
+.. "image_button[1.5,4.5;1,1;gui_hotbar_selected.png^gauche.png;shoes_back;]"
+.. "image_button[5.5,4.5;1,1;gui_hotbar_selected.png^droite.png;shoes_next;]"
 
 		-- Done
 
@@ -173,22 +173,6 @@ local function change_skin(player)
 	})
 
 	local name = player:get_player_name()
-	
-	wieldskin3 = player:get_attribute("character_creator:skin")
-	
-	if wieldskin3 == "skinwhite.png" then
-		
-		wieldskin = "white"	
-		
-	elseif wieldskin3 == "skinblack.png" then
-
-		wieldskin = "black"
-		
-	else
-	
-		wieldskin = "white"		
-		
-	end	
 
 	if minetest.get_modpath("multiskin") then
 		multiskin.layers[name].skin = texture

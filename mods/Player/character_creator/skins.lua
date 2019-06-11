@@ -3,7 +3,6 @@ return {
 	skin = {
 
 	["skinwhite.png"] = "cc_skin_white.png",
-	["skinblack.png"] = "cc_skin_black.png",
 
 	}, 	
 
