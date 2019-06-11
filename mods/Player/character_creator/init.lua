@@ -10,11 +10,11 @@ local skin_default = {
 	gender     = "Male",
 	height     = 4,
 	width      = 4,
- face       = "eyesblack.png",
+	face       = "eyesblack.png",
 	skin       = "skinwhite.png",
 	tshirt     = "shirtwhite.png",
- shoes      = "hairblack.png",
- pants      = "pantsblue.png",
+	shoes      = "hairblack.png",
+	pants      = "pantsblue.png",
 }
 
 local skins = character_creator.skins
@@ -33,8 +33,8 @@ minetest.after(0, function()
 		skin       = associative_to_array(skins.skin),
 		tshirt     = associative_to_array(skins.tshirt),
 		shoes      = associative_to_array(skins.shoes),
-pants     = associative_to_array(skins.pants),
-face = associative_to_array(skins.face),
+		pants     = associative_to_array(skins.pants),
+		face = associative_to_array(skins.face),
 
 	}
 end)
@@ -96,6 +96,7 @@ local function load_skin(player)
 		player:set_attribute("character_creator:height", skin_default.height)
 
 	local function load_data(data_name)
+	
 		local key   = player:get_attribute("character_creator:" .. data_name)
 		local index = table.indexof(skins_array[data_name], key)
 		if index == -1 then
@@ -109,8 +110,8 @@ local function load_skin(player)
 	load_data("skin")
 	load_data("tshirt")
 	load_data("shoes")
-load_data("pants")
-load_data("face")
+	load_data("pants")
+	load_data("face")
 
 end
 
@@ -125,8 +126,8 @@ local function save_skin(player)
 	save_data("skin")
 	save_data("tshirt")
 	save_data("shoes")
-   save_data("pants")
-save_data("face")
+    save_data("pants")
+	save_data("face")
 
 end
 
@@ -143,11 +144,11 @@ local function get_texture(player)
 	local tshirt = skins.tshirt[tshirt_key]
 	texture = texture .. "^" .. tshirt
 
-   local pants_key = skins_array.pants[indexes.pants]
+    local pants_key = skins_array.pants[indexes.pants]
 	local pants = skins.pants[pants_key]
 	texture = texture .. "^" .. pants
 
-	 local shoes_key = skins_array.shoes[indexes.shoes]
+	local shoes_key = skins_array.shoes[indexes.shoes]
 	local shoes = skins.shoes[shoes_key]
 	texture = texture .. "^" .. shoes
 
@@ -172,6 +173,22 @@ local function change_skin(player)
 	})
 
 	local name = player:get_player_name()
+	
+	wieldskin3 = player:get_attribute("character_creator:skin")
+	
+	if wieldskin3 == "skinwhite.png" then
+		
+		wieldskin = "white"	
+		
+	elseif wieldskin3 == "skinblack.png" then
+
+		wieldskin = "black"
+		
+	else
+	
+		wieldskin = "white"		
+		
+	end	
 
 	if minetest.get_modpath("multiskin") then
 		multiskin.layers[name].skin = texture
@@ -359,6 +376,16 @@ minetest.register_chatcommand("skin", {
 			end
 		end)
 	end
+})
+
+minetest.register_chatcommand("say", {
+	params = "<text>",
+	description = "Send text to chat",
+	privs = {talk = true},
+	func = function( _ , text)
+		minetest.chat_send_all(text)
+		return true, "Text was sent successfully"
+	end,
 })
 
 if minetest.global_exists("unified_inventory") then

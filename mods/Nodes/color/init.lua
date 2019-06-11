@@ -25,20 +25,33 @@ for i in ipairs(source_list) do
 	local red = source_list[i][4]
 	local green = source_list[i][5]
 	local blue = source_list[i][6]
+	
+	if wieldskin == "white" then
+		
+		wieldskin2 = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)"	
+		
+	elseif wieldskin == "black" then
+
+		wieldskin2 = "color_handblack.png^(color_handwhite2.png^[colorize:#"..colour..":70)"
+		
+	else
+	
+		wieldskin2 = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)"
+		
+	end
 
 	minetest.register_node("color:" .. name, {
 
 		description = desc .. " color",
-
-  inventory_image = "blocks.png^[colorize:#"..colour..":70",
+		inventory_image = "blocks.png^[colorize:#"..colour..":70",
 		tiles = {"color_white.png^[colorize:#"..colour..":70"},
-		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
+		wield_image = wieldskin2,
 		wield_scale = {x=1,y=1,z=0.5},
 		is_ground_content = true,
 		groups = {snappy = 2, choppy = 2, wool = 2},
 		sounds = default.node_sound_defaults(),
-	 oddly_breakable_by_hand = 1,
-	 dig_immediate = 3,
+		oddly_breakable_by_hand = 1,
+		dig_immediate = 3,
 		
 			 	})
 	
