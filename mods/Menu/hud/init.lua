@@ -7,6 +7,10 @@ dofile(path .. "/api.lua")
 dofile(path .. "/builtin.lua")
 dofile(path .. "/legacy.lua")
 
-if hud.item_wheel then
+if PLATFORM == "Android" then
+
+else
+
 	dofile(path .. "/itemwheel.lua")
+	
 end
