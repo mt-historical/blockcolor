@@ -30,7 +30,7 @@ for i in ipairs(source_list) do
 
 		description = desc .. " color",
 		inventory_image = "blocks.png^[colorize:#"..colour..":70",
-		tiles = {"color_white.png^[colorize:#"..colour..":70"},
+		tiles = {"color_white2.png^[colorize:#"..colour..":70"},
 		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		wield_scale = {x=1,y=1,z=0.5},
 		is_ground_content = true,

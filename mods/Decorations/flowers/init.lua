@@ -24,7 +24,8 @@ for i in ipairs(source_list) do
 	minetest.register_node('flowers:' .. name , {
 		drawtype = 'plantlike',
 		tiles = { 'flower_white.png^[colorize:#'..colour..':70' },
-		inventory_image = 'flowers.png^[colorize:#'..colour..':70',
+		inventory_image = 'flowers2.png^[colorize:#'..colour..':70',
+--		inventory_image = "flowers.png^(flowers2.png^[colorize:#"..colour..":70)",
 		sunlight_propagates = true,
 		paramtype = 'light',
 		description = desc .. "  Flower color",

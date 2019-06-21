@@ -19,7 +19,7 @@ local colour2 = beds_list[i][3]
 	minetest.register_node("beds:bed_bottom_"..colour, {
 		description = beddesc,
 		drawtype = "nodebox",
-		tiles = {"color_white.png^[colorize:#"..colour2..":70", "color_orange.png",  "color_orange.png",  "color_orange.png",  "color_orange.png",  "color_orange.png"},
+		tiles = {"color_white.png^[colorize:#"..colour2..":70", "color_white.png^[colorize:#"..color5..":70",  "color_white.png^[colorize:#"..color5..":70",  "color_white.png^[colorize:#"..color5..":70",  "color_white.png^[colorize:#"..color5..":70",  "color_white.png^[colorize:#"..color5..":70"},
 		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour2..":70)",
 		wield_scale = {x=1,y=1,z=0.5},
 		inventory_image = "beds.png^[colorize:#".. colour2 .. ":70",
@@ -92,7 +92,7 @@ local colour2 = beds_list[i][3]
 	
 	minetest.register_node("beds:bed_top_"..colour, {
 		drawtype = "nodebox",
-		tiles = {"beds_bed_top_top.png^[colorize:#"..colour2..":70", "color_orange.png",  "color_orange.png",  "color_orange.png",  "color_orange.png",  "color_orange.png"},
+		tiles = {"beds_bed_top_top.png^[colorize:#"..colour2..":70", "color_white.png^[colorize:#"..color5..":70",  "color_white.png^[colorize:#"..color5..":70",  "color_white.png^[colorize:#"..color5..":70",  "color_white.png^[colorize:#"..color5..":70",  "color_white.png^[colorize:#"..color5..":70"},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour2..":70)",
