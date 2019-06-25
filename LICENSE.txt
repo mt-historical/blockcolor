@@ -5,7 +5,7 @@ Blockcolor (Game)
 
 -------------------------------------- 
 
-Licenses : Gpl 2.1 for code and Cc By SA 3.0 for medias.
+Licenses : GNU LGPL 2.1 for code and Cc By SA 3.0 for medias.
 
 Game Creator : MrChiantos 
 
