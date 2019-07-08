@@ -45,11 +45,11 @@ end
 -- Register stairs.
 -- Node will be called stairs:stair_<subname>
 
-function stairs.register_stair(subname, recipeitem, groups, images, description, sounds, html)
+function stairs.register_stair(subname, recipeitem, groups, images, description, sounds, html, wieldcolors)
 	groups.stair = 1
 	minetest.register_node(":stairs:stair_" .. subname, {
 		description = description,
-	 wield_image = "color_hand" .. subname .. ".png",
+	 wield_image = wieldcolors,
 		wield_scale = {x=1,y=1,z=0.5},
   drawtype = "mesh",
   inventory_image = "stairs.png^[colorize:#".. html ..":70",
@@ -134,11 +134,11 @@ local slab_trans_dir = {[0] = 8, 0, 2, 1, 3, 4}
 -- Register slabs.
 -- Node will be called stairs:slab_<subname>
 
-function stairs.register_slab(subname, recipeitem, groups, images, description, sounds, html)
+function stairs.register_slab(subname, recipeitem, groups, images, description, sounds, html, wieldcolors)
 	groups.slab = 1
 	minetest.register_node(":stairs:slab_" .. subname, {
 		description = description,
-	 wield_image = "color_hand" .. subname .. ".png",
+	 wield_image = wieldcolors,
 		 wield_scale = {x=1,y=1,z=0.5},
   inventory_image = "slabs.png^[colorize:#".. html ..":70",
 		drawtype = "nodebox",
@@ -266,9 +266,9 @@ end
 -- Nodes will be called stairs:{stair,slab}_<subname>
 
 function stairs.register_stair_and_slab(subname, recipeitem,
-		groups, images, desc_stair, desc_slab, sounds, html)
-	stairs.register_stair(subname, recipeitem, groups, images, desc_stair, sounds, html)
-	stairs.register_slab(subname, recipeitem, groups, images, desc_slab, sounds, html)
+		groups, images, desc_stair, desc_slab, sounds, html, wieldcolors)
+	stairs.register_stair(subname, recipeitem, groups, images, desc_stair, sounds, html, wieldcolors)
+	stairs.register_slab(subname, recipeitem, groups, images, desc_slab, sounds, html, wieldcolors)
 end
 
 -- Register default stairs and slabs
@@ -277,86 +277,94 @@ stairs.register_stair_and_slab(
 	"blue",
 	"color:blue",
 	{choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
- {"color_white.png^[colorize:#"..color2..":70"},
+ {"color_white2.png^[colorize:#"..color2..":70"},
 	"Blue Stair",
 	"Blue Slab",
 	default.node_sound_wood_defaults(),
- color2
+ color2,
+ "color_handwhite.png^(color_handwhite2.png^[colorize:#"..color2..":70)"
 )
 
 stairs.register_stair_and_slab(
 	"red",
 	"color:red",
 	{choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
- {"color_white.png^[colorize:#"..color6..":70"},
+ {"color_white2.png^[colorize:#"..color6..":70"},
 	"Red Stair",
 	"Red Slab",
 	default.node_sound_wood_defaults(),
- color6
+ color6,
+ "color_handwhite.png^(color_handwhite2.png^[colorize:#"..color6..":70)"
 )
 
 stairs.register_stair_and_slab(
 	"white",
 	"color:white",
 	{choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-	{"color_white.png^[colorize:#"..color4..":70"},
+	{"color_white2.png^[colorize:#"..color4..":70"},
 	"White Stair",
 	"White Slab",
 	default.node_sound_wood_defaults(),
- color4
+ color4,
+ "color_handwhite.png^(color_handwhite2.png^[colorize:#"..color4..":70)"
 )
 
 stairs.register_stair_and_slab(
 	"black",
 	"color:black",
 	{choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-	{"color_white.png^[colorize:#"..color1..":70"},
+	{"color_white2.png^[colorize:#"..color1..":70"},
 	"Black Stair",
 	"Black Slab",
 	default.node_sound_wood_defaults(),
- color1
+ color1,
+ "color_handwhite.png^(color_handwhite2.png^[colorize:#"..color1..":70)"
 )
 
 stairs.register_stair_and_slab(
 	"green",
 	"color:green",
 	{choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
- {"color_white.png^[colorize:#"..color3..":70"},
+ {"color_white2.png^[colorize:#"..color3..":70"},
 	"Green Stair",
 	"Green Slab",
 	default.node_sound_wood_defaults(),
- color3
+ color3,
+ "color_handwhite.png^(color_handwhite2.png^[colorize:#"..color3..":70)"
 )
 
 stairs.register_stair_and_slab(
 	"yellow",
 	"color:yellow",
 	{choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-	{"color_white.png^[colorize:#"..color7..":70"},
+	{"color_white2.png^[colorize:#"..color7..":70"},
 	"Yellow Stair",
 	"Yellow Slab",
 	default.node_sound_wood_defaults(),
- color7
+ color7,
+ "color_handwhite.png^(color_handwhite2.png^[colorize:#"..color7..":70)"
 )
 
 stairs.register_stair_and_slab(
 	"orange",
 	"color:orange",
 	{choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-	{"color_white.png^[colorize:#"..color5..":70"},
+	{"color_white2.png^[colorize:#"..color5..":70"},
 	"Orange Stair",
 	"Orange Slab",
 	default.node_sound_wood_defaults(),
- color5
+ color5,
+ "color_handwhite.png^(color_handwhite2.png^[colorize:#"..color5..":70)"
 )
 
 stairs.register_stair_and_slab(
 	"pink",
 	"color:pink",
 	{choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
- {"color_white.png^[colorize:#"..color8..":70"},
+ {"color_white2.png^[colorize:#"..color8..":70"},
 	"Pink Stair",
 	"Pink Slab",
 	default.node_sound_wood_defaults(),
- color8
+ color8,
+ "color_handwhite.png^(color_handwhite2.png^[colorize:#"..color8..":70)"
 )

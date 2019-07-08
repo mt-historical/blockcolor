@@ -1,1 +1,2 @@
 default
+character_creator

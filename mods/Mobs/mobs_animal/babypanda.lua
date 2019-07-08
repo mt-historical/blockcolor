@@ -76,4 +76,4 @@ stepheight = 0.6,
 		day_toggle = true,
 	})
 
-mobs:register_egg("mobs_animal:babypanda", S("babyPanda"), "color_white.png", 1)
+mobs:register_egg("mobs_animal:babypanda", S("babyPanda"), "mobs_panda.png", 1)

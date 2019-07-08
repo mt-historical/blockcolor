@@ -22,7 +22,7 @@ minetest.register_node("glass:" .. name , {
 	drawtype = "glasslike",
 	tiles = {"whiteglass.png^[colorize:#"..colour..":70"},
    inventory_image = "windows.png^[colorize:#"..colour..":70",
-   wield_image = "color_hand" .. name .. ".png",
+   wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
    wield_scale = {x=1,y=1,z=0.5},
 	paramtype = "light",
 	use_texture_alpha = true,

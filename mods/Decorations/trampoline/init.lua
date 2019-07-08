@@ -13,9 +13,9 @@ color8 = minetest.setting_get("color8") or "FF69B4"
 
 local source_list = {
    	{"black", "Color1", color1, 40, 36, 33}, 
-	  {"blue", "Color2", color2, 0, 0, 255},
-	  {"green", "Color3", color3, 0, 255, 0}, 
-  	 {"white", "Color4", color4, 245, 245, 245}, 
+	{"blue", "Color2", color2, 0, 0, 255},
+	{"green", "Color3", color3, 0, 255, 0}, 
+  	{"white", "Color4", color4, 245, 245, 245}, 
    	{"orange", "Color5", color5, 255, 97, 3}, 
    	{"red", "Color6", color6, 255, 0, 0}, 
    	{"yellow", "Color7", color7, 255, 255, 0}, 
@@ -32,8 +32,8 @@ for i in ipairs(source_list) do
 
 	minetest.register_node("trampoline:"..color, {
 		description = desc.."Trampoline",
-   inventory_image = 'trampo.png^[colorize:#'..colour..':70',
-   wield_image = "color_hand" .. color .. ".png",
+		inventory_image = 'trampo.png^[colorize:#'..colour..':70',
+		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		wield_scale = {x=1,y=1,z=0.5},
 		tiles = {"trampoline.png^[colorize:#"..colour..":70", "trampoline.png^[colorize:#"..colour..":70", "trampoline_sides.png^[colorize:#"..colour..":70"},
 		groups = {cracky=3, oddly_breakable_by_hand=1, fall_damage_add_percent=-100, bouncy=99},

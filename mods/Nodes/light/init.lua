@@ -13,7 +13,7 @@ for i = 1, #dyes do
 
 	minetest.register_node("light:" .. name, {
 		description = desc .. " light",
-		wield_image = "color_hand" .. name .. ".png",
+		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		 wield_scale = {x=1,y=1,z=0.5},
   inventory_image = "lights.png^[colorize:#"..colour..":70",
 		tiles = {"color_white.png^[colorize:#"..colour..":70"},

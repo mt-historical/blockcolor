@@ -72,6 +72,9 @@ function default.player_set_model(player, model_name)
 			textures = player_textures[name] or model.textures,
 			visual = "mesh",
 			visual_size = 4,
+			collisionbox = model.collisionbox or {-0.3, -1.00, -0.3, 0.3, 1.0, 0.3},
+			stepheight = model.stepheight or 0.4,
+            eye_height = model.eye_height or 0.8,
 		})
 		default.player_set_animation(player, "stand")
 	else

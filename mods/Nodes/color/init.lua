@@ -29,16 +29,15 @@ for i in ipairs(source_list) do
 	minetest.register_node("color:" .. name, {
 
 		description = desc .. " color",
-
-  inventory_image = "blocks.png^[colorize:#"..colour..":70",
-		tiles = {"color_white.png^[colorize:#"..colour..":70"},
-		wield_image = "color_hand" .. name .. ".png",
+		inventory_image = "blocks.png^[colorize:#"..colour..":70",
+		tiles = {"color_white2.png^[colorize:#"..colour..":70"},
+		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		wield_scale = {x=1,y=1,z=0.5},
 		is_ground_content = true,
 		groups = {snappy = 2, choppy = 2, wool = 2},
 		sounds = default.node_sound_defaults(),
-	 oddly_breakable_by_hand = 1,
-	 dig_immediate = 3,
+		oddly_breakable_by_hand = 1,
+		dig_immediate = 3,
 		
 			 	})
 	

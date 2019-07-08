@@ -111,7 +111,7 @@ for i in ipairs(source_list) do
 	
 minetest.register_node("slope:edge_glass_" .. name, {
  	description = desc .. "glass edge",
- wield_image = "color_hand" .. name .. ".png",
+ wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 	wield_scale = {x=1,y=1,z=0.5},
  inventory_image = "edge.png^[colorize:#"..colour..":70",
  	drawtype = "mesh",
@@ -128,7 +128,7 @@ minetest.register_node("slope:edge_glass_" .. name, {
 
 minetest.register_node("slope:edgecorner_glass_" .. name, {
  	description = desc .. "edge",
- wield_image = "color_hand" .. name .. ".png",
+ wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
  wield_scale = {x=1,y=1,z=0.5},
  inventory_image = "edgecorner.png^[colorize:#"..colour..":70",
  	drawtype = "mesh",
@@ -145,7 +145,7 @@ minetest.register_node("slope:edgecorner_glass_" .. name, {
 
 minetest.register_node("slope:slope_glass_"..name, {
         description = desc.. " slope",
-        wield_image = "color_hand" .. name .. ".png",
+        wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		      wield_scale = {x=1,y=1,z=0.5},
         inventory_image = "triangle.png^[colorize:#"..colour..":70",
         drawtype = "mesh",
@@ -166,7 +166,7 @@ minetest.register_node("slope:slope_glass_"..name, {
 
     minetest.register_node("slope:ocorner_glass_"..name, {
         description = desc.." slope (outer corner)",
-        wield_image = "color_hand" .. name .. ".png",
+        wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		      wield_scale = {x=1,y=1,z=0.5},
         inventory_image = "cornera.png^[colorize:#"..colour..":70",
         drawtype = "mesh",
@@ -186,7 +186,7 @@ minetest.register_node("slope:slope_glass_"..name, {
     })
     minetest.register_node("slope:icorner_glass_"..name, {
         description = desc.." slope (inner corner)",
-        wield_image = "color_hand" .. name .. ".png",
+        wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		      wield_scale = {x=1,y=1,z=0.5},
         inventory_image = "cornerb.png^[colorize:#"..colour..":70",
         drawtype = "mesh",
@@ -207,7 +207,7 @@ minetest.register_node("slope:slope_glass_"..name, {
 
     minetest.register_node("slope:slopelong_glass_"..name, {
         description = desc.." long slope",
-        wield_image = "color_hand" .. name .. ".png",
+        wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		      wield_scale = {x=1,y=1,z=0.5},
         inventory_image = "long.png^[colorize:#"..colour..":70",
         drawtype = "mesh",
@@ -228,7 +228,7 @@ minetest.register_node("slope:slope_glass_"..name, {
 
     minetest.register_node("slope:cylinder_glass_"..name, {
         description = desc.." cylinder",
-        wield_image = "color_hand" .. name .. ".png",
+        wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		      wield_scale = {x=1,y=1,z=0.5},
         inventory_image = "cylinder.png^[colorize:#"..colour..":70",
         drawtype = "mesh",
@@ -247,7 +247,7 @@ minetest.register_node("slope:slope_glass_"..name, {
 
     minetest.register_node("slope:cone_glass_"..name, {
         description = desc.." cone",
-        wield_image = "color_hand" .. name .. ".png",
+        wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		      wield_scale = {x=1,y=1,z=0.5},
         inventory_image = "cone.png^[colorize:#"..colour..":70",
         drawtype = "mesh",
@@ -268,7 +268,7 @@ minetest.register_node("slope:slope_glass_"..name, {
 
     minetest.register_node("slope:sphere_glass_"..name, {
         description = desc.." sphere",
-        wield_image = "color_hand" .. name .. ".png",
+        wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		      wield_scale = {x=1,y=1,z=0.5},
         inventory_image = "sphere.png^[colorize:#"..colour..":70",
         drawtype = "mesh",
@@ -289,7 +289,7 @@ minetest.register_node("slope:slope_glass_"..name, {
 
  minetest.register_node("slope:edge_" .. name, {
  	description = desc .. "edge",
-wield_image = "color_hand" .. name .. ".png",
+wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		 wield_scale = {x=1,y=1,z=0.5},
 inventory_image = "edge.png^[colorize:#"..colour..":70",
  	drawtype = "mesh",
@@ -304,7 +304,7 @@ inventory_image = "edge.png^[colorize:#"..colour..":70",
 
 minetest.register_node("slope:edgecorner_" .. name, {
  	description = desc .. "edge",
-wield_image = "color_hand" .. name .. ".png",
+wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		 wield_scale = {x=1,y=1,z=0.5},
 inventory_image = "edgecorner.png^[colorize:#"..colour..":70",
  	drawtype = "mesh",
@@ -319,7 +319,7 @@ inventory_image = "edgecorner.png^[colorize:#"..colour..":70",
 
 minetest.register_node("slope:slope_"..name, {
         description = desc.. " slope",
-wield_image = "color_hand" .. name .. ".png",
+wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		 wield_scale = {x=1,y=1,z=0.5},
 inventory_image = "triangle.png^[colorize:#"..colour..":70",
         drawtype = "mesh",
@@ -338,7 +338,7 @@ inventory_image = "triangle.png^[colorize:#"..colour..":70",
 
     minetest.register_node("slope:ocorner_"..name, {
         description = desc.." slope (outer corner)",
-wield_image = "color_hand" .. name .. ".png",
+wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		 wield_scale = {x=1,y=1,z=0.5},
 inventory_image = "cornera.png^[colorize:#"..colour..":70",
         drawtype = "mesh",
@@ -356,7 +356,7 @@ inventory_image = "cornera.png^[colorize:#"..colour..":70",
     })
     minetest.register_node("slope:icorner_"..name, {
         description = desc.." slope (inner corner)",
-wield_image = "color_hand" .. name .. ".png",
+wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		 wield_scale = {x=1,y=1,z=0.5},
 inventory_image = "cornerb.png^[colorize:#"..colour..":70",
         drawtype = "mesh",
@@ -375,7 +375,7 @@ inventory_image = "cornerb.png^[colorize:#"..colour..":70",
 
     minetest.register_node("slope:slopelong_"..name, {
         description = desc.." long slope",
-wield_image = "color_hand" .. name .. ".png",
+wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		 wield_scale = {x=1,y=1,z=0.5},
 inventory_image = "long.png^[colorize:#"..colour..":70",
         drawtype = "mesh",
@@ -394,7 +394,7 @@ inventory_image = "long.png^[colorize:#"..colour..":70",
 
     minetest.register_node("slope:cylinder_"..name, {
         description = desc.." cylinder",
-wield_image = "color_hand" .. name .. ".png",
+wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		 wield_scale = {x=1,y=1,z=0.5},
 inventory_image = "cylinder.png^[colorize:#"..colour..":70",
         drawtype = "mesh",
@@ -411,7 +411,7 @@ inventory_image = "cylinder.png^[colorize:#"..colour..":70",
 
     minetest.register_node("slope:cone_"..name, {
         description = desc.." cone",
-wield_image = "color_hand" .. name .. ".png",
+wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		 wield_scale = {x=1,y=1,z=0.5},
 inventory_image = "cone.png^[colorize:#"..colour..":70",
         drawtype = "mesh",
@@ -430,7 +430,7 @@ inventory_image = "cone.png^[colorize:#"..colour..":70",
 
     minetest.register_node("slope:sphere_"..name, {
         description = desc.." sphere",
-wield_image = "color_hand" .. name .. ".png",
+wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		 wield_scale = {x=1,y=1,z=0.5},
 inventory_image = "sphere.png^[colorize:#"..colour..":70",
         drawtype = "mesh",

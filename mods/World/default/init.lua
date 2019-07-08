@@ -29,6 +29,6 @@ local default_path = minetest.get_modpath("default")
 
 dofile(default_path.."/functions.lua")
 dofile(default_path.."/mapgen.lua")
-dofile(default_path.."/player.lua")
 dofile(default_path.."/aliases.lua")
 dofile(default_path.."/creative.lua")
+dofile(default_path.."/player.lua")

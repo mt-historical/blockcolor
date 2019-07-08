@@ -242,7 +242,7 @@ minetest.register_entity("airboat:airboat" ..color , airboat)
 minetest.register_craftitem("airboat:airboat" .. color, {
 	description = "Airboat" .. color,
 	inventory_image = "airboat_airboat_inv.png^[colorize:#"..colour..":70",
-wield_image = "none.png",
+	wield_image = "none.png",
 	wield_scale = {x = 4, y = 4, z = 4},
 	liquids_pointable = true,
 

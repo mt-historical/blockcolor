@@ -55,7 +55,7 @@ for k,v1 in pairs(comboblock.index) do
 				paramtype = "light",
 				paramtype2 = "facedir",
 				drawtype = "mesh",
-     mesh = "test.obj",
+				mesh = "test.obj",
 				sounds = v1_def.sounds,
 				groups = v1_groups,
 				drop = v1,

@@ -76,4 +76,4 @@ stepheight = 0.6,
 		day_toggle = true,
 	})
 
-mobs:register_egg("mobs_animal:babyalien", S("BabyAlien"), "color_green.png", 1)
+mobs:register_egg("mobs_animal:babyalien", S("BabyAlien"), "mobs_alien.png", 1)
