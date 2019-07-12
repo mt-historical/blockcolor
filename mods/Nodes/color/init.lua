@@ -8,7 +8,7 @@ color7 = minetest.setting_get("color7") or "FFFF00"
 color8 = minetest.setting_get("color8") or "FF69B4"
 
 local source_list = {
-	{"black", "Color1", color1, 40, 36, 33}, 
+	{"black", "Color1", color1, 41, 36, 33}, 
 	{"blue", "Color2", color2, 0, 0, 255},
 	{"green", "Color3", color3, 0, 255, 0}, 
 	{"white", "Color4", color4, 245, 245, 245}, 
