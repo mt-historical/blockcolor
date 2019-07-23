@@ -6,14 +6,7 @@ function creative.is_enabled_for(name)
     return true
 end
 
-if creative_mode_cache then
-	-- Dig time is modified according to difference (leveldiff) between tool
-	-- 'maxlevel' and node 'level'. Digtime is divided by the larger of
-	-- leveldiff and 1.
-	-- To speed up digging in creative, hand 'maxlevel' and 'digtime' have been
-	-- increased such that nodes of differing levels have an insignificant
-	-- effect on digtime.
-	local digtime = 42
+local digtime = 200
 	local caps = {times = {digtime, digtime, digtime}, uses = 0, maxlevel = 256}
 
 	minetest.register_item(":", {
@@ -34,32 +27,6 @@ if creative_mode_cache then
 			damage_groups = {fleshy = 10},
 		}
 	})
-	
-else
-
-local digtime = 42
-	local caps = {times = {digtime, digtime, digtime}, uses = 0, maxlevel = 256}
-
-	minetest.register_item(":", {
-		type = "none",
-		wield_image = "wieldhand.png",
-		wield_scale = {x = 1, y = 1, z = 2.5},
-		range = 10,
-		tool_capabilities = {
-			full_punch_interval = 0.5,
-			max_drop_level = 3,
-			groupcaps = {
-				crumbly = caps,
-				cracky  = caps,
-				snappy  = caps,
-				choppy  = caps,
-				oddly_breakable_by_hand = caps,
-			},
-			damage_groups = {fleshy = 10},
-		}
-	})
-
-end
 
 -- Unlimited node placement
 minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack)

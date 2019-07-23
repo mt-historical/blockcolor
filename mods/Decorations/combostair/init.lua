@@ -76,9 +76,6 @@ for k,v1 in pairs(combostair.index) do
 				sounds = v1_def.sounds,
 				groups = v1_groups,
 				drop = v1,
-				after_destruct = function(pos, oldnode)
-					minetest.set_node(pos, {name = v2, param2 = oldnode.param2})
-				end
 			})
 		end
 	end

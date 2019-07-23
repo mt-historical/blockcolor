@@ -53,37 +53,37 @@ local formspec = "size[8,7.5]"
 
       -- Skin 
 
--- .. "image_button[3.5,1;1,1;gui_hotbar_selected.png^".. skins_array.skin[indexes.skin]..";skin;]" 
--- .. "image_button[1.5,1;1,1;gui_hotbar_selected.png^gauche.png;skin_back;]"
--- .. "image_button[5.5,1;1,1;gui_hotbar_selected.png^droite.png;skin_next;]"
+-- .. "image_button[3.5,1;1,1;".. skins_array.skin[indexes.skin]..";skin;]" 
+-- .. "image_button[1.5,1;1,1;gauche.png;skin_back;]"
+-- .. "image_button[5.5,1;1,1;droite.png;skin_next;]"
 
 		-- Eyes
 
-.. "image_button[3.5,1.5;1,1;gui_hotbar_selected.png^".. skins_array.face[indexes.face]..";face;]" 
-.. "image_button[1.5,1.5;1,1;gui_hotbar_selected.png^gauche.png;face_back;]"
-.. "image_button[5.5,1.5;1,1;gui_hotbar_selected.png^droite.png;face_next;]"
+.. "image_button[3.5,1.5;1,1;".. skins_array.face[indexes.face]..";face;]" 
+.. "image_button[1.5,1.5;1,1;gauche.png;face_back;]"
+.. "image_button[5.5,1.5;1,1;droite.png;face_next;]"
 
 		-- T-Shirt
 
-.. "image_button[3.5,2.5;1,1;gui_hotbar_selected.png^".. skins_array.tshirt[indexes.tshirt]..";tshirt;]" 
-.. "image_button[1.5,2.5;1,1;gui_hotbar_selected.png^gauche.png;tshirt_back;]"
-.. "image_button[5.5,2.5;1,1;gui_hotbar_selected.png^droite.png;tshirt_next;]"
+.. "image_button[3.5,2.5;1,1;".. skins_array.tshirt[indexes.tshirt]..";tshirt;]" 
+.. "image_button[1.5,2.5;1,1;gauche.png;tshirt_back;]"
+.. "image_button[5.5,2.5;1,1;droite.png;tshirt_next;]"
 
     	-- Pants
 
-.. "image_button[3.5,3.5;1,1;gui_hotbar_selected.png^".. skins_array.pants[indexes.pants]..";pants;]" 
-.. "image_button[1.5,3.5;1,1;gui_hotbar_selected.png^gauche.png;pants_back;]"
-.. "image_button[5.5,3.5;1,1;gui_hotbar_selected.png^droite.png;pants_next;]"
+.. "image_button[3.5,3.5;1,1;".. skins_array.pants[indexes.pants]..";pants;]" 
+.. "image_button[1.5,3.5;1,1;gauche.png;pants_back;]"
+.. "image_button[5.5,3.5;1,1;droite.png;pants_next;]"
 
 		-- Shoes
 
-.. "image_button[3.5,4.5;1,1;gui_hotbar_selected.png^".. skins_array.shoes[indexes.shoes]..";shoes;]" 
-.. "image_button[1.5,4.5;1,1;gui_hotbar_selected.png^gauche.png;shoes_back;]"
-.. "image_button[5.5,4.5;1,1;gui_hotbar_selected.png^droite.png;shoes_next;]"
+.. "image_button[3.5,4.5;1,1;".. skins_array.shoes[indexes.shoes]..";shoes;]" 
+.. "image_button[1.5,4.5;1,1;gauche.png;shoes_back;]"
+.. "image_button[5.5,4.5;1,1;droite.png;shoes_next;]"
 
 		-- Done
 
-.. "image_button_exit[1.0,6.5;2,1;gui_hotbar_selected.png;main;Back to Game]"
+.. "image_button_exit[1.0,6.5;2,1;;main;Back to Game]"
 
  minetest.show_formspec(player:get_player_name(), "character_creator", formspec)
 end
