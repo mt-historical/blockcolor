@@ -310,6 +310,115 @@ if page == "trees" then
 .. ""
 
 	end
+
+	-- letters page
+	if page == "mathmenu" then
+
+		local inv = player:get_inventory() or nil
+
+		if not inv then
+			print ("NO INVENTORY FOUND")
+			return
+		end
+
+		 formspec = formspec
+
+ .. "image_button_exit[0,0.5;1,1;0.png;math0;]"
+ .. "image_button_exit[1,0.5;1,1;1.png;math1;]"
+ .. "image_button_exit[2,0.5;1,1;2.png;math2;]"
+ .. "image_button_exit[3,0.5;1,1;3.png;math3;]"
+ .. "image_button_exit[4,0.5;1,1;4.png;math4;]"
+ .. "image_button_exit[5,0.5;1,1;5.png;math5;]"
+ .. "image_button_exit[6,0.5;1,1;6.png;math6;]"
+ .. "image_button_exit[7,0.5;1,1;7.png;math7;]"
+ .. "image_button_exit[0,2.5;1,1;8.png;math8;]"
+ .. "image_button_exit[1,2.5;1,1;9.png;math9;]"
+ .. "image_button_exit[2,2.5;1,1;egale.png;mathegale;]"
+ .. "image_button_exit[3,2.5;1,1;inferieure.png;mathinferieure;]"
+ .. "image_button_exit[4,2.5;1,1;superieure.png;mathsuperieure;]"
+ .. "image_button_exit[5,2.5;1,1;diviser.png;mathdiviser;]"
+ .. "image_button_exit[6,2.5;1,1;plus.png;mathplus;]"
+ .. "image_button_exit[7,2.5;1,1;moins.png;mathmoins;]"
+ .. "image_button_exit[0,4.5;1,1;multiplier.png;mathmultiplier;]"
+ .. "image_button_exit[1,4.5;1,1;virgule.png;mathvirgule;]"
+
+ .. "image_button[0,6.5;1,1;gauche.png;main;]"
+ .. "image_button_exit[1,6.5;1,1;rotate.png;rotate;]"
+ .. "image_button_exit[2,6.5;1,1;nones.png;none;]"
+
+.. ""
+
+	end	
+
+	-- letters page
+	if page == "lettermenu" then
+
+		local inv = player:get_inventory() or nil
+
+		if not inv then
+			print ("NO INVENTORY FOUND")
+			return
+		end
+
+		 formspec = formspec
+
+ .. "image_button_exit[0,0.5;1,1;a.png;lettera;]"
+ .. "image_button_exit[1,0.5;1,1;b.png;letterb;]"
+ .. "image_button_exit[2,0.5;1,1;c.png;letterc;]"
+ .. "image_button_exit[3,0.5;1,1;d.png;letterd;]"
+ .. "image_button_exit[4,0.5;1,1;e.png;lettere;]"
+ .. "image_button_exit[5,0.5;1,1;f.png;letterf;]"
+ .. "image_button_exit[6,0.5;1,1;g.png;letterg;] "
+ .. "image_button_exit[7,0.5;1,1;h.png;letterh;]"
+ .. "image_button_exit[0,2.5;1,1;i.png;letteri;]"
+ .. "image_button_exit[1,2.5;1,1;j.png;letterj;]"
+ .. "image_button_exit[2,2.5;1,1;k.png;letterk;]"
+ .. "image_button_exit[3,2.5;1,1;l.png;letterl;]"
+ .. "image_button_exit[4,2.5;1,1;m.png;letterm;]"
+ .. "image_button_exit[5,2.5;1,1;n.png;lettern;]"
+ .. "image_button_exit[6,2.5;1,1;o.png;lettero;]"
+ .. "image_button_exit[7,2.5;1,1;p.png;letterp;]"
+ .. "image_button_exit[0,4.5;1,1;q.png;letterq;]"
+ .. "image_button_exit[1,4.5;1,1;r.png;letterr;]"
+ .. "image_button_exit[2,4.5;1,1;s.png;letters;]"
+ .. "image_button_exit[3,4.5;1,1;t.png;lettert;]"
+ .. "image_button_exit[4,4.5;1,1;u.png;letteru;]"
+ .. "image_button_exit[5,4.5;1,1;v.png;letterv;]"
+ .. "image_button_exit[6,4.5;1,1;w.png;letterw;]"
+ .. "image_button[7,4.5;1,1;droite.png;lettermenu2;]"
+
+ .. "image_button[0,6.5;1,1;gauche.png;main;]"
+ .. "image_button_exit[1,6.5;1,1;rotate.png;rotate;]"
+ .. "image_button_exit[2,6.5;1,1;nones.png;none;]"
+
+.. ""
+
+	end	
+
+	-- letters page 2
+
+	if page == "lettermenu2" then
+
+		local inv = player:get_inventory() or nil
+
+		if not inv then
+			print ("NO INVENTORY FOUND")
+			return
+		end
+
+		 formspec = formspec
+
+ .. "image_button_exit[0,0.5;1,1;x.png;letterx;]"
+ .. "image_button_exit[1,0.5;1,1;y.png;lettery;]"
+ .. "image_button_exit[2,0.5;1,1;z.png;letterz;]"
+
+ .. "image_button[0,6.5;1,1;gauche.png;lettermenu;]"
+ .. "image_button_exit[1,6.5;1,1;rotate.png;rotate;]"
+ .. "image_button_exit[2,6.5;1,1;nones.png;none;]"
+
+.. ""
+
+	end	
 	
 	-- main page
 	if page == "main" then
@@ -327,8 +436,11 @@ if page == "trees" then
 .. "image_button[2,2.5;4,1;;trees;Tree]"
 .. "image_button[2,3.5;4,1;;animals;Animals]"
 
-.. "image_button[2,4.5;4,1;;nodes;Build]"
-.. "image_button[2,5.5;4,1;;furnitures;Decorations]"
+.. "image_button[2,4.5;2,1;;nodes;Build]"
+.. "image_button[4,4.5;2,1;;furnitures;Decorations]"
+
+.. "image_button[2,5.5;2,1;;lettermenu;Letters]"
+.. "image_button[4,5.5;2,1;;mathmenu;Maths]"
 
 .. "image_button_exit[2,6.5;4,1;;quit;Back To Game]"
 
@@ -368,6 +480,38 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 
 		inventory_plus.set_inventory_formspec(player,
 			inventory_plus.get_formspec(player, "nodes"))
+
+		return
+	end
+
+	if fields.lettermenu then
+
+		inventory_plus.set_inventory_formspec(player,
+			inventory_plus.get_formspec(player, "lettermenu"))
+
+		return
+	end
+
+	if fields.lettermenu2 then
+
+		inventory_plus.set_inventory_formspec(player,
+			inventory_plus.get_formspec(player, "lettermenu2"))
+
+		return
+	end
+
+	if fields.mathmenu then
+
+		inventory_plus.set_inventory_formspec(player,
+			inventory_plus.get_formspec(player, "mathmenu"))
+
+		return
+	end
+
+	if fields.lettermenu2 then
+
+		inventory_plus.set_inventory_formspec(player,
+			inventory_plus.get_formspec(player, "mathmenu2"))
 
 		return
 	end

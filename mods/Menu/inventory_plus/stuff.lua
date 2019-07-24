@@ -7,6 +7,8 @@ dofile(minetest.get_modpath("inventory_plus") .. "/trees.lua")
 dofile(minetest.get_modpath("inventory_plus") .. "/planets.lua")
 dofile(minetest.get_modpath("inventory_plus") .. "/vehicules.lua")
 dofile(minetest.get_modpath("inventory_plus") .. "/animals.lua")
+dofile(minetest.get_modpath("inventory_plus") .. "/letters.lua")
+dofile(minetest.get_modpath("inventory_plus") .. "/maths.lua")
 
 -- Initial Stuff and Delete Legacy Stuff
 
