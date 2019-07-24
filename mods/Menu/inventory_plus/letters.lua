@@ -145,6 +145,63 @@ end
 end
 )
 
+minetest.register_on_player_receive_fields(function(player, formname, fields)	
+	local name = player:get_player_name()	
+			if fields.letterh then --main page		
+				
+			 player:get_inventory():set_list("main", {})
+
+player:get_inventory():add_item('main', 'letterscolors:h_white')
+player:get_inventory():add_item('main', 'letterscolors:h_black')
+player:get_inventory():add_item('main', 'letterscolors:h_red')
+player:get_inventory():add_item('main', 'letterscolors:h_orange')
+player:get_inventory():add_item('main', 'letterscolors:h_yellow')
+player:get_inventory():add_item('main', 'letterscolors:h_pink')
+player:get_inventory():add_item('main', 'letterscolors:h_green')
+player:get_inventory():add_item('main', 'letterscolors:h_blue')
+
+end 
+end
+)
+
+minetest.register_on_player_receive_fields(function(player, formname, fields)	
+	local name = player:get_player_name()	
+			if fields.letteri then --main page		
+				
+			 player:get_inventory():set_list("main", {})
+
+player:get_inventory():add_item('main', 'letterscolors:i_white')
+player:get_inventory():add_item('main', 'letterscolors:i_black')
+player:get_inventory():add_item('main', 'letterscolors:i_red')
+player:get_inventory():add_item('main', 'letterscolors:i_orange')
+player:get_inventory():add_item('main', 'letterscolors:i_yellow')
+player:get_inventory():add_item('main', 'letterscolors:i_pink')
+player:get_inventory():add_item('main', 'letterscolors:i_green')
+player:get_inventory():add_item('main', 'letterscolors:i_blue')
+
+end 
+end
+)
+
+minetest.register_on_player_receive_fields(function(player, formname, fields)	
+	local name = player:get_player_name()	
+			if fields.letterj then --main page		
+				
+			 player:get_inventory():set_list("main", {})
+
+player:get_inventory():add_item('main', 'letterscolors:j_white')
+player:get_inventory():add_item('main', 'letterscolors:j_black')
+player:get_inventory():add_item('main', 'letterscolors:j_red')
+player:get_inventory():add_item('main', 'letterscolors:j_orange')
+player:get_inventory():add_item('main', 'letterscolors:j_yellow')
+player:get_inventory():add_item('main', 'letterscolors:j_pink')
+player:get_inventory():add_item('main', 'letterscolors:j_green')
+player:get_inventory():add_item('main', 'letterscolors:j_blue')
+
+end 
+end
+)
+
 -- k
 
 minetest.register_on_player_receive_fields(function(player, formname, fields)	
