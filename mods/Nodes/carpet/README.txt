@@ -18,7 +18,7 @@ http://minetest.net/forum/viewtopic.php?pid=23855#p23855
 
 http://minetest.net/forum/viewtopic.php?pid=24066#p24066
 
-32 colours with spawning flowers. 
+32 colours with spawning flowers.
 
 -----------------------
 

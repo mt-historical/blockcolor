@@ -9,4 +9,4 @@ This mod adds a simple trampoline to BlockColor. It is best used if falling from
 #License
 Code: GPL version 3
 Textures: WTFPL
-Original textures from xdecor Minetest mod by kilbith, the textures were re-colored into a few shades of white and gray to adapt for using the colorize texture modifier. 
+Original textures from xdecor Minetest mod by kilbith, the textures were re-colored into a few shades of white and gray to adapt for using the colorize texture modifier.

@@ -196,10 +196,10 @@ function file_exists(name, return_handle, mode)
 		if (return_handle) then
 			return f
 		end
-		io.close(f) 
-		return true 
-	else 
-		return false 
+		io.close(f)
+		return true
+	else
+		return false
 	end
 end
 
@@ -419,7 +419,7 @@ local function make_line_texture(line, lineno, pos)
 			table.insert(texture, (":%d,%d=%s"):format(xpos + ch.off, ypos, ch.tex))
 		end
 		table.insert(
-			texture, 
+			texture,
 			(":%d,%d="):format(xpos + word.w, ypos) .. char_tex(font_name, " ")
 		)
 		xpos = xpos + word.w + charwidth[" "]
@@ -525,7 +525,7 @@ signs_lib.update_sign = function(pos, fields, owner)
 
 		meta:set_string("infotext", ownstr..string.gsub(make_infotext(fields.text), "@KEYWORD", current_keyword).." ")
 		meta:set_string("text", fields.text)
-		
+
 		meta:set_int("__signslib_new_format", 1)
 		new = true
 	else
@@ -620,7 +620,7 @@ function signs_lib.determine_sign_type(itemstack, placer, pointed_thing, locked)
 
 		local wdir = minetest.dir_to_wallmounted(dir)
 
-		local placer_pos = placer:getpos()
+		local placer_pos = placer:get_pos()
 		if placer_pos then
 			dir = {
 				x = above.x - placer_pos.x,
@@ -742,7 +742,7 @@ end
 local signs_text_on_activate
 
 signs_text_on_activate = function(self)
-	local pos = self.object:getpos()
+	local pos = self.object:get_pos()
 	local meta = minetest.get_meta(pos)
 	local text = meta:get_string("text")
 	local new = (meta:get_int("__signslib_new_format") ~= 0)

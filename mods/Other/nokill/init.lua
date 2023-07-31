@@ -4,7 +4,7 @@ minetest.register_privilege("nokill", "Per-player hit prevention")
 
 -- The admin always has all privileges, including the hit prevention
 -- so we track the admin as a special case
-local ADMIN = minetest.setting_get("name")
+local ADMIN = minetest.settings:get("name")
 
 local ALLOWPUNCH = false
 local DENYPUNCH = true

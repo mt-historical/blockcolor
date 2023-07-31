@@ -11,7 +11,7 @@ default.registered_player_models = { }
 local models = default.registered_player_models
 
 function default.player_register_model(name, def)
-	models[name] = def 
+	models[name] = def
 end
 
 -- License Model Player : CC0
@@ -37,8 +37,8 @@ default.player_register_model("character.b3d", {
 --walk_fast = { x=322, y=338, },
 --dog_mine  = { x=426, y=581, },
   walk_mine = { x=0, y=0, },
-  sit       = { x= 0, y=0, }, 
---jump      = { x= 0, y=24, }, 
+  sit       = { x= 0, y=0, },
+--jump      = { x= 0, y=24, },
 
 	},
 })
@@ -74,7 +74,7 @@ function default.player_set_model(player, model_name)
 			visual_size = 4,
 			collisionbox = model.collisionbox or {-0.3, -1.00, -0.3, 0.3, 1.0, 0.3},
 			stepheight = model.stepheight or 0.4,
-            eye_height = model.eye_height or 0.8,
+			eye_height = model.eye_height or 0.8,
 		})
 		default.player_set_animation(player, "stand")
 	else

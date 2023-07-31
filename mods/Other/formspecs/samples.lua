@@ -27,7 +27,7 @@ end
 
 minetest.override_item( "nyancat:nyancat", {
 	description = "System Monitor",
-        
+
 	on_open = function( meta, player )
 		local player_name = player:get_player_name( )
 

@@ -213,7 +213,7 @@ function default.register_decorations()
 		decoration = "trees:big_green",
 
 	})
-	
+
 	 minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"comboblock:slab_green_onc_slab_orange"},
@@ -272,7 +272,7 @@ minetest.register_decoration({
 		decoration = "trees:big_blue",
 
 	})
-	
+
 	 minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"comboblock:slab_white_onc_slab_orange"},
@@ -330,7 +330,7 @@ minetest.register_decoration({
 	 decoration = "trees:small_white",
 
 	})
-	
+
 end
 
 

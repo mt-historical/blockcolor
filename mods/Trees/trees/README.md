@@ -1,2 +1,0 @@
-# trees
-Trees obj mod

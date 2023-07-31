@@ -89,7 +89,8 @@ minetest.register_node("doors:hidden", {
 	drop = "",
 	groups = {not_in_creative_inventory = 1},
 	on_blast = function() end,
-	tiles = {"doors_blank.png"},
+	use_texture_alpha = "clip",
+	tiles = {"blank.png"},
 	-- 1px transparent block inside door hinge near node top.
 	node_box = {
 		type = "fixed",
@@ -449,13 +450,13 @@ def.wield_scale = nil
 end
 
 local source_list = {
-	{"black", "Darkened", color1, 40, 36, 33}, 
+	{"black", "Darkened", color1, 40, 36, 33},
 	{"blue", "Blue", color2, 0, 0, 255},
-	{"green", "Green", color3, 0, 255, 0}, 
-	{"white", "White", color4, 245, 245, 245}, 
-	{"orange", "Orange", color5, 255, 97, 3}, 
-	{"red", "Red", color6, 255, 0, 0}, 
-	{"yellow", "Yellow", color7, 255, 255, 0}, 
+	{"green", "Green", color3, 0, 255, 0},
+	{"white", "White", color4, 245, 245, 245},
+	{"orange", "Orange", color5, 255, 97, 3},
+	{"red", "Red", color6, 255, 0, 0},
+	{"yellow", "Yellow", color7, 255, 255, 0},
 	{"pink", "pink", color8, 255, 105, 180}
 }
 
@@ -465,23 +466,20 @@ for i in ipairs(source_list) do
 	local colour = source_list[i][3]
 	local red = source_list[i][4]
 	local green = source_list[i][5]
-	local blue = source_list[i][6]	
+	local blue = source_list[i][6]
 
-doors.register("door_" .. name , {
-
-alpha = 200,
+	doors.register("door_" .. name , {
 		tiles = {"doors_door_white.png^[colorize:#"..colour..":70"},
 		description = name .. "Door",
-wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
-		 wield_scale = {x=1,y=1,z=0.5},
-inventory_image = "doors.png^[colorize:#"..colour..":70",
+		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
+		wield_scale = {x=1,y=1,z=0.5},
+		inventory_image = "doors.png^[colorize:#"..colour..":70",
 		groups = {cracky=3},
 		sounds = default.node_sound_glass_defaults(),
 		sound_open = "doors_door_open",
 		sound_close = "doors_door_close",
-		
-})
-
+		use_texture_alpha = "clip"
+	})
 end
 
 -- Capture mods using the old API as best as possible.
@@ -650,13 +648,13 @@ function doors.register_trapdoor(name, def)
 end
 
 local source_list = {
-	{"black", "Darkened", color1, 40, 36, 33}, 
+	{"black", "Darkened", color1, 40, 36, 33},
 	{"blue", "Blue", color2, 0, 0, 255},
-	{"green", "Green", color3, 0, 255, 0}, 
-	{"white", "White", color4, 245, 245, 245}, 
-	{"orange", "Orange", color5, 255, 97, 3}, 
-	{"red", "Red", color6, 255, 0, 0}, 
-	{"yellow", "Yellow", color7, 255, 255, 0}, 
+	{"green", "Green", color3, 0, 255, 0},
+	{"white", "White", color4, 245, 245, 245},
+	{"orange", "Orange", color5, 255, 97, 3},
+	{"red", "Red", color6, 255, 0, 0},
+	{"yellow", "Yellow", color7, 255, 255, 0},
 	{"pink", "pink", color8, 255, 105, 180}
 }
 
@@ -666,7 +664,7 @@ for i in ipairs(source_list) do
 	local colour = source_list[i][3]
 	local red = source_list[i][4]
 	local green = source_list[i][5]
-	local blue = source_list[i][6]	
+	local blue = source_list[i][6]
 
 doors.register_trapdoor("doors:trapdoor_" .. name , {
 	description = "Trapdoor",
@@ -770,8 +768,3 @@ doors.register_fencegate("doors_smallwhite", {
 	material = "color:white",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
 })
-
-
-
-
-

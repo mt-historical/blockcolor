@@ -23,18 +23,18 @@ local waiting_list = {}
 	}
 ]]
 
-minetest.register_globalstep(function(dtime)   
+minetest.register_globalstep(function(dtime)
 	count = count + dtime
 	if count < 3 then
 		return
 	end
 	count = 0
-	
+
 	for k, v in pairs(waiting_list) do
 		if v.player and v.player:is_player() then
 			local pos = get_surface_pos(v.pos)
 			if pos then
-				v.obj:setpos(pos)
+				v.obj:set_pos(pos)
 				minetest.after(0.2, function(p, o)
 					p:set_detach()
 					o:remove()
@@ -56,20 +56,20 @@ minetest.register_globalstep(function(dtime)
 	for i, player in ipairs(players) do
 		local name = player:get_player_name()
 		if not waiting_list[name] then
-			local pos = vector.round(player:getpos())
+			local pos = vector.round(player:get_pos())
 			local newpos = nil
 			if pos.x >= edge then
 				newpos = {x = -newedge, y = 10, z = pos.z}
 			elseif pos.x <= -edge then
 				newpos = {x = newedge, y = 10, z = pos.z}
 			end
-			 
+
 			if pos.z >= edge then
 				newpos = {x = pos.x, y = 10, z = -newedge}
 			elseif pos.z <= -edge then
 				newpos = {x = pos.x, y = 10, z = newedge}
 			end
-			
+
 			-- Teleport the player
 			if newpos then
 				minetest.chat_send_player(name, "Please wait a few seconds. We will teleport you soon.")
@@ -80,7 +80,7 @@ minetest.register_globalstep(function(dtime)
 					pos = newpos,
 					obj = obj
 				}
-				obj:setpos(newpos)
+				obj:set_pos(newpos)
 			end
 		end
 	end
@@ -97,19 +97,19 @@ function get_surface_pos(pos)
 		y = 50,
 		z = pos.z + radius - 1
 	}
-	
+
 	local c_air = minetest.get_content_id("air")
 	local c_ignore = minetest.get_content_id("ignore")
-	
+
 	local vm = minetest.get_voxel_manip()
 	local emin, emax = vm:read_from_map(minp, maxp)
 	local area = VoxelArea:new{MinEdge = emin, MaxEdge = emax}
 	local data = vm:get_data()
-	
+
 	local seen_air = false
 	local deepest_place = vector.new(pos)
 	deepest_place.y = 50
-	
+
 	for x = minp.x, maxp.x do
 	for z = minp.z, maxp.z do
 		local solid = 0
@@ -129,7 +129,7 @@ function get_surface_pos(pos)
 		end
 	end
 	end
-	
+
 	if seen_air then
 		return deepest_place
 	else

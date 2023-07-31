@@ -2,24 +2,20 @@
 
 -- noncubic:slope_
 
-minetest.register_on_player_receive_fields(function(player, formname, fields)	
-		local name = player:get_player_name()	
-				if fields.ncslope then --main page		
-					
-				 player:get_inventory():set_list("main", {})
+minetest.register_on_player_receive_fields(function(player, formname, fields)
+	if fields.ncslope then  --main page
+		player:get_inventory():set_list("main", {})
 
-player:get_inventory():add_item('main', 'noncubic:slope_white')
-player:get_inventory():add_item('main', 'noncubic:slope_black')
-player:get_inventory():add_item('main', 'noncubic:slope_red')
-player:get_inventory():add_item('main', 'noncubic:slope_orange')
-player:get_inventory():add_item('main', 'noncubic:slope_yellow')
-player:get_inventory():add_item('main', 'noncubic:slope_pink')
-player:get_inventory():add_item('main', 'noncubic:slope_green')
-player:get_inventory():add_item('main', 'noncubic:slope_blue')
-
-end 
-end
-)
+		player:get_inventory():add_item('main', 'noncubic:slope_white')
+		player:get_inventory():add_item('main', 'noncubic:slope_black')
+		player:get_inventory():add_item('main', 'noncubic:slope_red')
+		player:get_inventory():add_item('main', 'noncubic:slope_orange')
+		player:get_inventory():add_item('main', 'noncubic:slope_yellow')
+		player:get_inventory():add_item('main', 'noncubic:slope_pink')
+		player:get_inventory():add_item('main', 'noncubic:slope_green')
+		player:get_inventory():add_item('main', 'noncubic:slope_blue')
+	end
+end)
 
 -- noncubic:slope_lying_
 -- noncubic:slope_upsdown_

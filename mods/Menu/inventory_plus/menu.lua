@@ -171,7 +171,7 @@ inventory_plus.get_formspec = function(player, page)
 
 .. ""
 
-	end	
+	end
 
 -- nodes page2
 
@@ -188,7 +188,7 @@ inventory_plus.get_formspec = function(player, page)
 
  .. "image_button_exit[0,0.5;1,1;edgecorner.png;edgecorner;]"
  .. "tooltip[edgecorner;Edge corner]"
- 
+
 .. "image_button[0,6.5;1,1;gauche.png;nodes;]"
 .. "tooltip[nodes;Nodes Page 1]"
 
@@ -216,7 +216,7 @@ inventory_plus.get_formspec = function(player, page)
 
 .. "image_button_exit[0,0.5;1,1;mobs_chicken_egg_overlay.png;panda;]"
 .. "tooltip[panda;Animals & Tools]"
- 
+
 .. "image_button[0,6.5;1,1;gauche.png;main;]"
 .. "tooltip[main;Back to Menu]"
 
@@ -345,7 +345,7 @@ if page == "furnitures" then
 
 .. "image_button_exit[1,0.5;1,1;beaconoff.png;beaconoff;]"
 .. "tooltip[beaconoff;Beacon Off]"
- 
+
 .. "image_button[0,6.5;1,1;gauche.png;furnitures;]"
 .. "tooltip[furnitures;Furnitures Page1]"
 
@@ -360,7 +360,7 @@ if page == "furnitures" then
 	end
 
 
--- Cars 
+-- Cars
 
 	if page == "vehicules" then
 
@@ -446,10 +446,10 @@ if page == "trees" then
 
  .. "image_button[0,6.5;1,1;gauche.png;main;]"
  .. "tooltip[main;Back to Menu]"
- 
+
  .. "image_button_exit[1,6.5;1,1;rotate.png;rotate;]"
  .. "tooltip[rotate;Rotate]"
- 
+
  .. "image_button_exit[2,6.5;1,1;nones.png;none;]"
  .. "tooltip[none;None]"
 
@@ -470,8 +470,8 @@ if page == "trees" then
 		 formspec = formspec
 
  .. "image_button_exit[0,0.5;1,1;0.png;math0;]"
- .. "tooltip[math0;0]" 
- 
+ .. "tooltip[math0;0]"
+
  .. "image_button_exit[1,0.5;1,1;1.png;math1;]"
  .. "tooltip[math1;1]"
 
@@ -534,7 +534,7 @@ if page == "trees" then
 
 .. ""
 
-	end	
+	end
 
 	-- letters page
 	if page == "lettermenu" then
@@ -631,7 +631,7 @@ if page == "trees" then
 
 .. ""
 
-	end	
+	end
 
 	-- letters page 2
 
@@ -648,7 +648,7 @@ if page == "trees" then
 
  .. "image_button_exit[0,0.5;1,1;x.png;letterx;]"
  .. "tooltip[letterx;X]"
- 
+
  .. "image_button_exit[1,0.5;1,1;y.png;lettery;]"
  .. "tooltip[lettery;Y]"
 
@@ -666,8 +666,8 @@ if page == "trees" then
 
 .. ""
 
-	end	
-	
+	end
+
 	-- main page
 	if page == "main" then
 
@@ -676,7 +676,7 @@ if page == "trees" then
 
 		for k, v in pairs(inventory_plus.buttons[player:get_player_name()]) do
 
-			formspec = formspec 
+			formspec = formspec
 
 .. "image_button[2,0.5;4,1;;character_creator;Skin]"
 .. "image_button[2,1.5;4,1;;vehicules;Vehicules]"
@@ -692,11 +692,11 @@ if page == "trees" then
 
 .. "image_button_exit[2,6.5;4,1;;quit;Back To Game]"
 
-			x = x 
+			x = x
 y = y + 1
 		end
 	end
-	
+
 	return formspec
 end
 

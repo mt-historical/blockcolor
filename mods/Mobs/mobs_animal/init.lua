@@ -8,13 +8,11 @@ mobs.intllib = S
 
 -- Animals
 
-dofile(path .. "/adultpanda.lua") 
-dofile(path .. "/babypanda.lua") 
+dofile(path .. "/adultpanda.lua")
+dofile(path .. "/babypanda.lua")
 
 dofile(path .. "/adultpig.lua")
-dofile(path .. "/babypig.lua") 
+dofile(path .. "/babypig.lua")
 
-dofile(path .. "/adultalien.lua") 
-dofile(path .. "/babyalien.lua") 
-
-print (("Panda, Pig and Alien are Here."))
+dofile(path .. "/adultalien.lua")
+dofile(path .. "/babyalien.lua")

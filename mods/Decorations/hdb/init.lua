@@ -13,13 +13,13 @@ local bench_cbox = {
 -- HomeDecor Blockcolor
 
 local source_list = {
-	{"black", "white", color1, 40, 36, 33}, 
+	{"black", "white", color1, 40, 36, 33},
 	{"blue", "white", color2, 0, 0, 255},
-	{"green", "white", color3, 0, 255, 0}, 
-	{"white", "black", color4, 245, 245, 245}, 
-	{"orange", "black", color5, 255, 97, 3}, 
-	{"red", "white", color6, 255, 0, 0}, 
-	{"yellow", "black", color7, 255, 255, 0}, 
+	{"green", "white", color3, 0, 255, 0},
+	{"white", "black", color4, 245, 245, 245},
+	{"orange", "black", color5, 255, 97, 3},
+	{"red", "white", color6, 255, 0, 0},
+	{"yellow", "black", color7, 255, 255, 0},
 	{"pink", "white", color8, 255, 105, 180}
 }
 
@@ -29,7 +29,7 @@ for i in ipairs(source_list) do
 	local colour = source_list[i][3]
 	local red = source_list[i][4]
 	local green = source_list[i][5]
-	local blue = source_list[i][6]	
+	local blue = source_list[i][6]
 
 minetest.register_node("hdb:frigo" .. color, {
 	description = "frigo" .. color,

@@ -1,11 +1,11 @@
 local source_list = {
-	{"black", "Darkened", "292421"}, 
+	{"black", "Darkened", "292421"},
 	{"blue", "Blue", "0000FF"},
-	{"green", "Green", "00FF00"}, 
-	{"white", "White", "F5F5F5"}, 
-	{"orange", "Orange", "FF6103"}, 
-	{"red", "Red", "FF0000"}, 
-	{"yellow", "Yellow", "FFFF00"}, 
+	{"green", "Green", "00FF00"},
+	{"white", "White", "F5F5F5"},
+	{"orange", "Orange", "FF6103"},
+	{"red", "Red", "FF0000"},
+	{"yellow", "Yellow", "FFFF00"},
 	{"pink", "pink", "FF69B4"}
 }
 
@@ -71,9 +71,9 @@ function spaceship.on_rightclick(self, clicker)
 		clicker:set_detach()
 		default.player_attached[name] = false
 		default.player_set_animation(clicker, "stand" , 30)
-		local pos = clicker:getpos()
+		local pos = clicker:get_pos()
 		minetest.after(0.1, function()
-			clicker:setpos(pos)
+			clicker:set_pos(pos)
 		end)
 	elseif not self.driver then
 		-- Attach
@@ -123,7 +123,7 @@ function spaceship.on_punch(self, puncher)
 				or not inv:contains_item("main", "spaceship:spaceship" ..color) then
 			local leftover = inv:add_item("main", "spaceship:spaceship" ..color)
 			if not leftover:is_empty() then
-				minetest.add_item(self.object:getpos(), leftover)
+				minetest.add_item(self.object:get_pos(), leftover)
 			end
 		end
 		minetest.after(0.1, function()
@@ -134,8 +134,8 @@ end
 
 
 function spaceship.on_step(self, dtime)
-	self.v = get_v(self.object:getvelocity()) * get_sign(self.v)
-	self.vy = self.object:getvelocity().y
+	self.v = get_v(self.object:get_velocity()) * get_sign(self.v)
+	self.vy = self.object:get_velocity().y
 
 	-- Controls
 	if self.driver then
@@ -181,7 +181,7 @@ function spaceship.on_step(self, dtime)
 
 	-- Early return for stationary vehicle
 	if self.v == 0 and self.rot == 0 and self.vy == 0 then
-		self.object:setpos(self.object:getpos())
+		self.object:set_pos(self.object:get_pos())
 		return
 	end
 
@@ -217,15 +217,15 @@ function spaceship.on_step(self, dtime)
 
 	local new_acce = {x = 0, y = 0, z = 0}
 	-- Bouyancy in liquids
-	local p = self.object:getpos()
+	local p = self.object:get_pos()
 	p.y = p.y - 1.5
 	local def = minetest.registered_nodes[minetest.get_node(p).name]
 	if def and (def.liquidtype == "source" or def.liquidtype == "flowing") then
 		new_acce = {x = 0, y = 10, z = 0}
 	end
 
-	self.object:setpos(self.object:getpos())
-	self.object:setvelocity(get_velocity(self.v, self.object:getyaw(), self.vy))
+	self.object:set_pos(self.object:get_pos())
+	self.object:set_velocity(get_velocity(self.v, self.object:getyaw(), self.vy))
 	self.object:setacceleration(new_acce)
 	self.object:setyaw(self.object:getyaw() + (1 + dtime) * self.rot)
 end

@@ -3,13 +3,13 @@
 --]]
 
 local source_list = {
-	{"black", "Darkened", color1, 40, 36, 33}, 
+	{"black", "Darkened", color1, 40, 36, 33},
 	{"blue", "Blue", color2, 0, 0, 255},
-	{"green", "Green", color3, 0, 255, 0}, 
-	{"white", "White", color4, 245, 245, 245}, 
-	{"orange", "Orange", color5, 255, 97, 3}, 
-	{"red", "Red", color6, 255, 0, 0}, 
-	{"yellow", "Yellow", color7, 255, 255, 0}, 
+	{"green", "Green", color3, 0, 255, 0},
+	{"white", "White", color4, 245, 245, 245},
+	{"orange", "Orange", color5, 255, 97, 3},
+	{"red", "Red", color6, 255, 0, 0},
+	{"yellow", "Yellow", color7, 255, 255, 0},
 	{"pink", "pink", color8, 255, 105, 180}
 }
 
@@ -19,8 +19,8 @@ for i in ipairs(source_list) do
 	local colour = source_list[i][3]
 	local red = source_list[i][4]
 	local green = source_list[i][5]
-	local blue = source_list[i][6]	
-		
+	local blue = source_list[i][6]
+
 	minetest.register_node('flowers:' .. name , {
 		drawtype = 'plantlike',
 		tiles = { 'flower_white.png^[colorize:#'..colour..':70' },

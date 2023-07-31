@@ -1,11 +1,11 @@
 local source_list = {
-	{"black", "Darkened", "292421", 40, 36, 33}, 
+	{"black", "Darkened", "292421", 40, 36, 33},
 	{"blue", "Blue", "0000FF", 0, 0, 255},
-	{"green", "Green", "00FF00", 0, 255, 0}, 
-	{"white", "White", "F5F5F5", 245, 245, 245}, 
-	{"orange", "Orange", "FF6103", 255, 97, 3}, 
-	{"red", "Red", "FF0000", 255, 0, 0}, 
-	{"yellow", "Yellow", "FFFF00", 255, 255, 0}, 
+	{"green", "Green", "00FF00", 0, 255, 0},
+	{"white", "White", "F5F5F5", 245, 245, 245},
+	{"orange", "Orange", "FF6103", 255, 97, 3},
+	{"red", "Red", "FF0000", 255, 0, 0},
+	{"yellow", "Yellow", "FFFF00", 255, 255, 0},
 	{"pink", "pink", "FF69B4", 255, 105, 180}
 }
 
@@ -15,7 +15,7 @@ for i in ipairs(source_list) do
 	local colour = source_list[i][3]
 	local red = source_list[i][4]
 	local green = source_list[i][5]
-	local blue = source_list[i][6]	
+	local blue = source_list[i][6]
 
 
 --
@@ -77,10 +77,10 @@ function surfboard.on_rightclick(self, clicker)
 		clicker:set_detach()
 		default.player_attached[name] = false
 		default.player_set_animation(clicker, "stand" , 30)
-		local pos = clicker:getpos()
+		local pos = clicker:get_pos()
 		pos = {x = pos.x, y = pos.y + 0.2, z = pos.z}
 		minetest.after(0.1, function()
-			clicker:setpos(pos)
+			clicker:set_pos(pos)
 		end)
 	elseif not self.driver then
 		local attach = clicker:get_attach()
@@ -137,7 +137,7 @@ function surfboard.on_punch(self, puncher)
 end
 
 function surfboard.on_step(self, dtime)
-	self.v = get_v(self.object:getvelocity()) * get_sign(self.v)
+	self.v = get_v(self.object:get_velocity()) * get_sign(self.v)
 	if self.driver then
 		local ctrl = self.driver:get_player_control()
 		local yaw = self.object:getyaw()
@@ -160,15 +160,15 @@ function surfboard.on_step(self, dtime)
 			end
 		end
 	end
-	local velo = self.object:getvelocity()
+	local velo = self.object:get_velocity()
 	if self.v == 0 and velo.x == 0 and velo.y == 0 and velo.z == 0 then
-		self.object:setpos(self.object:getpos())
+		self.object:set_pos(self.object:get_pos())
 		return
 	end
 	local s = get_sign(self.v)
 	self.v = self.v - 0.02 * s
 	if s ~= get_sign(self.v) then
-		self.object:setvelocity({x = 0, y = 0, z = 0})
+		self.object:set_velocity({x = 0, y = 0, z = 0})
 		self.v = 0
 		return
 	end
@@ -176,7 +176,7 @@ function surfboard.on_step(self, dtime)
 		self.v = 5 * get_sign(self.v)
 	end
 
-	local p = self.object:getpos()
+	local p = self.object:get_pos()
 	p.y = p.y - 0.5
 	local new_velo
 	local new_acce = {x = 0, y = 0, z = 0}
@@ -189,12 +189,12 @@ function surfboard.on_step(self, dtime)
 			new_acce = {x = 0, y = -9.8, z = 0}
 		end
 		new_velo = get_velocity(self.v, self.object:getyaw(),
-			self.object:getvelocity().y)
-		self.object:setpos(self.object:getpos())
+			self.object:get_velocity().y)
+		self.object:set_pos(self.object:get_pos())
 	else
 		p.y = p.y + 1
 		if is_water(p) then
-			local y = self.object:getvelocity().y
+			local y = self.object:get_velocity().y
 			if y >= 5 then
 				y = 5
 			elseif y < 0 then
@@ -203,22 +203,22 @@ function surfboard.on_step(self, dtime)
 				new_acce = {x = 0, y = 5, z = 0}
 			end
 			new_velo = get_velocity(self.v, self.object:getyaw(), y)
-			self.object:setpos(self.object:getpos())
+			self.object:set_pos(self.object:get_pos())
 		else
 			new_acce = {x = 0, y = 0, z = 0}
-			if math.abs(self.object:getvelocity().y) < 1 then
-				local pos = self.object:getpos()
+			if math.abs(self.object:get_velocity().y) < 1 then
+				local pos = self.object:get_pos()
 				pos.y = math.floor(pos.y) + 0.5
-				self.object:setpos(pos)
+				self.object:set_pos(pos)
 				new_velo = get_velocity(self.v, self.object:getyaw(), 0)
 			else
 				new_velo = get_velocity(self.v, self.object:getyaw(),
-					self.object:getvelocity().y)
-				self.object:setpos(self.object:getpos())
+					self.object:get_velocity().y)
+				self.object:set_pos(self.object:get_pos())
 			end
 		end
 	end
-	self.object:setvelocity(new_velo)
+	self.object:set_velocity(new_velo)
 	self.object:setacceleration(new_acce)
 end
 

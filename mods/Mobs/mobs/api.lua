@@ -3726,44 +3726,6 @@ function mobs:capture_mob(self, clicker, chance_hand, chance_net, chance_lasso, 
 end
 
 
--- protect tamed mob with rune item
-function mobs:protect(self, clicker)
-
-	local name = clicker:get_player_name()
-	local tool = clicker:get_wielded_item()
-
-	if tool:get_name() ~= "mobs:protector" then
-		return false
-	end
-
-	if self.tamed == false then
-		minetest.chat_send_player(name, S("Not tamed!"))
-		return true -- false
-	end
-
-	if self.protected == true then
-		minetest.chat_send_player(name, S("Already protected!"))
-		return true -- false
-	end
-
-	if not mobs.is_creative(clicker:get_player_name()) then
-		tool:take_item() -- take 1 protection rune
-		clicker:set_wielded_item(tool)
-	end
-
-	self.protected = true
-
-	local pos = self.object:get_pos()
-	pos.y = pos.y + self.collisionbox[2] + 0.5
-
-	effect(self.object:get_pos(), 25, "mobs_protect_particle.png", 0.5, 4, 2, 15)
-
-	mob_sound(self, "mobs_spell")
-
-	return true
-end
-
-
 local mob_obj = {}
 local mob_sta = {}
 
