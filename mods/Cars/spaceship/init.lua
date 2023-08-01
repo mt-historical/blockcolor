@@ -1,16 +1,6 @@
-local source_list = {
-	{"black", "Darkened", "292421"}, 
-	{"blue", "Blue", "0000FF"},
-	{"green", "Green", "00FF00"}, 
-	{"white", "White", "F5F5F5"}, 
-	{"orange", "Orange", "FF6103"}, 
-	{"red", "Red", "FF0000"}, 
-	{"yellow", "Yellow", "FFFF00"}, 
-	{"pink", "pink", "FF69B4"}
-}
 
 for i in ipairs(source_list) do
-	local color = source_list[i][1]
+	local name = source_list[i][1]
 	local description = source_list[i][2]
 	local colour = source_list[i][3]
 
@@ -46,7 +36,7 @@ local spaceship = {
 		collisionbox = {-2, -1.5, -2.25, 2, 1.5, 3.5},
 		visual = "wielditem",
 		visual_size = {x = 0.25, y = 0.25}, -- Scale up of nodebox is these * 1.5
-		textures = {"spaceship:spaceship_nodebox" ..color},
+		textures = {"spaceship:spaceship_nodebox" ..name},
 	},
 
 	-- Custom fields
@@ -69,11 +59,11 @@ function spaceship.on_rightclick(self, clicker)
 		self.driver = nil
 		self.auto = false
 		clicker:set_detach()
-		default.player_attached[name] = false
-		default.player_set_animation(clicker, "stand" , 30)
-		local pos = clicker:getpos()
+		bc_core.player_attached[name] = false
+		bc_core.player_set_animation(clicker, "stand" , 30)
+		local pos = clicker:get_pos()
 		minetest.after(0.1, function()
-			clicker:setpos(pos)
+			clicker:set_pos(pos)
 		end)
 	elseif not self.driver then
 		-- Attach
@@ -88,9 +78,9 @@ function spaceship.on_rightclick(self, clicker)
 		self.driver = name
 		clicker:set_attach(self.object, "",
 			{x = 0, y = -2, z = 0}, {x = 0, y = 0, z = 0})
-		default.player_attached[name] = true
+		bc_core.player_attached[name] = true
 		minetest.after(0.2, function()
-			default.player_set_animation(clicker, "sit" , 30)
+			bc_core.player_set_animation(clicker, "sit" , 30)
 		end)
 		clicker:set_look_horizontal(self.object:getyaw())
 	end
@@ -112,7 +102,7 @@ function spaceship.on_punch(self, puncher)
 		-- Detach
 		self.driver = nil
 		puncher:set_detach()
-		default.player_attached[name] = false
+		bc_core.player_attached[name] = false
 	end
 	if not self.driver then
 		-- Move to inventory
@@ -120,10 +110,10 @@ function spaceship.on_punch(self, puncher)
 		local inv = puncher:get_inventory()
 		if not (creative and creative.is_enabled_for
 				and creative.is_enabled_for(name))
-				or not inv:contains_item("main", "spaceship:spaceship" ..color) then
-			local leftover = inv:add_item("main", "spaceship:spaceship" ..color)
+				or not inv:contains_item("main", "spaceship:spaceship" ..name) then
+			local leftover = inv:add_item("main", "spaceship:spaceship" ..name)
 			if not leftover:is_empty() then
-				minetest.add_item(self.object:getpos(), leftover)
+				minetest.add_item(self.object:get_pos(), leftover)
 			end
 		end
 		minetest.after(0.1, function()
@@ -134,8 +124,8 @@ end
 
 
 function spaceship.on_step(self, dtime)
-	self.v = get_v(self.object:getvelocity()) * get_sign(self.v)
-	self.vy = self.object:getvelocity().y
+	self.v = get_v(self.object:get_velocity()) * get_sign(self.v)
+	self.vy = self.object:get_velocity().y
 
 	-- Controls
 	if self.driver then
@@ -181,7 +171,7 @@ function spaceship.on_step(self, dtime)
 
 	-- Early return for stationary vehicle
 	if self.v == 0 and self.rot == 0 and self.vy == 0 then
-		self.object:setpos(self.object:getpos())
+		self.object:set_pos(self.object:get_pos())
 		return
 	end
 
@@ -217,29 +207,29 @@ function spaceship.on_step(self, dtime)
 
 	local new_acce = {x = 0, y = 0, z = 0}
 	-- Bouyancy in liquids
-	local p = self.object:getpos()
+	local p = self.object:get_pos()
 	p.y = p.y - 1.5
 	local def = minetest.registered_nodes[minetest.get_node(p).name]
 	if def and (def.liquidtype == "source" or def.liquidtype == "flowing") then
 		new_acce = {x = 0, y = 10, z = 0}
 	end
 
-	self.object:setpos(self.object:getpos())
-	self.object:setvelocity(get_velocity(self.v, self.object:getyaw(), self.vy))
+	self.object:set_pos(self.object:get_pos())
+	self.object:set_velocity(get_velocity(self.v, self.object:getyaw(), self.vy))
 	self.object:setacceleration(new_acce)
 	self.object:setyaw(self.object:getyaw() + (1 + dtime) * self.rot)
 end
 
 
-minetest.register_entity("spaceship:spaceship" ..color , spaceship)
+minetest.register_entity("spaceship:spaceship" ..name , spaceship)
 
 
 -- Craftitem
 
-minetest.register_craftitem("spaceship:spaceship" .. color, {
-	description = "spaceship" .. color,
+minetest.register_craftitem("spaceship:spaceship" .. name, {
+	description = "spaceship " .. name,
 	inventory_image = "spaceship_spaceship_inv.png^[colorize:#"..colour..":70",
-wield_image = "none.png",
+wield_image = "blank.png",
 	wield_scale = {x = 4, y = 4, z = 4},
 	liquids_pointable = true,
 
@@ -262,7 +252,7 @@ wield_image = "none.png",
 
 		pointed_thing.under.y = pointed_thing.under.y + 2
 		local spaceship = minetest.add_entity(pointed_thing.under,
-			"spaceship:spaceship" ..color)
+			"spaceship:spaceship" ..name)
 		if spaceship then
 			if placer then
 				spaceship:setyaw(placer:get_look_horizontal())
@@ -280,8 +270,8 @@ wield_image = "none.png",
 
 -- Nodebox for entity wielditem visual
 
-minetest.register_node("spaceship:spaceship_nodebox" .. color, {
-	description = "Spaceship Nodebox" .. color,
+minetest.register_node("spaceship:spaceship_nodebox" .. name, {
+	description = "Spaceship Nodebox" .. name,
 	tiles = { -- Top, base, right, left, front, back
 		"color_white.png^[colorize:#"..colour..":70",
 	},

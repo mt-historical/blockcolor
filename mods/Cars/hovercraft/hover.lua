@@ -2,7 +2,7 @@ hover = {}
 
 function hover:register_hovercraft(name, def)
 	minetest.register_entity(name, {
-  wield_image = "none.png",
+  wield_image = "blank.png",
 		physical = true,
 		collisionbox = {-0.8,0,-0.8, 0.8,1.2,0.8},
 		visual = "mesh",
@@ -40,9 +40,9 @@ function hover:register_hovercraft(name, def)
 			if not clicker or not clicker:is_player() then
 				return
 			end
-			local pos = self.object:getpos()
+			local pos = self.object:get_pos()
 			if self.player and clicker == self.player then
-				if self.sound then					
+				if self.sound then
 					minetest.sound_stop(self.sound)
 					minetest.sound_play("hovercraft_thrust_fade", {object = self.object})
 					self.sound = nil
@@ -64,7 +64,7 @@ function hover:register_hovercraft(name, def)
 				self.object:set_animation({x=0, y=0})
 			end
 			self.last_pos = vector.new(pos)
-			self.object:setpos(pos)
+			self.object:set_pos(pos)
 		end,
 		on_step = function(self, dtime)
 			self.timer = self.timer + dtime
@@ -112,20 +112,20 @@ function hover:register_hovercraft(name, def)
 					self.velocity.y = self.jump_velocity
 					self.timer = 0
 					minetest.sound_play("hovercraft_jump", {object = self.object})
-				end	
+				end
 				if ctrl.sneak then
 					self.player:set_animation({x=81, y=81})
 				end
 			end
-			local pos = self.object:getpos()
+			local pos = self.object:get_pos()
 			if self.timer > 0.5 then
-				local node = minetest.env:get_node({x=pos.x, y=pos.y-0.5, z=pos.z})
+				local node = minetest.get_node({x=pos.x, y=pos.y-0.5, z=pos.z})
 				if node.name == "air" or node.name == "ignore" then
 					self.velocity.y = 0 - self.fall_velocity
 				else
 					self.velocity.y = 0
 					pos.y = math.floor(pos.y) + 0.5
-					self.object:setpos(pos)
+					self.object:set_pos(pos)
 				end
 				self.timer = 0
 			end
@@ -156,20 +156,20 @@ function hover:register_hovercraft(name, def)
 					self.velocity.z = 0
 				end
 			end
-			self.object:setvelocity(self.velocity)	
+			self.object:set_velocity(self.velocity)
 		end,
 	})
 	minetest.register_craftitem(name, {
 		description = def.description,
-  wield_image = "none.png",
+  wield_image = "blank.png",
 		inventory_image = def.inventory_image,
-		liquids_pointable = true,	
+		liquids_pointable = true,
 		on_place = function(itemstack, placer, pointed_thing)
 			if pointed_thing.type ~= "node" then
 				return
 			end
 			pointed_thing.under.y = pointed_thing.under.y + 0.5
-			minetest.env:add_entity(pointed_thing.under, name)
+			minetest.add_entity(pointed_thing.under, name)
 			itemstack:take_item()
 			return itemstack
 		end,

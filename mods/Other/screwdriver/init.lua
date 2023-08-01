@@ -145,7 +145,7 @@ end
 minetest.register_tool("screwdriver:screwdriver", {
 	description = "Rotate Tool (left-click rotates face, right-click rotates axis)",
 	inventory_image = "rotate2.png",
-   wield_image ="none.png",
+   wield_image ="blank.png",
 	on_use = function(itemstack, user, pointed_thing)
 		screwdriver.handler(itemstack, user, pointed_thing, screwdriver.ROTATE_FACE, 200)
 		return itemstack
@@ -155,17 +155,3 @@ minetest.register_tool("screwdriver:screwdriver", {
 		return itemstack
 	end,
 })
-
-
-minetest.register_craft({
-	output = "screwdriver:screwdriver",
-	recipe = {
-		{"default:steel_ingot"},
-		{"group:stick"}
-	}
-})
-
-minetest.register_alias("screwdriver:screwdriver1", "screwdriver:screwdriver")
-minetest.register_alias("screwdriver:screwdriver2", "screwdriver:screwdriver")
-minetest.register_alias("screwdriver:screwdriver3", "screwdriver:screwdriver")
-minetest.register_alias("screwdriver:screwdriver4", "screwdriver:screwdriver")

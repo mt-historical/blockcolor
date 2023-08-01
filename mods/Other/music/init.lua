@@ -1,9 +1,6 @@
 
 music={}
 
-
-music.pause_between_songs=minetest.settings:get("music.pause_between_songs") or 10
-
 --end config
 
 music.modpath=minetest.get_modpath("music")
@@ -47,7 +44,7 @@ minetest.register_globalstep(function(dtime)
 	if music.playing then
 		if music.song_time_left<=0 then
 			music.stop_song()
-			music.time_next=music.pause_between_songs
+			music.time_next=10
 		else
 			music.song_time_left=music.song_time_left-dtime
 		end

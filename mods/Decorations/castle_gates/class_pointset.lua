@@ -18,7 +18,7 @@ function Pointset:set(x, y, z, value)
 	if self.points[x][y] == nil then
 		self.points[x][y] = {}
 	end
-	self.points[x][y][z] = value	
+	self.points[x][y][z] = value
 end
 
 function Pointset:set_if_not_in(excluded, x, y, z, value)
@@ -61,25 +61,25 @@ function Pointset:pop()
 	if count == 0 then
 		return nil
 	end
-	
+
 	pos.x, ytable = next(self.points)
 	pos.y, ztable = next(ytable)
 	pos.z, val = next(ztable)
 
 	self.points[pos.x][pos.y][pos.z] = nil
-	
+
 	count = 0
 	for _ in pairs(self.points[pos.x][pos.y]) do count = count + 1 end
 	if count == 0 then
 		self.points[pos.x][pos.y] = nil
 	end
-	
+
 	count = 0
 	for _ in pairs(self.points[pos.x]) do count = count + 1 end
 	if count == 0 then
 		self.points[pos.x] = nil
 	end
-	
+
 	return pos, val
 end
 
@@ -97,5 +97,4 @@ function Pointset:get_pos_list(value)
 	end
 	return outlist
 end
-			
-	
+

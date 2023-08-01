@@ -12,10 +12,10 @@ function carts:manage_attachment(player, obj)
 	end
 	local status = obj ~= nil
 	local player_name = player:get_player_name()
-	if default.player_attached[player_name] == status then
+	if bc_core.player_attached[player_name] == status then
 		return
 	end
-	default.player_attached[player_name] = status
+	bc_core.player_attached[player_name] = status
 
 	if status then
 		player:set_attach(obj, "", {x=0, y=6, z=0}, {x=0, y=0, z=0})
@@ -192,7 +192,7 @@ function carts:register_rail(name, def_overwrite, railparams)
 			type = "fixed",
 			fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
 		},
-		sounds = default.node_sound_metal_defaults()
+		sounds = bc_core.sound_metal()
 	}
 	for k, v in pairs(def_overwrite) do
 		def[k] = v

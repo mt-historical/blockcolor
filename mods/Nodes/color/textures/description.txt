@@ -1,3 +1,0 @@
-slightly improved textures for the game BlockColor
-16x16
-

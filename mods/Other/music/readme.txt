@@ -1,4 +1,4 @@
- 
+
 ### music Mod for Minetest
 (c) 2017 orwell96
 This mod is licensed under the LGPL 2.1 license.
@@ -23,22 +23,5 @@ This mod integrates with the [vote] mod by rubenwardy (https://github.com/minete
 /vote_music_play <id> - Vote to play certain sing
 
 ## Music credits:
-
-StrangelyBeautifulShort	3:01	0.7
-AvalonShort		2:58	1.4
-EtherealShort		3:04	0.7
-FarawayShort		3:05	0.7
--> Music from [ambience] mod
--> Author is Amethystium <http://amethystium.com/>.
-
-eastern_feeling		3:51	1.0
--> created by Jordach. It can be found in the BFD subgame. License is GPLv3 (license of BFD).
-
-bensound_deepblue	4:48	1.0
-bensound_ofeliasdream	4:59	1.0
-bensound_slowmotion	3:26	1.0
--> (c) bensound (AFAIK public domain)
-
 rainymemory		2:10	1.0
-anonnp4014		2:30	1.6
 -> (c) Deemo collection (game music collection)

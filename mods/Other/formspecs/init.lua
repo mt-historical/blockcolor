@@ -7,8 +7,6 @@
 -- ./games/just_test_tribute/mods/formspecs/init.lua
 --------------------------------------------------------
 
-print( "Loading ActiveFormspecs Mod" )
-
 minetest.FORMSPEC_SIGEXIT = "true"	-- player clicked exit button or pressed esc key (boolean for backward compatibility)
 minetest.FORMSPEC_SIGQUIT = 1		-- player logged off
 minetest.FORMSPEC_SIGKILL = 2		-- player was killed
@@ -127,7 +125,7 @@ minetest.register_on_player_receive_fields( function( player, formname, fields )
 
 	-- perform a basic sanity check, since these shouldn't technically occur
 	if not form or player ~= form.player or formname ~= form.name then return end
-	
+
 	form.newtime = os.time( )
 	form.on_close( form.meta, form.player, fields )
 
@@ -219,7 +217,7 @@ minetest.create_form = function ( meta, player_name, formspec, on_close )
 	form.oldtime = math.floor( afs.get_uptime( ) )
 	form.newtime = form.oldtime
 
-	-- hidden elements only provide default, initial values 
+	-- hidden elements only provide default, initial values
 	-- for state table and are always stripped afterward
 	formspec = string.gsub( formspec, "hidden%[(.-);(.-)%]", function( key, value )
 		if form.meta[ key ] == nil then
@@ -340,8 +338,8 @@ minetest.register_chatcommand( "fs", {
 			local uptime = math.floor( afs.get_uptime( ) )
 
 			local formspec = "size[9.5,7.5]"
-				.. default.gui_bg
-				.. default.gui_bg_img
+				.. bc_core.gui_bg
+				.. bc_core.gui_bg_img
 
 				.. "label[0.1,6.7;ActiveFormspecs v2.4]"
 				.. string.format( "label[0.1,0.0;%s]label[0.1,0.5;%d min %02d sec]",
@@ -354,9 +352,9 @@ minetest.register_chatcommand( "fs", {
 					minetest.colorize( "#888888", "closed" ), afs.stats.closed )
 
 				.. string.format( "label[0.5,1.5;%s]label[3.5,1.5;%s]label[6.9,1.5;%s]label[8.2,1.5;%s]",
-					minetest.colorize( "#888888", "player" ), 
-					minetest.colorize( "#888888", "origin" ), 
-					minetest.colorize( "#888888", "idletime" ), 
+					minetest.colorize( "#888888", "player" ),
+					minetest.colorize( "#888888", "origin" ),
+					minetest.colorize( "#888888", "idletime" ),
 					minetest.colorize( "#888888", "lifetime" )
 				)
 
@@ -373,7 +371,7 @@ minetest.register_chatcommand( "fs", {
 
 				local vert = 2.0 + num * 0.5
 
-				formspec = formspec 
+				formspec = formspec
 					.. string.format( "button[0.1,%0.1f;0.5,0.3;del:%s;x]", vert + 0.1, player_name )
 					.. string.format( "label[0.5,%0.1f;%s]", vert, player_name )
 					.. string.format( "label[3.5,%0.1f;%s]", vert, form.origin )

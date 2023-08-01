@@ -1,20 +1,20 @@
 character_creator = {}
 character_creator.skins = dofile(minetest.get_modpath("character_creator") .. "/skins.lua")
-		
+
 local skinsdb
 if minetest.get_modpath("skinsdb") and minetest.global_exists("skins") then
 	skinsdb = skins
 end
 
 local skin_default = {
-	gender     = "Male",
-	height     = 4,
-	width      = 4,
-	face       = "eyesblack.png",
-	skin       = "skinwhite.png",
-	tshirt     = "shirtwhite.png",
-	shoes      = "hairblack.png",
-	pants      = "pantsblue.png",
+	gender = "Male",
+	height = 4,
+	width  = 4,
+	face   = "eyesblack.png",
+	skin   = "skinwhite.png",
+	tshirt = "shirtwhite.png",
+	shoes  = "hairblack.png",
+	pants  = "pantsblue.png",
 }
 
 local skins = character_creator.skins
@@ -30,11 +30,11 @@ minetest.after(0, function()
 	end
 
 	skins_array = {
-		skin       = associative_to_array(skins.skin),
-		tshirt     = associative_to_array(skins.tshirt),
-		shoes      = associative_to_array(skins.shoes),
-		pants     = associative_to_array(skins.pants),
-		face = associative_to_array(skins.face),
+		skin   = associative_to_array(skins.skin),
+		tshirt = associative_to_array(skins.tshirt),
+		shoes  = associative_to_array(skins.shoes),
+		pants  = associative_to_array(skins.pants),
+		face   = associative_to_array(skins.face),
 
 	}
 end)
@@ -43,60 +43,59 @@ end)
 local skin_indexes = {}
 
 local function show_formspec(player)
-local indexes = skin_indexes[player] 
+	local indexes = skin_indexes[player]
 
-local formspec = "size[8,7.5]"
+	local formspec = "size[8,7.5]"
 
-.. default.gui_bg
-.. default.gui_bg_img
-.. ""
+		.. bc_core.gui_bg
+		.. bc_core.gui_bg_img
+		.. ""
 
-      -- Skin 
+		-- Skin
 
--- .. "image_button[3.5,1;1,1;".. skins_array.skin[indexes.skin]..";skin;]" 
--- .. "image_button[1.5,1;1,1;gauche.png;skin_back;]"
--- .. "image_button[5.5,1;1,1;droite.png;skin_next;]"
+		-- .. "image_button[3.5,1;1,1;".. skins_array.skin[indexes.skin]..";skin;]"
+		-- .. "image_button[1.5,1;1,1;gauche.png;skin_back;]"
+		-- .. "image_button[5.5,1;1,1;droite.png;skin_next;]"
 
 		-- Eyes
 
-.. "image_button[3.5,1.5;1,1;".. skins_array.face[indexes.face]..";face;]" 
-.. "image_button[1.5,1.5;1,1;gauche.png;face_back;]"
-.. "image_button[5.5,1.5;1,1;droite.png;face_next;]"
+		.. "image_button[3.5,1.5;1,1;" .. skins_array.face[indexes.face] .. ";face;]"
+		.. "image_button[1.5,1.5;1,1;gauche.png;face_back;]"
+		.. "image_button[5.5,1.5;1,1;droite.png;face_next;]"
 
 		-- T-Shirt
 
-.. "image_button[3.5,2.5;1,1;".. skins_array.tshirt[indexes.tshirt]..";tshirt;]" 
-.. "image_button[1.5,2.5;1,1;gauche.png;tshirt_back;]"
-.. "image_button[5.5,2.5;1,1;droite.png;tshirt_next;]"
+		.. "image_button[3.5,2.5;1,1;" .. skins_array.tshirt[indexes.tshirt] .. ";tshirt;]"
+		.. "image_button[1.5,2.5;1,1;gauche.png;tshirt_back;]"
+		.. "image_button[5.5,2.5;1,1;droite.png;tshirt_next;]"
 
-    	-- Pants
+		-- Pants
 
-.. "image_button[3.5,3.5;1,1;".. skins_array.pants[indexes.pants]..";pants;]" 
-.. "image_button[1.5,3.5;1,1;gauche.png;pants_back;]"
-.. "image_button[5.5,3.5;1,1;droite.png;pants_next;]"
+		.. "image_button[3.5,3.5;1,1;" .. skins_array.pants[indexes.pants] .. ";pants;]"
+		.. "image_button[1.5,3.5;1,1;gauche.png;pants_back;]"
+		.. "image_button[5.5,3.5;1,1;droite.png;pants_next;]"
 
 		-- Shoes
 
-.. "image_button[3.5,4.5;1,1;".. skins_array.shoes[indexes.shoes]..";shoes;]" 
-.. "image_button[1.5,4.5;1,1;gauche.png;shoes_back;]"
-.. "image_button[5.5,4.5;1,1;droite.png;shoes_next;]"
+		.. "image_button[3.5,4.5;1,1;" .. skins_array.shoes[indexes.shoes] .. ";shoes;]"
+		.. "image_button[1.5,4.5;1,1;gauche.png;shoes_back;]"
+		.. "image_button[5.5,4.5;1,1;droite.png;shoes_next;]"
 
 		-- Done
 
-.. "image_button_exit[1.0,6.5;2,1;;main;Back to Game]"
+		.. "image_button_exit[1.0,6.5;2,1;;main;Back to Game]"
 
- minetest.show_formspec(player:get_player_name(), "character_creator", formspec)
+	minetest.show_formspec(player:get_player_name(), "character_creator", formspec)
 end
 
 local function load_skin(player)
 	skin_indexes[player] = {}
 
-		player:set_attribute("character_creator:gender", skin_default.gender)
-		player:set_attribute("character_creator:width", skin_default.width)
-		player:set_attribute("character_creator:height", skin_default.height)
+	player:set_attribute("character_creator:gender", skin_default.gender)
+	player:set_attribute("character_creator:width", skin_default.width)
+	player:set_attribute("character_creator:height", skin_default.height)
 
 	local function load_data(data_name)
-	
 		local key   = player:get_attribute("character_creator:" .. data_name)
 		local index = table.indexof(skins_array[data_name], key)
 		if index == -1 then
@@ -112,7 +111,6 @@ local function load_skin(player)
 	load_data("shoes")
 	load_data("pants")
 	load_data("face")
-
 end
 
 local function save_skin(player)
@@ -126,9 +124,8 @@ local function save_skin(player)
 	save_data("skin")
 	save_data("tshirt")
 	save_data("shoes")
-    save_data("pants")
+	save_data("pants")
 	save_data("face")
-
 end
 
 local function get_texture(player)
@@ -144,7 +141,7 @@ local function get_texture(player)
 	local tshirt = skins.tshirt[tshirt_key]
 	texture = texture .. "^" .. tshirt
 
-    local pants_key = skins_array.pants[indexes.pants]
+	local pants_key = skins_array.pants[indexes.pants]
 	local pants = skins.pants[pants_key]
 	texture = texture .. "^" .. pants
 
@@ -152,7 +149,7 @@ local function get_texture(player)
 	local shoes = skins.shoes[shoes_key]
 	texture = texture .. "^" .. shoes
 
-local face_key = skins_array.face[indexes.face]
+	local face_key = skins_array.face[indexes.face]
 	local face = skins.face[face_key]
 	texture = texture .. "^" .. face
 
@@ -162,8 +159,8 @@ end
 local function change_skin(player)
 	local texture = get_texture(player)
 
-	local width  = tonumber(player:get_attribute("character_creator:width"))
-	local height = tonumber(player:get_attribute("character_creator:height"))
+	local width   = tonumber(player:get_attribute("character_creator:width"))
+	local height  = tonumber(player:get_attribute("character_creator:height"))
 
 	player:set_properties({
 		visual_size = {
@@ -177,12 +174,12 @@ local function change_skin(player)
 	if minetest.get_modpath("multiskin") then
 		multiskin.layers[name].skin = texture
 		armor:set_player_armor(player)
-		multiskin:set_player_textures(player, {textures = {texture}})
+		multiskin:set_player_textures(player, { textures = { texture } })
 	elseif minetest.get_modpath("3d_armor") then
 		armor.textures[name].skin = texture
 		armor:set_player_armor(player)
 	else
-		player:set_properties({textures = {texture}})
+		player:set_properties({ textures = { texture } })
 	end
 
 	save_skin(player)
@@ -192,13 +189,13 @@ if skinsdb then
 	--change skin redefinition for skinsdb
 	function change_skin(player)
 		local playername = player:get_player_name()
-		local skinname = "character_creator:"..playername
+		local skinname = "character_creator:" .. playername
 		local skin_obj = skinsdb.get(skinname) or skinsdb.new(skinname)
 		skin_obj:set_meta("format", "1.0")
 		skin_obj:set_meta("visual_size_x", tonumber(player:get_attribute("character_creator:width")))
 		skin_obj:set_meta("visual_size_y", tonumber(player:get_attribute("character_creator:height")))
 		skin_obj:apply_skin_to_player(player)
-		skinsdb.assign_player_skin(player, "character_creator:"..playername)
+		skinsdb.assign_player_skin(player, "character_creator:" .. playername)
 		save_skin(player)
 	end
 end
@@ -207,7 +204,7 @@ minetest.register_on_joinplayer(function(player)
 	load_skin(player)
 	if skinsdb then
 		local playername = player:get_player_name()
-		local skinname = "character_creator:"..playername
+		local skinname = "character_creator:" .. playername
 		local skin_obj = skinsdb.get(skinname) or skinsdb.new(skinname)
 		-- redefinitions
 		function skin_obj:set_skin(player)
@@ -217,16 +214,17 @@ minetest.register_on_joinplayer(function(player)
 			change_skin(player)
 			show_formspec(player)
 		end
+
 		function skin_obj:get_texture()
 			return get_texture(minetest.get_player_by_name(self:get_meta("playername")))
 		end
 
 		-- set data
 		skin_obj:set_preview("inventory_plus_character_creator.png")
-		skin_obj:set_meta("name","Character Creator")
+		skin_obj:set_meta("name", "Character Creator")
 		--skin_obj:set_meta("author", "???")
 		skin_obj:set_meta("license", "MIT / CC-BY-SA 3.0 Unported")
-		skin_obj:set_meta("playername",playername)
+		skin_obj:set_meta("playername", playername)
 		--check if active and start the update (avoid race condition for both register_on_joinplayer)
 		if skinsdb.get_player_skin(player):get_key() == skinname then
 			minetest.after(0, change_skin, player)
@@ -238,7 +236,7 @@ end)
 
 minetest.register_on_leaveplayer(function(player)
 	if skinsdb then
-		local skinname = "character_creator:"..player:get_player_name()
+		local skinname = "character_creator:" .. player:get_player_name()
 		skinsdb.meta[skinname] = nil
 	end
 	skin_indexes[player] = nil
@@ -365,8 +363,8 @@ minetest.register_chatcommand("skin", {
 minetest.register_chatcommand("say", {
 	params = "<text>",
 	description = "Send text to chat",
-	privs = {talk = true},
-	func = function( _ , text)
+	privs = { talk = true },
+	func = function(_, text)
 		minetest.chat_send_all(text)
 		return true, "Text was sent successfully"
 	end,
@@ -385,6 +383,6 @@ elseif minetest.global_exists("inventory_plus") then
 	minetest.register_on_player_receive_fields(function(player, _, fields)
 		if fields.character_creator then
 			show_formspec(player)
-		 end
-	 end)
- end
+		end
+	end)
+end

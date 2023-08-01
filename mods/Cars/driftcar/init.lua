@@ -12,26 +12,10 @@ local TACC = 0.12 -- Turn acceleration on control input
 local TMAX = 2.4 -- Maximum turn speed
 local TDEC = 0.24 -- Turn deceleration on no control input
 
--- End of parameters
-
-local source_list = {
-	{"black", "Darkened", "292421", 40, 36, 33}, 
-	{"blue", "Blue", "0000FF", 0, 0, 255},
-	{"green", "Green", "00FF00", 0, 255, 0}, 
-	{"white", "White", "F5F5F5", 245, 245, 245}, 
-	{"orange", "Orange", "FF6103", 255, 97, 3}, 
-	{"red", "Red", "FF0000", 255, 0, 0}, 
-	{"yellow", "Yellow", "FFFF00", 255, 255, 0}, 
-	{"pink", "pink", "FF69B4", 255, 105, 180}
-}
-
 for i in ipairs(source_list) do
 	local name = source_list[i][1]
 	local description = source_list[i][2]
 	local colour = source_list[i][3]
-	local red = source_list[i][4]
-	local green = source_list[i][5]
-	local blue = source_list[i][6]	
 
 -- Constants
 
@@ -135,11 +119,11 @@ function car.on_rightclick(self, clicker)
 		-- Detach
 		self.driver = nil
 		clicker:set_detach()
-		default.player_attached[name] = false
-		default.player_set_animation(clicker, "stand" , 30)
-		local pos = clicker:getpos()
+		bc_core.player_attached[name] = false
+		bc_core.player_set_animation(clicker, "stand" , 30)
+		local pos = clicker:get_pos()
 		minetest.after(0.1, function()
-			clicker:setpos(pos)
+			clicker:set_pos(pos)
 		end)
 	elseif not self.driver then
 		-- Attach
@@ -154,9 +138,9 @@ function car.on_rightclick(self, clicker)
 		self.driver = name
 		clicker:set_attach(self.object, "",
 			{x = 0, y = -1, z = 0}, {x = 0, y = -1, z = 0})
-		default.player_attached[name] = true
+		bc_core.player_attached[name] = true
 		minetest.after(0.2, function()
-			default.player_set_animation(clicker, "sit" , 30)
+			bc_core.player_set_animation(clicker, "sit" , 30)
 		end)
 		clicker:set_look_horizontal(self.object:getyaw())
 	end
@@ -176,7 +160,7 @@ function car.on_punch(self, puncher)
 		-- Detach
 		self.driver = nil
 		puncher:set_detach()
-		default.player_attached[name] = false
+		bc_core.player_attached[name] = false
 	end
 	if not self.driver then
 		-- Move to inventory
@@ -185,7 +169,7 @@ function car.on_punch(self, puncher)
 		if not (creative and creative.is_enabled_for
 				and creative.is_enabled_for(name))
 				or not inv:contains_item("main", "driftcar:driftcar" .. name) then
-		
+
 		end
 		minetest.after(0.1, function()
 			self.object:remove()
@@ -194,12 +178,12 @@ function car.on_punch(self, puncher)
 end
 
 function car.on_step(self, dtime)
-	local vel = self.object:getvelocity()
+	local vel = self.object:get_velocity()
 	local velmag = get_vecmag(vel)
 	-- Early return for near-stationary vehicle with no driver
 	if not self.driver and velmag < 0.01 and vel.y == 0 then
-		self.object:setpos(self.object:getpos())
-		self.object:setvelocity({x = 0, y = 0, z = 0})
+		self.object:set_pos(self.object:get_pos())
+		self.object:set_velocity({x = 0, y = 0, z = 0})
 		self.object:setacceleration({x = 0, y = 0, z = 0})
 		return
 	end
@@ -212,7 +196,7 @@ function car.on_step(self, dtime)
 	-- Velocity component linear to car
 	local linvel = math.cos(yawrtvel) * velmag
 	-- Touch ground bool
-	local under_pos = self.object:getpos()
+	local under_pos = self.object:get_pos()
 	under_pos.y = under_pos.y - 1.4
 	local node_under = minetest.get_node(under_pos)
 	local nodedef_under = minetest.registered_nodes[node_under.name]
@@ -253,8 +237,8 @@ function car.on_step(self, dtime)
 
 	-- Early return for near-stationary vehicle with driver
 	if taccmag == 0 and velmag < 0.01 and vel.y == 0 then
-		self.object:setpos(self.object:getpos())
-		self.object:setvelocity({x = 0, y = 0, z = 0})
+		self.object:set_pos(self.object:get_pos())
+		self.object:set_velocity({x = 0, y = 0, z = 0})
 		self.object:setacceleration({x = 0, y = 0, z = 0})
 		return
 	end
@@ -337,7 +321,7 @@ function car.on_step(self, dtime)
 
 		-- Tire smoke
 		if self.driver and math.random() < -0.05 + math.abs(latvel) / 30 then
-			local opos = self.object:getpos()
+			local opos = self.object:get_pos()
 			opos.y = opos.y - 0.5
 			local yaw = self.object:getyaw()
 			local yaw1 = yaw + math.pi * 0.25
@@ -385,8 +369,8 @@ function car.on_step(self, dtime)
 	-- Limit dtime to avoid too much turn
 	dtime = math.min(dtime, 0.2)
 
-	self.object:setpos(self.object:getpos())
-	self.object:setvelocity(self.object:getvelocity())
+	self.object:set_pos(self.object:get_pos())
+	self.object:set_velocity(self.object:get_velocity())
 	self.object:setacceleration(new_acc)
 	self.object:setyaw(wrap_yaw(self.object:getyaw() + self.rot * dtime * turm))
 end
@@ -400,7 +384,7 @@ minetest.register_entity("driftcar:driftcar" .. name, car)
 minetest.register_craftitem("driftcar:driftcar" .. name, {
 	description = "Drift Car" .. name,
 	inventory_image = "cars.png^[colorize:#"..colour..":70",
-	wield_image = "none.png",
+	wield_image = "blank.png",
 	wield_scale = {x = 2, y = 2, z = 2},
 
 	on_place = function(itemstack, placer, pointed_thing)
@@ -463,6 +447,7 @@ minetest.register_node("driftcar:driftcar_nodebox" ..name, {
 				{0.3125, -0.5,    0.1875,  0.5,    -0.375,  0.5},
 			},
 		},
+	use_texture_alpha = "clip",
 	groups = {not_in_creative_inventory = 1},
 })
 

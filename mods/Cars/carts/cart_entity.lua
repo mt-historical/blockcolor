@@ -1,31 +1,8 @@
 
-color1 = minetest.setting_get("color1") or "292421"
-color2 = minetest.setting_get("color2") or "0000FF"
-color3 = minetest.setting_get("color3") or "00FF00"
-color4 = minetest.setting_get("color4") or "F5F5F5"
-color5 = minetest.setting_get("color5") or "FF6103"
-color6 = minetest.setting_get("color6") or "FF0000"
-color7 = minetest.setting_get("color7") or "FFFF00"
-color8 = minetest.setting_get("color8") or "FF69B4"
-
-local source_list = {
-	{"black", "Color1", color1, 40, 36, 33}, 
-	{"blue", "Color2", color2, 0, 0, 255},
-	{"green", "Color3", color3, 0, 255, 0}, 
-	{"white", "Color4", color4, 245, 245, 245}, 
-	{"orange", "Color5", color5, 255, 97, 3}, 
-	{"red", "Color6", color6, 255, 0, 0}, 
-	{"yellow", "Color7", color7, 255, 255, 0}, 
-	{"pink", "Color8", color8, 255, 105, 180}
-}
-
 for i in ipairs(source_list) do
 	local color = source_list[i][1]
 	local desc = source_list[i][2]
 	local colour = source_list[i][3]
-	local red = source_list[i][4]
-	local green = source_list[i][5]
-	local blue = source_list[i][6]
 
 local cart_entity = {
 	physical = false, -- otherwise going uphill breaks
@@ -89,7 +66,7 @@ function cart_entity:get_staticdata()
 end
 
 function cart_entity:on_punch(puncher, time_from_last_punch, tool_capabilities, direction)
-	local pos = self.object:getpos()
+	local pos = self.object:get_pos()
 	if not self.railtype then
 		local node = minetest.get_node(pos).name
 		self.railtype = minetest.get_item_group(node, "connect_to_raillike")
@@ -112,7 +89,7 @@ function cart_entity:on_punch(puncher, time_from_last_punch, tool_capabilities, 
 		-- Detach driver and items
 		if self.driver then
 			if self.old_pos then
-				self.object:setpos(self.old_pos)
+				self.object:set_pos(self.old_pos)
 			end
 			local player = minetest.get_player_by_name(self.driver)
 			carts:manage_attachment(player, nil)
@@ -130,14 +107,14 @@ function cart_entity:on_punch(puncher, time_from_last_punch, tool_capabilities, 
 			local leftover = inv:add_item("main", "carts:cart" .. color)
 			-- If no room in inventory add a replacement cart to the world
 			if not leftover:is_empty() then
-				minetest.add_item(self.object:getpos(), leftover)
+				minetest.add_item(self.object:get_pos(), leftover)
 			end
 		end
 		self.object:remove()
 		return
 	end
 	-- Player punches cart to alter velocity
-	local vel = self.object:getvelocity()
+	local vel = self.object:get_velocity()
 	if puncher:get_player_name() == self.driver then
 		if math.abs(vel.x + vel.z) > carts.punch_speed_max then
 			return
@@ -184,7 +161,7 @@ local function rail_sound(self, dtime)
 		self.sound_handle = nil
 		minetest.after(0.2, minetest.sound_stop, handle)
 	end
-	local vel = self.object:getvelocity()
+	local vel = self.object:get_velocity()
 	local speed = vector.length(vel)
 	if speed > 0 then
 		self.sound_handle = minetest.sound_play(
@@ -202,16 +179,16 @@ local function get_railparams(pos)
 end
 
 local function rail_on_step(self, dtime)
-	local vel = self.object:getvelocity()
+	local vel = self.object:get_velocity()
 	if self.punched then
 		vel = vector.add(vel, self.velocity)
-		self.object:setvelocity(vel)
+		self.object:set_velocity(vel)
 		self.old_dir.y = 0
 	elseif vector.equals(vel, {x=0, y=0, z=0}) then
 		return
 	end
 
-	local pos = self.object:getpos()
+	local pos = self.object:get_pos()
 	local update = {}
 
 	-- stop cart if velocity vector flips
@@ -219,7 +196,7 @@ local function rail_on_step(self, dtime)
 			(self.old_vel.x * vel.x < 0 or self.old_vel.z * vel.z < 0) then
 		self.old_vel = {x = 0, y = 0, z = 0}
 		self.old_pos = pos
-		self.object:setvelocity(vector.new())
+		self.object:set_velocity(vector.new())
 		self.object:setacceleration(vector.new())
 		rail_on_step_event(get_railparams(pos).on_step, self, dtime)
 		return
@@ -374,9 +351,9 @@ local function rail_on_step(self, dtime)
 	end
 	self.object:set_animation(anim, 1, 0)
 
-	self.object:setvelocity(vel)
+	self.object:set_velocity(vel)
 	if update.pos then
-		self.object:setpos(pos)
+		self.object:set_pos(pos)
 	end
 
 	-- call event handler
@@ -393,7 +370,7 @@ minetest.register_entity("carts:cart" .. color, cart_entity)
 minetest.register_craftitem("carts:cart" .. color, {
 	description = color .. "Cart (Sneak+Click to pick up)",
 inventory_image = "cart.png^[colorize:#"..colour..":70",
-wield_image = "none.png",
+wield_image = "blank.png",
 		wield_scale = {x=1,y=1,z=0.5},
 	on_place = function(itemstack, placer, pointed_thing)
 		local under = pointed_thing.under
