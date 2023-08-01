@@ -1,30 +1,15 @@
-pkarcs = {}
 
 local function nb(n)
 	return n / 16 - 1 / 2
 end
 
-local source_list = {
-	{ "black",  "Darkened", color1, 40,  36,  33 },
-	{ "blue",   "Blue",     color2, 0,   0,   255 },
-	{ "green",  "Green",    color3, 0,   255, 0 },
-	{ "white",  "White",    color4, 245, 245, 245 },
-	{ "orange", "Orange",   color5, 255, 97,  3 },
-	{ "red",    "Red",      color6, 255, 0,   0 },
-	{ "yellow", "Yellow",   color7, 255, 255, 0 },
-	{ "pink",   "Pink",     color8, 255, 105, 180 }
-}
-
 for i in ipairs(source_list) do
-	local color = source_list[i][1]
-	local nodename = source_list[i][1]
 	local name = source_list[i][1]
 	local desc = source_list[i][2]
-	local desc2 = source_list[i][2]
 	local colour = source_list[i][3]
 
-	minetest.register_node("pkarcs:" .. color .. "_arc", {
-		description = desc2 .. " Arc",
+	minetest.register_node("pkarcs:" .. name .. "_arc", {
+		description = desc .. " Arc",
 		paramtype = "light",
 		paramtype2 = "facedir",
 		drawtype = "nodebox",
@@ -46,9 +31,7 @@ for i in ipairs(source_list) do
 		tiles = { "color_white.png^[colorize:#" .. colour .. ":70" },
 		is_ground_content = true,
 		groups = { snappy = 2, choppy = 2, wool = 2 },
-		sounds = default.node_sound_defaults(),
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
+		sounds = bc_core.sound(),
 		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#" .. colour .. ":70)",
 		wield_scale = { x = 1, y = 1, z = 0.5 },
 		inventory_image = "arc.png^[colorize:#" .. colour .. ":70",
@@ -98,7 +81,7 @@ for i in ipairs(source_list) do
 
 	-- outer arc
 
-	minetest.register_node("pkarcs:" .. nodename .. "_outarc", {
+	minetest.register_node("pkarcs:" .. name .. "_outarc", {
 		description = desc .. " Out Arc",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -121,9 +104,7 @@ for i in ipairs(source_list) do
 		tiles = { "color_white.png^[colorize:#" .. colour .. ":70" },
 		is_ground_content = true,
 		groups = { snappy = 2, choppy = 2, wool = 2 },
-		sounds = default.node_sound_defaults(),
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
+		sounds = bc_core.sound(),
 		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#" .. colour .. ":70)",
 		wield_scale = { x = 1, y = 1, z = 0.5 },
 		inventory_image = "arcout.png^[colorize:#" .. colour .. ":70",
@@ -173,7 +154,7 @@ for i in ipairs(source_list) do
 
 	-- inner arc
 
-	minetest.register_node("pkarcs:" .. nodename .. "_inarc", {
+	minetest.register_node("pkarcs:" .. name .. "_inarc", {
 		description = desc .. " In Arc",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -205,9 +186,7 @@ for i in ipairs(source_list) do
 		tiles = { "color_white.png^[colorize:#" .. colour .. ":70" },
 		is_ground_content = true,
 		groups = { snappy = 2, choppy = 2, wool = 2 },
-		sounds = default.node_sound_defaults(),
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
+		sounds = bc_core.sound(),
 		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#" .. colour .. ":70)",
 		wield_scale = { x = 1, y = 1, z = 0.5 },
 		inventory_image = "arcin.png^[colorize:#" .. colour .. ":70",

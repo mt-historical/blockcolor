@@ -1,21 +1,8 @@
-local source_list = {
-	{"black", "Darkened", "292421", 40, 36, 33},
-	{"blue", "Blue", "0000FF", 0, 0, 255},
-	{"green", "Green", "00FF00", 0, 255, 0},
-	{"white", "White", "F5F5F5", 245, 245, 245},
-	{"orange", "Orange", "FF6103", 255, 97, 3},
-	{"red", "Red", "FF0000", 255, 0, 0},
-	{"yellow", "Yellow", "FFFF00", 255, 255, 0},
-	{"pink", "pink", "FF69B4", 255, 105, 180}
-}
 
 for i in ipairs(source_list) do
-	local color = source_list[i][1]
-	local description = source_list[i][2]
+	local name = source_list[i][1]
+	local desc = source_list[i][2]
 	local colour = source_list[i][3]
-	local red = source_list[i][4]
-	local green = source_list[i][5]
-	local blue = source_list[i][6]
 
 
 --
@@ -75,8 +62,8 @@ function surfboard.on_rightclick(self, clicker)
 	if self.driver and clicker == self.driver then
 		self.driver = nil
 		clicker:set_detach()
-		default.player_attached[name] = false
-		default.player_set_animation(clicker, "stand" , 30)
+		bc_core.player_attached[name] = false
+		bc_core.player_set_animation(clicker, "stand" , 30)
 		local pos = clicker:get_pos()
 		pos = {x = pos.x, y = pos.y + 0.2, z = pos.z}
 		minetest.after(0.1, function()
@@ -94,9 +81,9 @@ function surfboard.on_rightclick(self, clicker)
 		self.driver = clicker
 		clicker:set_attach(self.object, "",
 			{x = 0, y = 10, z = 0}, {x = 0, y = 0, z = 0})
-		default.player_attached[name] = true
+		bc_core.player_attached[name] = true
 		minetest.after(0.2, function()
-			default.player_set_animation(clicker, "stand" , 0)
+			bc_core.player_set_animation(clicker, "stand" , 0)
 		end)
 		clicker:set_look_horizontal(self.object:getyaw())
 	end
@@ -124,7 +111,7 @@ function surfboard.on_punch(self, puncher)
 	if self.driver and puncher == self.driver then
 		self.driver = nil
 		puncher:set_detach()
-		default.player_attached[puncher:get_player_name()] = false
+		bc_core.player_attached[puncher:get_player_name()] = false
 	end
 	if not self.driver then
 		self.removed = true
@@ -222,12 +209,12 @@ function surfboard.on_step(self, dtime)
 	self.object:setacceleration(new_acce)
 end
 
-minetest.register_entity("surfboard:board" .. color, surfboard)
+minetest.register_entity("surfboard:board" .. name, surfboard)
 
-minetest.register_craftitem("surfboard:board" .. color, {
-	description = "Surfboard" .. color,
+minetest.register_craftitem("surfboard:board" .. name, {
+	description = desc .. " Surfboard",
 	inventory_image = "surfboard.png^[colorize:#"..colour..":70",
-	wield_image = "none.png^[colorize:#"..colour..":70",
+	wield_image = "blank.png^[colorize:#"..colour..":70",
 	wield_scale = {x = 2, y = 2, z = 1},
 	liquids_pointable = true,
 	groups = {flammable = 2},
@@ -249,7 +236,7 @@ minetest.register_craftitem("surfboard:board" .. color, {
 			return itemstack
 		end
 		pointed_thing.under.y = pointed_thing.under.y + 0.5
-		boat = minetest.add_entity(pointed_thing.under, "surfboard:board" .. color)
+		boat = minetest.add_entity(pointed_thing.under, "surfboard:board" .. name)
 		if boat then
 			boat:setyaw(placer:get_look_horizontal())
 			if not (creative and creative.is_enabled_for

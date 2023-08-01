@@ -36,17 +36,17 @@ function carpet:on_rightclick(clicker)
 	if self.driver and clicker == self.driver then
 		clicker:set_detach()
 		self.driver = nil
-		default.player_attached[name] = false
-		default.player_set_animation(clicker, "stand" , 10)
+		bc_core.player_attached[name] = false
+		bc_core.player_set_animation(clicker, "stand" , 10)
 		if hotairballoon.one_use == true then
 			self.object:remove()
 		end
 	elseif not self.driver then
 		self.driver = clicker
 		clicker:set_attach(self.object, "", {x=-4,y=10.1,z=0}, {x=0,y=90,z=0})
-		default.player_attached[name] = true
+		bc_core.player_attached[name] = true
 		minetest.after(0.2, function()
-			default.player_set_animation(clicker, "sit" , 10)
+			bc_core.player_set_animation(clicker, "sit" , 10)
 		end)
 		self.object:setyaw(clicker:get_look_yaw()-math.pi/2)
 	end
@@ -143,7 +143,7 @@ minetest.register_entity("hotairballoon:hotair" .. color , carpet)
 minetest.register_craftitem("hotairballoon:hotair" .. color, {
 	description = color .."Hot Air Balloon",
 	inventory_image = "hotair_inv.png^[colorize:#"..colour..":70",
-	wield_image = "none.png",
+	wield_image = "blank.png",
 	liquids_pointable = false,
 
 	on_place = function(itemstack, placer, pointed_thing)

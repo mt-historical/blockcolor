@@ -27,9 +27,6 @@ for i in ipairs(source_list) do
 	local color = source_list[i][1]
 	local color2 = source_list[i][2]
 	local colour = source_list[i][3]
-	local red = source_list[i][4]
-	local green = source_list[i][5]
-	local blue = source_list[i][6]
 
 minetest.register_node("hdb:frigo" .. color, {
 	description = "frigo" .. color,
@@ -44,7 +41,7 @@ minetest.register_node("hdb:frigo" .. color, {
 	collision_box = armoire_cbox,
     selection_box = armoire_cbox,
 	groups = {cracky=3, oddly_breakable_by_hand=2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = bc_core.sound_wood(),
  	on_place = minetest.rotate_node,
 })
 
@@ -61,7 +58,7 @@ minetest.register_node("hdb:bench" .. color, {
 	collision_box = bench_cbox,
     selection_box = bench_cbox,
 	groups = {cracky=3, oddly_breakable_by_hand=2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = bc_core.sound_wood(),
  	on_place = minetest.rotate_node,
 })
 
@@ -78,7 +75,7 @@ minetest.register_node("hdb:armoire" .. color, {
 	collision_box = armoire_cbox,
     selection_box = armoire_cbox,
 	groups = {cracky=3, oddly_breakable_by_hand=2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = bc_core.sound_wood(),
  	on_place = minetest.rotate_node,
 })
 
@@ -97,7 +94,7 @@ minetest.register_node("hdb:desk" .. color, {
 	collision_box = desk_cbox,
     selection_box = desk_cbox,
 	groups = {cracky=3, oddly_breakable_by_hand=2},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = bc_core.sound_stone(),
  	on_place = minetest.rotate_node,
 })
 
@@ -112,7 +109,7 @@ minetest.register_node("hdb:computer" .. color , {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=3, oddly_breakable_by_hand=2},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = bc_core.sound_stone(),
  	on_place = minetest.rotate_node,
 })
 

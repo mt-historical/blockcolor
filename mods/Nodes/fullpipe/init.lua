@@ -56,24 +56,10 @@ function fullpipe.register_pipe(subname, recipeitem, groups, images, desc_pipe_b
 	fullpipe.register_pipe_block(subname, recipeitem, groups, images, desc_pipe_block, inv_pipe_block, sounds)
 end
 
-local source_list = {
-	{ "black",  "Darkened", color1, 40,  36,  33 },
-	{ "blue",   "Blue",     color2, 0,   0,   255 },
-	{ "green",  "Green",    color3, 0,   255, 0 },
-	{ "white",  "White",    color4, 245, 245, 245 },
-	{ "orange", "Orange",   color5, 255, 97,  3 },
-	{ "red",    "Red",      color6, 255, 0,   0 },
-	{ "yellow", "Yellow",   color7, 255, 255, 0 },
-	{ "pink",   "Pink",     color8, 255, 105, 180 }
-}
-
 for i in ipairs(source_list) do
 	local name = source_list[i][1]
 	local desc = source_list[i][2]
 	local colour = source_list[i][3]
-	local red = source_list[i][4]
-	local green = source_list[i][5]
-	local blue = source_list[i][6]
 
 	fullpipe.register_pipe("" .. name .. "", "color:" .. name,
 		{ cracky = 3 },
@@ -83,6 +69,6 @@ for i in ipairs(source_list) do
 		"fullpipeborder.png^[colorize:#" .. colour .. ":70",
 		"fullpipe.png^[colorize:#" .. colour .. ":70",
 		"color_handwhite.png^(color_handwhite2.png^[colorize:#" .. colour .. ":70)",
-		default.node_sound_stone_defaults()
+		bc_core.sound_stone()
 	)
 end

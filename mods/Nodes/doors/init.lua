@@ -6,6 +6,11 @@ local _doors = {}
 _doors.registered_doors = {}
 _doors.registered_trapdoors = {}
 
+-- stub
+local function can_interact_with_node()
+	return true
+end
+
 local function replace_old_owner_information(pos)
 	local meta = minetest.get_meta(pos)
 	local owner = meta:get_string("doors_owner")
@@ -151,7 +156,7 @@ function _doors.door_toggle(pos, node, clicker)
 
 	replace_old_owner_information(pos)
 
-	if clicker and not default.can_interact_with_node(clicker, pos) then
+	if clicker and not can_interact_with_node(clicker, pos) then
 		return false
 	end
 
@@ -204,7 +209,7 @@ end
 
 local function can_dig_door(pos, digger)
 	replace_old_owner_information(pos)
-	if default.can_interact_with_node(digger, pos) then
+	if can_interact_with_node(digger, pos) then
 		return true
 	else
 		minetest.record_protection_violation(pos, digger:get_player_name())
@@ -348,16 +353,10 @@ function doors.register(name, def)
   def.wield_image = nil
 def.wield_scale = nil
 
-	if def.recipe then
-		minetest.register_craft({
-			output = name,
-			recipe = def.recipe,
-		})
-	end
 	def.recipe = nil
 
 	if not def.sounds then
-		def.sounds = default.node_sound_wood_defaults()
+		def.sounds = bc_core.sound_wood()
 	end
 
 	if not def.sound_open then
@@ -449,24 +448,10 @@ def.wield_scale = nil
 	_doors.registered_doors[name .. "_b"] = true
 end
 
-local source_list = {
-	{"black", "Darkened", color1, 40, 36, 33},
-	{"blue", "Blue", color2, 0, 0, 255},
-	{"green", "Green", color3, 0, 255, 0},
-	{"white", "White", color4, 245, 245, 245},
-	{"orange", "Orange", color5, 255, 97, 3},
-	{"red", "Red", color6, 255, 0, 0},
-	{"yellow", "Yellow", color7, 255, 255, 0},
-	{"pink", "pink", color8, 255, 105, 180}
-}
-
 for i in ipairs(source_list) do
 	local name = source_list[i][1]
 	local description = source_list[i][2]
 	local colour = source_list[i][3]
-	local red = source_list[i][4]
-	local green = source_list[i][5]
-	local blue = source_list[i][6]
 
 	doors.register("door_" .. name , {
 		tiles = {"doors_door_white.png^[colorize:#"..colour..":70"},
@@ -475,7 +460,7 @@ for i in ipairs(source_list) do
 		wield_scale = {x=1,y=1,z=0.5},
 		inventory_image = "doors.png^[colorize:#"..colour..":70",
 		groups = {cracky=3},
-		sounds = default.node_sound_glass_defaults(),
+		sounds = bc_core.sound_glass(),
 		sound_open = "doors_door_open",
 		sound_close = "doors_door_close",
 		use_texture_alpha = "clip"
@@ -513,7 +498,7 @@ function _doors.trapdoor_toggle(pos, node, clicker)
 
 	replace_old_owner_information(pos)
 
-	if clicker and not default.can_interact_with_node(clicker, pos) then
+	if clicker and not can_interact_with_node(clicker, pos) then
 		return false
 	end
 
@@ -596,7 +581,7 @@ function doors.register_trapdoor(name, def)
 	end
 
 	if not def.sounds then
-		def.sounds = default.node_sound_wood_defaults()
+		def.sounds = bc_core.sound_wood()
 	end
 
 	if not def.sound_open then
@@ -647,53 +632,21 @@ function doors.register_trapdoor(name, def)
 	_doors.registered_trapdoors[name_closed] = true
 end
 
-local source_list = {
-	{"black", "Darkened", color1, 40, 36, 33},
-	{"blue", "Blue", color2, 0, 0, 255},
-	{"green", "Green", color3, 0, 255, 0},
-	{"white", "White", color4, 245, 245, 245},
-	{"orange", "Orange", color5, 255, 97, 3},
-	{"red", "Red", color6, 255, 0, 0},
-	{"yellow", "Yellow", color7, 255, 255, 0},
-	{"pink", "pink", color8, 255, 105, 180}
-}
-
 for i in ipairs(source_list) do
 	local name = source_list[i][1]
 	local description = source_list[i][2]
 	local colour = source_list[i][3]
-	local red = source_list[i][4]
-	local green = source_list[i][5]
-	local blue = source_list[i][6]
 
-doors.register_trapdoor("doors:trapdoor_" .. name , {
-	description = "Trapdoor",
-	tile_front = "color_white.png^[colorize:#"..colour..":70",
-	tile_side = "color_white.png^[colorize:#"..colour..":70",
-   wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
-   wield_scale = {x=1,y=1,z=0.5},
-   inventory_image = "trapdoor.png^[colorize:#"..colour..":70",
-	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, door = 1},
-})
-
+	doors.register_trapdoor("doors:trapdoor_" .. name , {
+		description = "Trapdoor",
+		tile_front = "color_white.png^[colorize:#"..colour..":70",
+		tile_side = "color_white.png^[colorize:#"..colour..":70",
+		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
+		wield_scale = {x=1,y=1,z=0.5},
+		inventory_image = "trapdoor.png^[colorize:#"..colour..":70",
+		groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, door = 1},
+	})
 end
-
-minetest.register_craft({
-	output = 'doors:trapdoor 2',
-	recipe = {
-		{'group:wood', 'group:wood', 'group:wood'},
-		{'group:wood', 'group:wood', 'group:wood'},
-		{'', '', ''},
-	}
-})
-
-minetest.register_craft({
-	output = 'doors:trapdoor_steel',
-	recipe = {
-		{'default:steel_ingot', 'default:steel_ingot'},
-		{'default:steel_ingot', 'default:steel_ingot'},
-	}
-})
 
 
 ----fence gate----
@@ -725,7 +678,7 @@ function doors.register_fencegate(name, def)
 	}
 
 	if not fence.sounds then
-		fence.sounds = default.node_sound_wood_defaults()
+		fence.sounds = bc_core.sound_wood()
 	end
 
 	fence.groups.fence = 1
@@ -752,14 +705,6 @@ function doors.register_fencegate(name, def)
 
 	minetest.register_node(":" .. name .. "_closed", fence_closed)
 	minetest.register_node(":" .. name .. "_open", fence_open)
-
-	minetest.register_craft({
-		output = name .. "_closed",
-		recipe = {
-			{"default:stick", def.material, "default:stick"},
-			{"default:stick", def.material, "default:stick"}
-		}
-	})
 end
 
 doors.register_fencegate("doors_smallwhite", {

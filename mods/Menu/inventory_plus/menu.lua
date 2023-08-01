@@ -71,8 +71,8 @@ inventory_plus.get_formspec = function(player, page)
 
 	-- default inventory page
 	local formspec = "size[8,7.5]"
-		.. default.gui_bg
-		.. default.gui_bg_img
+		.. bc_core.gui_bg
+		.. bc_core.gui_bg_img
 		.. ""
 
 	-- nodes page

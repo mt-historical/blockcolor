@@ -47,8 +47,8 @@ local function show_formspec(player)
 
 	local formspec = "size[8,7.5]"
 
-		.. default.gui_bg
-		.. default.gui_bg_img
+		.. bc_core.gui_bg
+		.. bc_core.gui_bg_img
 		.. ""
 
 		-- Skin

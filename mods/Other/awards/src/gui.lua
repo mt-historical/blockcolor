@@ -199,10 +199,8 @@ function awards.show_to(name, to, sid, text)
 			end
 		end
 	else
-		local deco = ""
-		if minetest.global_exists("default") then
-			deco = default.gui_bg .. default.gui_bg_img
-		end
+		local deco = bc_core.gui_bg .. bc_core.gui_bg_img
+
 		-- Show formspec to user
 		minetest.show_formspec(to,"awards:awards",
 			"size[8,8.6]" .. deco ..

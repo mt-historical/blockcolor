@@ -19,9 +19,7 @@ signs_lib = {}
 signs_lib.path = minetest.get_modpath(minetest.get_current_modname())
 screwdriver = screwdriver or {}
 
--- Load support for intllib.
-local S, NS = dofile(signs_lib.path .. "/intllib.lua")
-signs_lib.gettext = S
+local S = minetest.get_translator('signs_lib')
 
 -- text encoding
 dofile(signs_lib.path .. "/encoding.lua");
@@ -853,7 +851,3 @@ minetest.register_lbm({
 })
 
 -- locked sign
-
-if minetest.settings:get("log_mods") then
-	minetest.log("action", S("[MOD] signs loaded"))
-end

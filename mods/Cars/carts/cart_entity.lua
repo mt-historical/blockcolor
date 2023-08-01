@@ -370,7 +370,7 @@ minetest.register_entity("carts:cart" .. color, cart_entity)
 minetest.register_craftitem("carts:cart" .. color, {
 	description = color .. "Cart (Sneak+Click to pick up)",
 inventory_image = "cart.png^[colorize:#"..colour..":70",
-wield_image = "none.png",
+wield_image = "blank.png",
 		wield_scale = {x=1,y=1,z=0.5},
 	on_place = function(itemstack, placer, pointed_thing)
 		local under = pointed_thing.under

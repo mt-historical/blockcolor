@@ -33,7 +33,7 @@ for i in ipairs(source_list) do
 		use_texture_alpha = "clip",
 		is_ground_content = false,
 		groups = {cracky = 3},
-		sounds = default.node_sound_stone_defaults(),
+		sounds = bc_core.sound_stone(),
 		selection_box = {
 			type = "fixed",
 			fixed = {
@@ -60,7 +60,7 @@ for i in ipairs(source_list) do
 		use_texture_alpha = "clip",
 		is_ground_content = false,
 		groups = {cracky = 3},
-		sounds = default.node_sound_stone_defaults(),
+		sounds = bc_core.sound_stone(),
 		selection_box = {
 			type = "fixed",
 			fixed = {

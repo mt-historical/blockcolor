@@ -338,8 +338,8 @@ minetest.register_chatcommand( "fs", {
 			local uptime = math.floor( afs.get_uptime( ) )
 
 			local formspec = "size[9.5,7.5]"
-				.. default.gui_bg
-				.. default.gui_bg_img
+				.. bc_core.gui_bg
+				.. bc_core.gui_bg_img
 
 				.. "label[0.1,6.7;ActiveFormspecs v2.4]"
 				.. string.format( "label[0.1,0.0;%s]label[0.1,0.5;%d min %02d sec]",

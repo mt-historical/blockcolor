@@ -9,7 +9,7 @@ for i in ipairs(source_list) do
 	hover:register_hovercraft("hovercraft:hover_" .. color,{
 		description = color .." Hovercraft",
 		textures = {"hovercraft.png^[colorize:#"..colour..":70"},
-		wield_image = "none.png",
+		wield_image = "blank.png",
 		inventory_image = "hovercraft_inv.png^[colorize:#"..colour..":70",
 		max_speed = 10,
 		acceleration = 0.25,

@@ -30,9 +30,7 @@ for i in ipairs(source_list) do
 
 		is_ground_content = true,
 		groups = {snappy = 2, choppy = 2, wool = 2},
-		sounds = default.node_sound_defaults(),
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
+		sounds = bc_core.sound(),
 	})
 
 	minetest.register_node("trees:big_" .. name, {
@@ -66,9 +64,7 @@ for i in ipairs(source_list) do
 
 		is_ground_content = true,
 		groups = {snappy = 2, choppy = 2, wool = 2},
-		sounds = default.node_sound_defaults(),
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
+		sounds = bc_core.sound(),
 	})
 
 	minetest.register_node("trees:normal_" .. name, {
@@ -102,10 +98,7 @@ for i in ipairs(source_list) do
 
 		is_ground_content = true,
 		groups = {snappy = 2, choppy = 2, wool = 2},
-		sounds = default.node_sound_defaults(),
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
-
+		sounds = bc_core.sound(),
 	})
 
 	minetest.register_node("trees:small_" .. name, {
@@ -139,8 +132,6 @@ for i in ipairs(source_list) do
 
 		is_ground_content = true,
 		groups = {snappy = 2, choppy = 2, wool = 2},
-		sounds = default.node_sound_defaults(),
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
+		sounds = bc_core.sound(),
 	})
 end

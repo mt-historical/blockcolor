@@ -13,8 +13,8 @@ dofile(carts.modpath.."/functions.lua")
 dofile(carts.modpath.."/rails.lua")
 
 -- Support for non-default games
-if not default.player_attached then
-	default.player_attached = {}
+if not bc_core.player_attached then
+	bc_core.player_attached = {}
 end
 
 dofile(carts.modpath.."/cart_entity.lua")

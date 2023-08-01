@@ -2,7 +2,7 @@ hover = {}
 
 function hover:register_hovercraft(name, def)
 	minetest.register_entity(name, {
-  wield_image = "none.png",
+  wield_image = "blank.png",
 		physical = true,
 		collisionbox = {-0.8,0,-0.8, 0.8,1.2,0.8},
 		visual = "mesh",
@@ -161,7 +161,7 @@ function hover:register_hovercraft(name, def)
 	})
 	minetest.register_craftitem(name, {
 		description = def.description,
-  wield_image = "none.png",
+  wield_image = "blank.png",
 		inventory_image = def.inventory_image,
 		liquids_pointable = true,
 		on_place = function(itemstack, placer, pointed_thing)

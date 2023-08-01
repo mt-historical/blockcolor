@@ -1,21 +1,8 @@
-local source_list = {
-	{"black", "Darkened", "292421", 40, 36, 33},
-	{"blue", "Blue", "0000FF", 0, 0, 255},
-	{"green", "Green", "00FF00", 0, 255, 0},
-	{"white", "White", "F5F5F5", 245, 245, 245},
-	{"orange", "Orange", "FF6103", 255, 97, 3},
-	{"red", "Red", "FF0000", 255, 0, 0},
-	{"yellow", "Yellow", "FFFF00", 255, 255, 0},
-	{"pink", "pink", "FF69B4", 255, 105, 180}
-}
 
 for i in ipairs(source_list) do
 	local color = source_list[i][1]
 	local description = source_list[i][2]
 	local colour = source_list[i][3]
-	local red = source_list[i][4]
-	local green = source_list[i][5]
-	local blue = source_list[i][6]
 
 -- Functions
 
@@ -72,8 +59,8 @@ function airboat.on_rightclick(self, clicker)
 		self.driver = nil
 		self.auto = false
 		clicker:set_detach()
-		default.player_attached[name] = false
-		default.player_set_animation(clicker, "stand" , 30)
+		bc_core.player_attached[name] = false
+		bc_core.player_set_animation(clicker, "stand" , 30)
 		local pos = clicker:get_pos()
 		minetest.after(0.1, function()
 			clicker:set_pos(pos)
@@ -91,9 +78,9 @@ function airboat.on_rightclick(self, clicker)
 		self.driver = name
 		clicker:set_attach(self.object, "",
 			{x = 0, y = -2, z = 0}, {x = 0, y = 0, z = 0})
-		default.player_attached[name] = true
+		bc_core.player_attached[name] = true
 		minetest.after(0.2, function()
-			default.player_set_animation(clicker, "sit" , 30)
+			bc_core.player_set_animation(clicker, "sit" , 30)
 		end)
 		clicker:set_look_horizontal(self.object:getyaw())
 	end
@@ -115,7 +102,7 @@ function airboat.on_punch(self, puncher)
 		-- Detach
 		self.driver = nil
 		puncher:set_detach()
-		default.player_attached[name] = false
+		bc_core.player_attached[name] = false
 	end
 	if not self.driver then
 		-- Move to inventory
@@ -242,7 +229,7 @@ minetest.register_entity("airboat:airboat" ..color , airboat)
 minetest.register_craftitem("airboat:airboat" .. color, {
 	description = "Airboat" .. color,
 	inventory_image = "airboat_airboat_inv.png^[colorize:#"..colour..":70",
-	wield_image = "none.png",
+	wield_image = "blank.png",
 	wield_scale = {x = 4, y = 4, z = 4},
 	liquids_pointable = true,
 

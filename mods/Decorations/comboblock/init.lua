@@ -11,7 +11,7 @@ comboblock = {
 
 	}
 }
-local creative = minetest.settings:get_bool("creative_mode")
+
 for k, v1 in pairs(comboblock.index) do
 	local v1_def = minetest.registered_nodes[v1]
 	local v1_groups = table.copy(v1_def.groups)
@@ -73,20 +73,12 @@ for k, v1 in pairs(comboblock.index) do
 			local node = minetest.get_node(pos)
 			if node.name == v1 then
 				minetest.swap_node(pos, { name = k, param2 = 0 })
-				if not creative then
-					itemstack:take_item()
-					return itemstack
-				end
 			else
 				for _, v in pairs(comboblock.index) do
 					if node.name == v then
 						minetest.swap_node(pos,
 							{ name = "comboblock:" .. v1:split(":")[2] .. "_onc_" .. v:split(":")[2],
 								param2 = node.param2 })
-						if not creative then
-							itemstack:take_item()
-							return itemstack
-						end
 						return
 					end
 				end

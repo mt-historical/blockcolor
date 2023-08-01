@@ -4,14 +4,10 @@ for i in ipairs(source_list) do
 	local color = source_list[i][1]
 	local desc = source_list[i][2]
 	local colour = source_list[i][3]
-	local red = source_list[i][4]
-	local green = source_list[i][5]
-	local blue = source_list[i][6]
 
 	castle_shields.register_shield = function(name, desc, background_color, foreground_color, mask)
 		local tile_side = "color_white.png^[colorize:#"..colour..":70"
 		local tile_front = "color_white.png^[colorize:#"..colour..":70^(color_black.png^[mask:castle_shield_mask_"..mask..".png)"
-
 
 		minetest.register_node(minetest.get_current_modname()..":"..name, {
 			description = desc,
@@ -23,7 +19,7 @@ for i in ipairs(source_list) do
 			paramtype2 = "facedir",
 			paramtype = "light",
 			groups={cracky=3},
-			sounds = default.node_sound_metal_defaults(),
+			sounds = bc_core.sound_metal(),
 			node_box = {
 				type = "fixed",
 				fixed = {

@@ -90,41 +90,6 @@ function stairs.register_stair(subname, recipeitem, groups, images, description,
 			groups = { slabs_replace = 1 },
 		})
 	end
-
-	if recipeitem then
-		minetest.register_craft({
-			output = 'stairs:stair_' .. subname .. ' 8',
-			recipe = {
-				{ recipeitem, "",         "" },
-				{ recipeitem, recipeitem, "" },
-				{ recipeitem, recipeitem, recipeitem },
-			},
-		})
-
-		-- Flipped recipe for the silly minecrafters
-		minetest.register_craft({
-			output = 'stairs:stair_' .. subname .. ' 8',
-			recipe = {
-				{ "",         "",         recipeitem },
-				{ "",         recipeitem, recipeitem },
-				{ recipeitem, recipeitem, recipeitem },
-			},
-		})
-
-		-- Fuel
-		local baseburntime = minetest.get_craft_result({
-			method = "fuel",
-			width = 1,
-			items = { recipeitem }
-		}).time
-		if baseburntime > 0 then
-			minetest.register_craft({
-				type = "fuel",
-				recipe = 'stairs:stair_' .. subname,
-				burntime = math.floor(baseburntime * 0.75),
-			})
-		end
-	end
 end
 
 -- Slab facedir to placement 6d matching table
@@ -211,29 +176,6 @@ function stairs.register_slab(subname, recipeitem, groups, images, description, 
 			groups = { slabs_replace = 1 },
 		})
 	end
-
-	if recipeitem then
-		minetest.register_craft({
-			output = 'stairs:slab_' .. subname .. ' 6',
-			recipe = {
-				{ recipeitem, recipeitem, recipeitem },
-			},
-		})
-
-		-- Fuel
-		local baseburntime = minetest.get_craft_result({
-			method = "fuel",
-			width = 1,
-			items = { recipeitem }
-		}).time
-		if baseburntime > 0 then
-			minetest.register_craft({
-				type = "fuel",
-				recipe = 'stairs:slab_' .. subname,
-				burntime = math.floor(baseburntime * 0.5),
-			})
-		end
-	end
 end
 
 -- Optionally replace old "upside_down" nodes with new param2 versions.
@@ -277,7 +219,7 @@ stairs.register_stair_and_slab(
 	{ "color_white2.png^[colorize:#" .. color2 .. ":70" },
 	"Blue Stair",
 	"Blue Slab",
-	default.node_sound_wood_defaults(),
+	bc_core.sound_wood(),
 	color2,
 	"color_handwhite.png^(color_handwhite2.png^[colorize:#" .. color2 .. ":70)"
 )
@@ -289,7 +231,7 @@ stairs.register_stair_and_slab(
 	{ "color_white2.png^[colorize:#" .. color6 .. ":70" },
 	"Red Stair",
 	"Red Slab",
-	default.node_sound_wood_defaults(),
+	bc_core.sound_wood(),
 	color6,
 	"color_handwhite.png^(color_handwhite2.png^[colorize:#" .. color6 .. ":70)"
 )
@@ -301,7 +243,7 @@ stairs.register_stair_and_slab(
 	{ "color_white2.png^[colorize:#" .. color4 .. ":70" },
 	"White Stair",
 	"White Slab",
-	default.node_sound_wood_defaults(),
+	bc_core.sound_wood(),
 	color4,
 	"color_handwhite.png^(color_handwhite2.png^[colorize:#" .. color4 .. ":70)"
 )
@@ -313,7 +255,7 @@ stairs.register_stair_and_slab(
 	{ "color_white2.png^[colorize:#" .. color1 .. ":70" },
 	"Black Stair",
 	"Black Slab",
-	default.node_sound_wood_defaults(),
+	bc_core.sound_wood(),
 	color1,
 	"color_handwhite.png^(color_handwhite2.png^[colorize:#" .. color1 .. ":70)"
 )
@@ -325,7 +267,7 @@ stairs.register_stair_and_slab(
 	{ "color_white2.png^[colorize:#" .. color3 .. ":70" },
 	"Green Stair",
 	"Green Slab",
-	default.node_sound_wood_defaults(),
+	bc_core.sound_wood(),
 	color3,
 	"color_handwhite.png^(color_handwhite2.png^[colorize:#" .. color3 .. ":70)"
 )
@@ -337,7 +279,7 @@ stairs.register_stair_and_slab(
 	{ "color_white2.png^[colorize:#" .. color7 .. ":70" },
 	"Yellow Stair",
 	"Yellow Slab",
-	default.node_sound_wood_defaults(),
+	bc_core.sound_wood(),
 	color7,
 	"color_handwhite.png^(color_handwhite2.png^[colorize:#" .. color7 .. ":70)"
 )
@@ -349,7 +291,7 @@ stairs.register_stair_and_slab(
 	{ "color_white2.png^[colorize:#" .. color5 .. ":70" },
 	"Orange Stair",
 	"Orange Slab",
-	default.node_sound_wood_defaults(),
+	bc_core.sound_wood(),
 	color5,
 	"color_handwhite.png^(color_handwhite2.png^[colorize:#" .. color5 .. ":70)"
 )
@@ -361,7 +303,7 @@ stairs.register_stair_and_slab(
 	{ "color_white2.png^[colorize:#" .. color8 .. ":70" },
 	"Pink Stair",
 	"Pink Slab",
-	default.node_sound_wood_defaults(),
+	bc_core.sound_wood(),
 	color8,
 	"color_handwhite.png^(color_handwhite2.png^[colorize:#" .. color8 .. ":70)"
 )

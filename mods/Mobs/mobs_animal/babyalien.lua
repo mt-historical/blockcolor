@@ -1,5 +1,3 @@
-local S = mobs.intllib
-
 
 -- Panda by AspireMint (CC BY-SA 3.0)
 
@@ -73,4 +71,4 @@ mobs:spawn({
 	day_toggle = true,
 })
 
-mobs:register_egg("mobs_animal:babyalien", S("BabyAlien"), "mobs_alien.png", 1)
+mobs:register_egg("mobs_animal:babyalien", "BabyAlien", "mobs_alien.png", 1)

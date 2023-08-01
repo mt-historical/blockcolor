@@ -85,32 +85,17 @@ local slope_backhalf_cbox = {
 	}
 }
 
-
-local source_list = {
-	{"black", "Darkened", color1, 40, 36, 33},
-	{"blue", "Blue", color2, 0, 0, 255},
-	{"green", "Green", color3, 0, 255, 0},
-	{"white", "White", color4, 245, 245, 245},
-	{"orange", "Orange", color5, 255, 97, 3},
-	{"red", "Red", color6, 255, 0, 0},
-	{"yellow", "Yellow", color7, 255, 255, 0},
-	{"pink", "pink", color8, 255, 105, 180}
-}
-
 for i in ipairs(source_list) do
 	local name = source_list[i][1]
 	local desc = source_list[i][2]
 	local colour = source_list[i][3]
-	local red = source_list[i][4]
-	local green = source_list[i][5]
-	local blue = source_list[i][6]
 
 	-- 	drawtype = "glasslike",
 
 	-- Glass
 
 	minetest.register_node("slope:edge_glass_" .. name, {
-		description = desc .. "glass edge",
+		description = desc .. " glass edge",
 		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		wield_scale = {x=1,y=1,z=0.5},
 		inventory_image = "edge.png^[colorize:#"..colour..":70",
@@ -122,12 +107,12 @@ for i in ipairs(source_list) do
 		use_texture_alpha = "clip",
 		sunlight_propagates = true,
 		groups = {cracky=3, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_glass_defaults(),
+		sounds = bc_core.sound_glass(),
 		on_place = minetest.rotate_node,
 	})
 
 	minetest.register_node("slope:edgecorner_glass_" .. name, {
-		description = desc .. "edge",
+		description = desc .. " edge",
 		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
 		wield_scale = {x=1,y=1,z=0.5},
 		inventory_image = "edgecorner.png^[colorize:#"..colour..":70",
@@ -139,7 +124,7 @@ for i in ipairs(source_list) do
 		use_texture_alpha = "clip",
 		sunlight_propagates = true,
 		groups = {cracky=3, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_stone_defaults(),
+		sounds = bc_core.sound_stone(),
 		on_place = minetest.rotate_node,
 	})
 
@@ -156,12 +141,10 @@ for i in ipairs(source_list) do
 		use_texture_alpha = "clip",
 		sunlight_propagates = true,
 		groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_defaults(),
+		sounds = bc_core.sound(),
 		on_place = minetest.rotate_node,
 		collision_box = slope_cbox,
 		selection_box = slope_cbox,
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
 	})
 
 	minetest.register_node("slope:ocorner_glass_"..name, {
@@ -177,12 +160,10 @@ for i in ipairs(source_list) do
 		use_texture_alpha = "clip",
 		sunlight_propagates = true,
 		groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_wood_defaults(),
+		sounds = bc_core.sound_wood(),
 		on_place = minetest.rotate_node,
 		collision_box = ocorner_cbox,
 		selection_box = ocorner_cbox,
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
 	})
 	minetest.register_node("slope:icorner_glass_"..name, {
 		description = desc.." slope (inner corner)",
@@ -197,12 +178,11 @@ for i in ipairs(source_list) do
 		use_texture_alpha = "clip",
 		sunlight_propagates = true,
 		groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_defaults(),
+		sounds = bc_core.sound(),
 		on_place = minetest.rotate_node,
 		collision_box = ocorner_cbox,
 		selection_box = ocorner_cbox,
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
+
 	})
 
 	minetest.register_node("slope:slopelong_glass_"..name, {
@@ -216,14 +196,13 @@ for i in ipairs(source_list) do
 		paramtype = "light",
 		paramtype2 = "facedir",
 		groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_defaults(),
+		sounds = bc_core.sound(),
 		use_texture_alpha = "clip",
 		sunlight_propagates = true,
 		on_place = minetest.rotate_node,
 		collision_box = slope_cbox_long,
 		selection_box = slope_cbox_long,
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
+
 	})
 
 	minetest.register_node("slope:cylinder_glass_"..name, {
@@ -239,10 +218,8 @@ for i in ipairs(source_list) do
 		use_texture_alpha = "clip",
 		sunlight_propagates = true,
 		groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_defaults(),
+		sounds = bc_core.sound(),
 		on_place = minetest.rotate_node,
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
 	})
 
 	minetest.register_node("slope:cone_glass_"..name, {
@@ -258,12 +235,10 @@ for i in ipairs(source_list) do
 		use_texture_alpha = "clip",
 		sunlight_propagates = true,
 		groups = {snappy=2, cracky=3, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_defaults(),
+		sounds = bc_core.sound(),
 		on_place = minetest.rotate_node,
 		selection_box = tall_pyr_cbox,
 		collision_box = tall_pyr_cbox,
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
 	})
 
 	minetest.register_node("slope:sphere_glass_"..name, {
@@ -279,9 +254,7 @@ for i in ipairs(source_list) do
 		use_texture_alpha = "clip",
 		sunlight_propagates = true,
 		groups = {snappy=2, cracky=3, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_defaults(),
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
+		sounds = bc_core.sound(),
 	})
 
 
@@ -298,7 +271,7 @@ for i in ipairs(source_list) do
 		paramtype = "light",
 		paramtype2 = "facedir",
 		groups = {cracky=3, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_stone_defaults(),
+		sounds = bc_core.sound_stone(),
 		on_place = minetest.rotate_node,
 	})
 
@@ -313,7 +286,7 @@ for i in ipairs(source_list) do
 		paramtype = "light",
 		paramtype2 = "facedir",
 		groups = {cracky=3, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_stone_defaults(),
+		sounds = bc_core.sound_stone(),
 		on_place = minetest.rotate_node,
 	})
 
@@ -328,12 +301,10 @@ for i in ipairs(source_list) do
 		paramtype = "light",
 		paramtype2 = "facedir",
 		groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_defaults(),
+		sounds = bc_core.sound(),
 		on_place = minetest.rotate_node,
 		collision_box = slope_cbox,
 		selection_box = slope_cbox,
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
 	})
 
 	minetest.register_node("slope:ocorner_"..name, {
@@ -347,12 +318,10 @@ for i in ipairs(source_list) do
 		paramtype = "light",
 		paramtype2 = "facedir",
 		groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_wood_defaults(),
+		sounds = bc_core.sound_wood(),
 		on_place = minetest.rotate_node,
 		collision_box = ocorner_cbox,
 		selection_box = ocorner_cbox,
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
 	})
 	minetest.register_node("slope:icorner_"..name, {
 		description = desc.." slope (inner corner)",
@@ -365,12 +334,10 @@ for i in ipairs(source_list) do
 		paramtype = "light",
 		paramtype2 = "facedir",
 		groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_defaults(),
+		sounds = bc_core.sound(),
 		on_place = minetest.rotate_node,
 		collision_box = ocorner_cbox,
 		selection_box = ocorner_cbox,
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
 	})
 
 	minetest.register_node("slope:slopelong_"..name, {
@@ -384,12 +351,10 @@ for i in ipairs(source_list) do
 		paramtype = "light",
 		paramtype2 = "facedir",
 		groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_defaults(),
+		sounds = bc_core.sound(),
 		on_place = minetest.rotate_node,
 		collision_box = slope_cbox_long,
 		selection_box = slope_cbox_long,
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
 	})
 
 	minetest.register_node("slope:cylinder_"..name, {
@@ -403,10 +368,8 @@ for i in ipairs(source_list) do
 		paramtype = "light",
 		paramtype2 = "facedir",
 		groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_defaults(),
+		sounds = bc_core.sound(),
 		on_place = minetest.rotate_node,
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
 	})
 
 	minetest.register_node("slope:cone_"..name, {
@@ -420,12 +383,10 @@ for i in ipairs(source_list) do
 		paramtype = "light",
 		paramtype2 = "facedir",
 		groups = {snappy=2, cracky=3, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_defaults(),
+		sounds = bc_core.sound(),
 		on_place = minetest.rotate_node,
 		selection_box = tall_pyr_cbox,
 		collision_box = tall_pyr_cbox,
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
 	})
 
 	minetest.register_node("slope:sphere_"..name, {
@@ -439,9 +400,7 @@ for i in ipairs(source_list) do
 		paramtype = "light",
 		paramtype2 = "facedir",
 		groups = {snappy=2, cracky=3, oddly_breakable_by_hand=2},
-		sounds = default.node_sound_defaults(),
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
+		sounds = bc_core.sound(),
 	})
 
 end

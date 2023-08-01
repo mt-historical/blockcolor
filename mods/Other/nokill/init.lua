@@ -17,7 +17,7 @@ minetest.register_on_punchplayer(function(target, hitter, time_from_last_punch, 
 	local hittername = hitter:get_player_name()
 
 	local preventkill = minetest.check_player_privs(hitter:get_player_name(), {nokill=true})
-	local isplayer = target:is_player() 
+	local isplayer = target:is_player()
 
 	return isplayer and preventkill and hittername ~= ADMIN
 end)

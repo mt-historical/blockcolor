@@ -1,5 +1,5 @@
 
-local S = mobs.intllib
+local S = minetest.get_translator('mobs')
 
 -- name tag
 minetest.register_craftitem("mobs:nametag", {

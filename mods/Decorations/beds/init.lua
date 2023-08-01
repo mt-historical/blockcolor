@@ -27,7 +27,7 @@ local colour2 = beds_list[i][3]
 		paramtype2 = "facedir",
 		stack_max = 1,
 		groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=3},
-		sounds = default.node_sound_wood_defaults(),
+		sounds = bc_core.sound_wood(),
 		node_box = {
 			type = "fixed",
 			fixed = {
@@ -98,7 +98,7 @@ local colour2 = beds_list[i][3]
 		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour2..":70)",
 		 wield_scale = {x=1,y=1,z=0.5},
 		groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=3},
-		sounds = default.node_sound_wood_defaults(),
+		sounds = bc_core.sound_wood(),
 		node_box = {
 		type = "fixed",
 			fixed = {

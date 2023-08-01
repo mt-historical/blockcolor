@@ -5,23 +5,13 @@ mobs = {}
 mobs.mod = "redo"
 mobs.version = "20180701"
 
-
--- Intllib
-local MP = minetest.get_modpath(minetest.get_current_modname())
-local S, NS = dofile(MP .. "/intllib.lua")
-mobs.intllib = S
-
-
--- CMI support check
-local use_cmi = minetest.global_exists("cmi")
-
-
 -- Invisibility mod check
 mobs.invis = {}
 if minetest.global_exists("invisibility") then
 	mobs.invis = invisibility
 end
 
+local S = minetest.get_translator('mobs')
 
 -- creative check
 local creative_mode_cache = minetest.settings:get_bool("creative_mode")
@@ -479,10 +469,6 @@ local check_for_death = function(self, cause, cmi_cause)
 
 		self.on_die(self, pos)
 
-		if use_cmi then
-			cmi.notify_die(self.object, cmi_cause)
-		end
-
 		self.object:remove()
 
 		return true
@@ -507,19 +493,9 @@ local check_for_death = function(self, cause, cmi_cause)
 		set_animation(self, "die")
 
 		minetest.after(length, function(self)
-
-			if use_cmi and self.object:get_luaentity() then
-				cmi.notify_die(self.object, cmi_cause)
-			end
-
 			self.object:remove()
 		end, self)
 	else
-
-		if use_cmi then
-			cmi.notify_die(self.object, cmi_cause)
-		end
-
 		self.object:remove()
 	end
 
@@ -2361,23 +2337,18 @@ local mob_punch = function(self, hitter, tflp, tool_capabilities, dir)
 		tflp = 0.2
 	end
 
-	if use_cmi then
-		damage = cmi.calculate_damage(self.object, hitter, tflp, tool_capabilities, dir)
-	else
+	for group,_ in pairs( (tool_capabilities.damage_groups or {}) ) do
 
-		for group,_ in pairs( (tool_capabilities.damage_groups or {}) ) do
+		tmp = tflp / (tool_capabilities.full_punch_interval or 1.4)
 
-			tmp = tflp / (tool_capabilities.full_punch_interval or 1.4)
-
-			if tmp < 0 then
-				tmp = 0.0
-			elseif tmp > 1 then
-				tmp = 1.0
-			end
-
-			damage = damage + (tool_capabilities.damage_groups[group] or 0)
-				* tmp * ((armor[group] or 0) / 100.0)
+		if tmp < 0 then
+			tmp = 0.0
+		elseif tmp > 1 then
+			tmp = 1.0
 		end
+
+		damage = damage + (tool_capabilities.damage_groups[group] or 0)
+			* tmp * ((armor[group] or 0) / 100.0)
 	end
 
 	-- check for tool immunity or special damage
@@ -2398,15 +2369,6 @@ local mob_punch = function(self, hitter, tflp, tool_capabilities, dir)
 	if damage <= -1 then
 		self.health = self.health - floor(damage)
 		return
-	end
-
---	print ("Mob Damage is", damage)
-
-	if use_cmi then
-
-		local cancel =  cmi.notify_punch(self.object, hitter, tflp, tool_capabilities, dir, damage)
-
-		if cancel then return end
 	end
 
 	-- add weapon wear
@@ -2636,10 +2598,6 @@ local mob_staticdata = function(self)
 		self.rotate = math.rad(90)
 	end
 
-	if use_cmi then
-		self.serialized_cmi_components = cmi.serialize_components(self._cmi_components)
-	end
-
 	local tmp = {}
 
 	for _,stat in pairs(self) do
@@ -2795,20 +2753,11 @@ local mob_activate = function(self, staticdata, def, dtime)
 	if def.after_activate then
 		def.after_activate(self, staticdata, def, dtime)
 	end
-
-	if use_cmi then
-		self._cmi_components = cmi.activate_components(self.serialized_cmi_components)
-		cmi.notify_activate(self.object, dtime)
-	end
 end
 
 
 -- main mob function
 local mob_step = function(self, dtime)
-
-	if use_cmi then
-		cmi.notify_step(self.object, dtime)
-	end
 
 	local pos = self.object:get_pos()
 	local yaw = 0
@@ -3827,8 +3776,8 @@ function mobs:feed_tame(self, clicker, feed_count, breed, tame)
 		local tag = self.nametag or ""
 
 		minetest.show_formspec(name, "mobs_nametag", "size[8,4]"
-			.. default.gui_bg
-			.. default.gui_bg_img
+			.. bc_core.gui_bg
+			.. bc_core.gui_bg_img
 			.. "field[0.5,1;7.5,0;name;" .. minetest.formspec_escape(S("Enter name:")) .. ";" .. tag .. "]"
 			.. "button_exit[2.5,3.5;3,1;mob_rename;" .. minetest.formspec_escape(S("Rename")) .. "]")
 	end

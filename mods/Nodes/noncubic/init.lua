@@ -8,12 +8,6 @@
 ----------------------------------------
 detail_level = 16
 
-
--- HERE YOU CAN DE/ACTIVATE BACKGROUND FOR MILLING MENU:
---------------------------------------------------------
-allow_menu_background = false
-
-
 -- VAR DECLARATION:
 -------------------
 noncubic = {}
@@ -47,22 +41,6 @@ function noncubic.register_slope(subname, recipeitem, groups, images, descriptio
 		},
 		groups = groups,
 	})
-	minetest.register_craft({
-		output = 'noncubic:slope_' .. subname .. ' 6',
-		recipe = {
-			{ recipeitem, "",         "" },
-			{ recipeitem, recipeitem, "" },
-			{ recipeitem, recipeitem, recipeitem },
-		},
-	})
-	minetest.register_craft({
-		output = 'noncubic:slope_' .. subname .. ' 6',
-		recipe = {
-			{ "",         "",         recipeitem },
-			{ "",         recipeitem, recipeitem },
-			{ recipeitem, recipeitem, recipeitem },
-		},
-	})
 end
 
 -- SLOPE Lying
@@ -90,14 +68,6 @@ function noncubic.register_slope_lying(subname, recipeitem, groups, images, desc
 			fixed = slopeboxlying,
 		},
 		groups = groups,
-	})
-	minetest.register_craft({
-		output = 'noncubic:slope_lying_' .. subname .. ' 1',
-		recipe = {
-			{ "", "",                           "" },
-			{ "", 'noncubic:slope_' .. subname, "" },
-			{ "", "",                           "" },
-		},
 	})
 end
 
@@ -131,22 +101,6 @@ function noncubic.register_slope_upsdown(subname, recipeitem, groups, images, de
 		},
 		groups = groups,
 	})
-	minetest.register_craft({
-		output = 'noncubic:slope_upsdown_' .. subname .. ' 6',
-		recipe = {
-			{ recipeitem, recipeitem, recipeitem },
-			{ "",         recipeitem, recipeitem },
-			{ "",         "",         recipeitem },
-		},
-	})
-	minetest.register_craft({
-		output = 'noncubic:slope_upsdown_' .. subname .. ' 6',
-		recipe = {
-			{ recipeitem, recipeitem, recipeitem },
-			{ recipeitem, recipeitem, "" },
-			{ recipeitem, "",         "" },
-		},
-	})
 end
 
 -- SLOPE EDGE
@@ -173,22 +127,6 @@ function noncubic.register_slope_edge(subname, recipeitem, groups, images, descr
 			fixed = slopeboxedge,
 		},
 		groups = groups,
-	})
-	minetest.register_craft({
-		output = 'noncubic:slope_edge_' .. subname .. ' 3',
-		recipe = {
-			{ "",         "",         "" },
-			{ recipeitem, "",         "" },
-			{ recipeitem, recipeitem, "" },
-		},
-	})
-	minetest.register_craft({
-		output = 'noncubic:slope_edge_' .. subname .. ' 3',
-		recipe = {
-			{ "", "",         "" },
-			{ "", "",         recipeitem },
-			{ "", recipeitem, recipeitem },
-		},
 	})
 end
 
@@ -255,22 +193,6 @@ function noncubic.register_slope_inner_edge(subname, recipeitem, groups, images,
 		},
 		groups = groups,
 	})
-	minetest.register_craft({
-		output = 'noncubic:slope_inner_edge_' .. subname .. ' 3',
-		recipe = {
-			{ "",         "",         recipeitem },
-			{ recipeitem, "",         "" },
-			{ recipeitem, recipeitem, "" },
-		},
-	})
-	minetest.register_craft({
-		output = 'noncubic:slope_inner_edge_' .. subname .. ' 3',
-		recipe = {
-			{ recipeitem, "",         "" },
-			{ "",         "",         recipeitem },
-			{ "",         recipeitem, recipeitem },
-		},
-	})
 end
 
 -- SLOPE EDGE UPSIDE DOWN
@@ -302,22 +224,6 @@ function noncubic.register_slope_upsdown_edge(subname, recipeitem, groups, image
 			fixed = slopeupdwnboxedge,
 		},
 		groups = groups,
-	})
-	minetest.register_craft({
-		output = 'noncubic:slope_upsdown_edge_' .. subname .. ' 3',
-		recipe = {
-			{ "", recipeitem, recipeitem },
-			{ "", "",         recipeitem },
-			{ "", "",         "" },
-		},
-	})
-	minetest.register_craft({
-		output = 'noncubic:slope_upsdown_edge_' .. subname .. ' 3',
-		recipe = {
-			{ recipeitem, recipeitem, "" },
-			{ recipeitem, "",         "" },
-			{ "",         "",         "" },
-		},
 	})
 end
 
@@ -388,22 +294,6 @@ function noncubic.register_slope_upsdown_inner_edge(subname, recipeitem, groups,
 		},
 		groups = groups,
 	})
-	minetest.register_craft({
-		output = 'noncubic:slope_upsdown_inner_edge_' .. subname .. ' 3',
-		recipe = {
-			{ "",         recipeitem, recipeitem },
-			{ "",         "",         recipeitem },
-			{ recipeitem, "",         "" },
-		},
-	})
-	minetest.register_craft({
-		output = 'noncubic:slope_upsdown_inner_edge_' .. subname .. ' 3',
-		recipe = {
-			{ recipeitem, recipeitem, "" },
-			{ recipeitem, "",         "" },
-			{ "",         "",         recipeitem },
-		},
-	})
 end
 
 -- PYRAMID
@@ -431,14 +321,6 @@ function noncubic.register_pyramid(subname, recipeitem, groups, images, descript
 			fixed = pyrabox,
 		},
 		groups = groups,
-	})
-	minetest.register_craft({
-		output = 'noncubic:pyramid_' .. subname .. ' 3',
-		recipe = {
-			{ "",         "",         "" },
-			{ "",         recipeitem, "" },
-			{ recipeitem, "",         recipeitem },
-		},
 	})
 end
 
@@ -472,14 +354,6 @@ function noncubic.register_spike(subname, recipeitem, groups, images, descriptio
 		},
 		groups = groups,
 	})
-	minetest.register_craft({
-		output = 'noncubic:spike_' .. subname .. ' 5',
-		recipe = {
-			{ "",         recipeitem, "" },
-			{ recipeitem, "",         recipeitem },
-			{ recipeitem, "",         recipeitem },
-		},
-	})
 end
 
 -- Block one curved edge
@@ -509,14 +383,6 @@ function noncubic.register_onecurvededge(subname, recipeitem, groups, images, de
 		},
 		groups = groups,
 	})
-	minetest.register_craft({
-		output = 'noncubic:onecurvededge_' .. subname .. ' 8',
-		recipe = {
-			{ "",         recipeitem, recipeitem },
-			{ recipeitem, recipeitem, recipeitem },
-			{ recipeitem, recipeitem, recipeitem },
-		},
-	})
 end
 
 -- Block two curved edges
@@ -545,14 +411,6 @@ function noncubic.register_twocurvededge(subname, recipeitem, groups, images, de
 			fixed = quartercyclebox2,
 		},
 		groups = groups,
-	})
-	minetest.register_craft({
-		output = 'noncubic:twocurvededge_' .. subname .. ' 3',
-		recipe = {
-			{ "",                                   "",                                   "" },
-			{ 'noncubic:onecurvededge_' .. subname, "",                                   "" },
-			{ 'noncubic:onecurvededge_' .. subname, 'noncubic:onecurvededge_' .. subname, "" },
-		},
 	})
 end
 
@@ -587,22 +445,6 @@ function noncubic.register_cylinder(subname, recipeitem, groups, images, descrip
 		},
 		groups = groups,
 	})
-	minetest.register_craft({
-		output = 'noncubic:cylinder_' .. subname .. ' 6',
-		recipe = {
-			{ recipeitem, recipeitem, "" },
-			{ recipeitem, recipeitem, "" },
-			{ recipeitem, recipeitem, "" },
-		},
-	})
-	minetest.register_craft({
-		output = 'noncubic:cylinder_' .. subname .. ' 1',
-		recipe = {
-			{ "", "",                                         "" },
-			{ "", 'noncubic:cylinder_horizontal_' .. subname, "" },
-			{ "", "",                                         "" },
-		},
-	})
 end
 
 -- Cylinder Horizontal
@@ -635,22 +477,6 @@ function noncubic.register_cylinder_horizontal(subname, recipeitem, groups, imag
 			fixed = cylbox_horizontal,
 		},
 		groups = groups,
-	})
-	minetest.register_craft({
-		output = 'noncubic:cylinder_horizontal_' .. subname .. ' 6',
-		recipe = {
-			{ "",         "",         "" },
-			{ recipeitem, recipeitem, recipeitem },
-			{ recipeitem, recipeitem, recipeitem },
-		},
-	})
-	minetest.register_craft({
-		output = 'noncubic:cylinder_horizontal_' .. subname .. ' 1',
-		recipe = {
-			{ "", "",                              "" },
-			{ "", 'noncubic:cylinder_' .. subname, "" },
-			{ "", "",                              "" },
-		},
 	})
 end
 
@@ -685,14 +511,6 @@ function noncubic.register_sphere(subname, recipeitem, groups, images, descripti
 		},
 		groups = groups,
 	})
-	minetest.register_craft({
-		output = 'noncubic:cylinder_sphere_' .. subname .. ' 4',
-		recipe = {
-			{ "",         recipeitem, "" },
-			{ recipeitem, "",         recipeitem },
-			{ "",         recipeitem, "" },
-		},
-	})
 end
 
 -- Element straight
@@ -716,14 +534,6 @@ function noncubic.register_element_straight(subname, recipeitem, groups, images,
 			},
 		},
 		groups = groups,
-	})
-	minetest.register_craft({
-		output = 'noncubic:element_straight_' .. subname .. ' 12',
-		recipe = {
-			{ "", recipeitem, "" },
-			{ "", recipeitem, "" },
-			{ "", recipeitem, "" },
-		},
 	})
 end
 
@@ -752,14 +562,6 @@ function noncubic.register_element_edge(subname, recipeitem, groups, images, des
 			},
 		},
 		groups = groups,
-	})
-	minetest.register_craft({
-		output = 'noncubic:element_edge_' .. subname .. ' 10',
-		recipe = {
-			{ recipeitem, recipeitem, recipeitem },
-			{ "",         "",         recipeitem },
-			{ "",         "",         recipeitem },
-		},
 	})
 end
 
@@ -791,14 +593,6 @@ function noncubic.register_element_t(subname, recipeitem, groups, images, descri
 		},
 		groups = groups,
 	})
-	minetest.register_craft({
-		output = 'noncubic:element_t_' .. subname .. ' 8',
-		recipe = {
-			{ "",         "",         "" },
-			{ recipeitem, recipeitem, recipeitem },
-			{ "",         recipeitem, "" },
-		},
-	})
 end
 
 -- Element Cross
@@ -829,14 +623,6 @@ function noncubic.register_element_cross(subname, recipeitem, groups, images, de
 		},
 		groups = groups,
 	})
-	minetest.register_craft({
-		output = 'noncubic:element_cross_' .. subname .. ' 10',
-		recipe = {
-			{ "",         recipeitem, "" },
-			{ recipeitem, recipeitem, recipeitem },
-			{ "",         recipeitem, "" },
-		},
-	})
 end
 
 -- Element End
@@ -858,14 +644,6 @@ function noncubic.register_element_end(subname, recipeitem, groups, images, desc
 			fixed = { -0.3, -0.5, -0.3, 0.3, 0, 0.5 },
 		},
 		groups = groups,
-	})
-	minetest.register_craft({
-		output = 'noncubic:element_end_' .. subname .. ' 8',
-		recipe = {
-			{ "", "",         "" },
-			{ "", recipeitem, "" },
-			{ "", recipeitem, "" },
-		},
 	})
 end
 
@@ -890,14 +668,6 @@ function noncubic.register_element_straight_double(subname3, recipeitem3, groups
 			},
 		},
 		groups = groups3,
-	})
-	minetest.register_craft({
-		output = 'noncubic:element_straight_double_' .. subname3 .. ' 1',
-		recipe = {
-			{ "", "",                                          "" },
-			{ "", 'noncubic:element_straight_' .. recipeitem3, "" },
-			{ "", 'noncubic:element_straight_' .. recipeitem3, "" },
-		},
 	})
 end
 
@@ -926,14 +696,6 @@ function noncubic.register_element_edge_double(subname3, recipeitem3, groups3, i
 			},
 		},
 		groups = groups3,
-	})
-	minetest.register_craft({
-		output = 'noncubic:element_edge_double_' .. subname3 .. ' 1',
-		recipe = {
-			{ "", "",                                      "" },
-			{ "", 'noncubic:element_edge_' .. recipeitem3, "" },
-			{ "", 'noncubic:element_edge_' .. recipeitem3, "" },
-		},
 	})
 end
 
@@ -965,14 +727,6 @@ function noncubic.register_element_t_double(subname3, recipeitem3, groups3, imag
 		},
 		groups = groups3,
 	})
-	minetest.register_craft({
-		output = 'noncubic:element_t_double_' .. subname3 .. ' 1',
-		recipe = {
-			{ "", "",                                   "" },
-			{ "", 'noncubic:element_t_' .. recipeitem3, "" },
-			{ "", 'noncubic:element_t_' .. recipeitem3, "" },
-		},
-	})
 end
 
 -- Element Cross Double
@@ -1003,14 +757,6 @@ function noncubic.register_element_cross_double(subname3, recipeitem3, groups3, 
 		},
 		groups = groups3,
 	})
-	minetest.register_craft({
-		output = 'noncubic:element_cross_double_' .. subname3 .. ' 1',
-		recipe = {
-			{ "", "",                                       "" },
-			{ "", 'noncubic:element_cross_' .. recipeitem3, "" },
-			{ "", 'noncubic:element_cross_' .. recipeitem3, "" },
-		},
-	})
 end
 
 -- Element End Double
@@ -1032,14 +778,6 @@ function noncubic.register_element_end_double(subname3, recipeitem3, groups3, im
 			fixed = { -0.3, -0.5, -0.3, 0.3, 0.5, 0.5 },
 		},
 		groups = groups3,
-	})
-	minetest.register_craft({
-		output = 'noncubic:element_end_double_' .. subname3 .. ' 1',
-		recipe = {
-			{ "", "",                                     "" },
-			{ "", 'noncubic:element_end_' .. recipeitem3, "" },
-			{ "", 'noncubic:element_end_' .. recipeitem3, "" },
-		},
 	})
 end
 
@@ -1063,34 +801,12 @@ function noncubic.register_stick(subname2, recipeitem2, groups2, images2, descri
 		},
 		groups = groups2,
 	})
-	minetest.register_craft({
-		output = 'noncubic:stick_' .. subname2 .. ' 8',
-		recipe = {
-			{ 'default:stick', "", "" },
-			{ "",              "", "" },
-			{ recipeitem2,     "", "" },
-		},
-	})
 end
-
-local source_list = {
-	{ "black",  "Darkened", "292421", 40,  36,  33 },
-	{ "blue",   "Blue",     "0000FF", 0,   0,   255 },
-	{ "green",  "Green",    "00FF00", 0,   255, 0 },
-	{ "white",  "White",    "F5F5F5", 245, 245, 245 },
-	{ "orange", "Orange",   "FF6103", 255, 97,  3 },
-	{ "red",    "Red",      "FF0000", 255, 0,   0 },
-	{ "yellow", "Yellow",   "FFFF00", 255, 255, 0 },
-	{ "pink",   "pink",     "FF69B4", 255, 105, 180 }
-}
 
 for i in ipairs(source_list) do
 	local color1 = source_list[i][1]
 	local color2 = source_list[i][2]
 	local color3 = source_list[i][3]
-	local red = source_list[i][4]
-	local green = source_list[i][5]
-	local blue = source_list[i][6]
 
 	-- REGISTER NEW NONCUBIC's PART 2: noncubic.register_element_end(subname, recipeitem, groups, images, desc_element_xyz)
 	-----------------------------------------------------------------------------------------------------------------------

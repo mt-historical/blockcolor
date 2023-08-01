@@ -8,23 +8,20 @@ color7 = minetest.settings:get("color7") or "FFFF00"
 color8 = minetest.settings:get("color8") or "FF69B4"
 
 source_list = {
-	{"black", "Color1", color1, 40, 36, 33},
-	{"blue", "Color2", color2, 0, 0, 255},
-	{"green", "Color3", color3, 0, 255, 0},
-	{"white", "Color4", color4, 245, 245, 245},
-	{"orange", "Color5", color5, 255, 97, 3},
-	{"red", "Color6", color6, 255, 0, 0},
-	{"yellow", "Color7", color7, 255, 255, 0},
-	{"pink", "Color8", color8, 255, 105, 180}
+	{"black", "Black", color1, 40, 36, 33},
+	{"blue", "Blue", color2, 0, 0, 255},
+	{"green", "Green", color3, 0, 255, 0},
+	{"white", "White", color4, 245, 245, 245},
+	{"orange", "Orange", color5, 255, 97, 3},
+	{"red", "Red", color6, 255, 0, 0},
+	{"yellow", "Yellow", color7, 255, 255, 0},
+	{"pink", "Pink", color8, 255, 105, 180}
 }
 
 for i in ipairs(source_list) do
 	local name = source_list[i][1]
 	local desc = source_list[i][2]
 	local colour = source_list[i][3]
-	local red = source_list[i][4]
-	local green = source_list[i][5]
-	local blue = source_list[i][6]
 
 	minetest.register_node("color:" .. name, {
 		description = desc .. " color",
@@ -34,8 +31,73 @@ for i in ipairs(source_list) do
 		wield_scale = {x=1,y=1,z=0.5},
 		is_ground_content = true,
 		groups = {snappy = 2, choppy = 2, wool = 2},
-		sounds = default.node_sound_defaults(),
-		oddly_breakable_by_hand = 1,
-		dig_immediate = 3,
+		sounds = bc_core.sound(),
+	})
+
+	-- Simple color registrations consolidated from separate mods
+
+	minetest.register_node(":carpet:" .. name, {
+		description = desc .. " Carpet",
+		drawtype = "raillike",
+		tiles = {"color_white.png^[colorize:#"..colour..":70"},
+		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
+		inventory_image = "carpets.png^[colorize:#"..colour..":70",
+		wield_scale = {x=1,y=1,z=0.5},
+		paramtype = "light",
+		is_ground_content = true,
+		walkable = false,
+		buildable_to = true,
+		selection_box = {
+			type = "fixed",
+			fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
+		},
+		groups = {dig_immediate=3},
+	})
+
+	minetest.register_node(":glass:" .. name , {
+		description = desc .. " Glass",
+		drawtype = "glasslike",
+		tiles = {"whiteglass.png^[colorize:#"..colour..":70"},
+		inventory_image = "windows.png^[colorize:#"..colour..":70",
+		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#"..colour..":70)",
+		wield_scale = {x=1,y=1,z=0.5},
+		paramtype = "light",
+		use_texture_alpha = "clip",
+		sunlight_propagates = true,
+		sounds = bc_core.sound_glass(),
+		groups = {cracky=3,oddly_breakable_by_hand=3},
+	})
+
+	minetest.register_node(":light:" .. name, {
+		description = desc .. " light",
+		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#" .. colour .. ":70)",
+		wield_scale = { x = 1, y = 1, z = 0.5 },
+		inventory_image = "lights.png^[colorize:#" .. colour .. ":70",
+		tiles = { "color_white.png^[colorize:#" .. colour .. ":70" },
+		paramtype = "light",
+		light_source = 14,
+		is_ground_content = true,
+		groups = { snappy = 2, choppy = 2, wool = 2 },
+		sounds = bc_core.sound(),
+	})
+
+	minetest.register_node(":fence:" .. name, {
+		description = desc .. " Fence ",
+		wield_image = "color_handwhite.png^(color_handwhite2.png^[colorize:#" .. colour .. ":70)",
+		inventory_image = "fence.png^[colorize:#" .. colour .. ":70",
+		wield_scale = { x = 1, y = 1, z = 0.5 },
+		tiles = { "color_white.png^[colorize:#" .. colour .. ":70" },
+		drawtype = "fencelike",
+		paramtype = "light",
+		selection_box = {
+			type = "fixed",
+			fixed = { -1 / 7, -1 / 2, -1 / 7, 1 / 7, 1 / 2, 1 / 7 },
+		},
+		groups = { choppy = 3, flammable = 2 },
+		sounds = {
+			footstep = { name = "wood_woodstep" },
+			dig = { name = "wood_woodtool" },
+			place = { name = "default_stoneplace" },
+		},
 	})
 end
