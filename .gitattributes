@@ -1,2 +1,3 @@
 *.blend export-ignore
+*.blend.gz export-ignore
 *.xcf export-ignore
