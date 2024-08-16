@@ -17,6 +17,7 @@ minetest.FORMSPEC_SIGTIME = 5		-- timeout reached
 local srng = SecureRandom()
 if srng ~= nil then
 	minetest.log("error", "Unable to initalize random number generator, formspecs may be insecure.")
+end
 
 local afs = { }		-- obtain localized, protected namespace
 
