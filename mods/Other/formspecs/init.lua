@@ -25,7 +25,7 @@ afs.forms = { }
 afs.timers = { }
 afs.session_id = 0
 if srng ~= nil then
-	afs.session_seed = srng:next(20)
+	afs.session_seed = srng:next_bytes(20)
 else
 	afs.session_seed = tostring(math.random( 0, 65535 ))
 end
