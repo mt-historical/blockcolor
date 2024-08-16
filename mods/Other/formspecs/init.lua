@@ -14,12 +14,20 @@ minetest.FORMSPEC_SIGTERM = 3		-- server is shutting down
 minetest.FORMSPEC_SIGPROC = 4		-- procedural closure
 minetest.FORMSPEC_SIGTIME = 5		-- timeout reached
 
+local srng = SecureRandom()
+if srng ~= nil then
+	minetest.log("error", "Unable to initalize random number generator, formspecs may be insecure.")
+
 local afs = { }		-- obtain localized, protected namespace
 
 afs.forms = { }
 afs.timers = { }
 afs.session_id = 0
-afs.session_seed = math.random( 0, 65535 )
+if srng ~= nil then
+	afs.session_seed = srng:next(20)
+else
+	afs.session_seed = tostring(math.random( 0, 65535 ))
+end
 
 afs.stats = { active = 0, opened = 0, closed = 0 }
 
@@ -209,7 +217,7 @@ minetest.create_form = function ( meta, player_name, formspec, on_close )
 
 	form = { }
 	form.id = afs.session_id
-	form.name = minetest.get_password_hash( player_name, afs.session_seed + afs.session_id )
+	form.name = minetest.sha1( player_name..afs.session_seed..tostring(afs.session_id) )
 	form.player = minetest.get_player_by_name( player_name )
 	form.origin = string.match( debug.getinfo( 2 ).source, "^@.*[/\\]mods[/\\](.-)[/\\]" ) or "?"
 	form.on_close = on_close
