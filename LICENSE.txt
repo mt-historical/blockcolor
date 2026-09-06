@@ -1,13 +1,25 @@
 ﻿
 --------------------------------------
 
-Blockcolor (Game) - 2.00 for Minetest 5.0
+Blockcolor (Game) - 2.00 
+for Luanti 5.00 (Minetest)
 
 --------------------------------------
 
+Copyright Notice: Created and maintained by Ms_Elodie. Open-source collaboration requires mutual respect. The original author's intellectual property and right to distribute this project shall be respected at all times under international copyright laws.
+
 Licenses : GNU LGPL 2.1 for code and Cc By SA 3.0 for medias.
 
-Game Creator : MrChiantos
+Game Creator : Ms Elodie .
+
+CDB distributor : rubenwardy
+
+Contributors (mt-historical) : 
+wsor4035
+rollerozxa
+red-001
+
+Thanks you very much for save the project going while I was away for problems life.
 
 Helpers or others Creators :
 
@@ -38,7 +50,7 @@ Minetest_Game and Others Mods :  Minetest Team (Look readme or license in mod di
 
 --------------------------------------
 
-Minetest (Engine)
+Luanti - Minetest (Engine)
 
 --------------------------------------
 
